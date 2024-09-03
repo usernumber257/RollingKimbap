@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// ObjectDetector 와 상호작용하는 클래스로, 플레이어가 오브젝트의 앞/뒤 어느쪽에 있느냐에 따라 오브젝트의 sortingOrder 가 조정 됨
+/// </summary>
+public class ObjectLayer : MonoBehaviour
+{
+    [SerializeField] Renderer sprite;
+
+    int playerSortingOrder = 5;
+
+    /// <summary>
+    /// 플레이어의 머리와 충돌했을 경우 false, 플레이어의 몸과 충돌했을 경우 true
+    /// </summary>
+    /// <param name="setTop"></param>
+    public void SetLayer(bool setTop)
+    {
+        if (setTop)
+        {
+            sprite.sortingOrder = playerSortingOrder + 1;
+        }
+        else
+        {
+            sprite.sortingOrder = playerSortingOrder - 1;
+        }
+    }
+}

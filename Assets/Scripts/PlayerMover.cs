@@ -39,6 +39,6 @@ public class PlayerMover : MonoBehaviour
         if (movement.magnitude < moveSensitive)
             return;
 
-        rb.MovePosition(transform.position += new Vector3(movement.x, movement.y, 0f) * speed);
+        rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed);
     }
 }
