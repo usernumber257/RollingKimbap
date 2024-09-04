@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Selecter))]
 [RequireComponent(typeof(Collider2D))]
@@ -13,6 +14,8 @@ public class InteractableObject : MonoBehaviour
 
     bool canInteract;
     bool isSelected;
+
+    public UnityAction OnInteract;
 
     private void Awake()
     {
@@ -39,7 +42,7 @@ public class InteractableObject : MonoBehaviour
     {
         if (isSelected && canInteract)
         {
-            Debug.Log($"Interact with {gameObject.name}");
+            OnInteract?.Invoke();
 
             isSelected = false;
             canInteract = false;
