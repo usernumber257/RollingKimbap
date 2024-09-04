@@ -26,6 +26,8 @@ public class KimbapMaker : Maker
     public override void Make()
     {
         OnKeyDown += kimbap.StackKimbap;
+        OnClear += kimbap.Complete;
+
         kimbap.curType = Kimbap.KimbapType.Original;
         Minigame_Keyboard(originalKimbap);
     }

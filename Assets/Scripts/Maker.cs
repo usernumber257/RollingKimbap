@@ -19,6 +19,7 @@ public abstract class Maker : MonoBehaviour
     [SerializeField] SpriteRenderer commandUI;
 
     public UnityAction OnKeyDown;
+    public UnityAction OnClear;
 
     private void Start()
     {
@@ -93,7 +94,7 @@ public abstract class Maker : MonoBehaviour
         }
 
         commandUI.gameObject.SetActive(false);
-        Debug.Log("clear!");
+        OnClear?.Invoke();
     }
 
     bool Keyboard_Up()

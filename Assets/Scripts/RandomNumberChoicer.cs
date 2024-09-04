@@ -18,7 +18,6 @@ public static class RandomNumberChoicer
                 do { curNum = Random.Range(minInclusive, maxExclusive); } while (excludeNums.Exists(excludeNum => excludeNum == curNum));
 
             choosedNums.Add(curNum);
-            Debug.Log(curNum);
         }
 
         return choosedNums;
