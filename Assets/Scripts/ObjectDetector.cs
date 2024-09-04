@@ -10,7 +10,7 @@ using UnityEngine;
 public class ObjectDetector : MonoBehaviour
 {
     float radius = 0.2f;
-    float boundary = 0.4f;
+    [SerializeField]float boundary = 0.4f;
     float distance = 0f;
 
     int objectLayerMask = (1 << 6);
@@ -26,24 +26,35 @@ public class ObjectDetector : MonoBehaviour
 
     void headHit()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(new Vector2(transform.position.x, transform.position.y + boundary), radius, transform.up, distance, objectLayerMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(new Vector2(transform.position.x, transform.position.y + boundary), radius, transform.up, distance, objectLayerMask);
 
-        if (hit.collider != null)
-            objectLayer = hit.collider.gameObject.GetComponent<ObjectLayer>();
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider != null)
+            {
+                objectLayer = hits[i].collider.gameObject.GetComponent<ObjectLayer>();
 
-        if (objectLayer != null)
-            objectLayer.SetLayer(true);
+                if (objectLayer != null)
+                    objectLayer.SetLayer(false);
+            }
+        }
     }
 
     void BodyHit()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(new Vector2(transform.position.x, transform.position.y - boundary), radius, transform.up, distance, objectLayerMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(new Vector2(transform.position.x, transform.position.y - boundary), radius, transform.up, distance, objectLayerMask);
 
-        if (hit.collider != null)
-            objectLayer = hit.collider.gameObject.GetComponent<ObjectLayer>();
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider != null)
+            {
+                objectLayer = hits[i].collider.gameObject.GetComponent<ObjectLayer>();
 
-        if (objectLayer != null)
-            objectLayer.SetLayer(false);
+                if (objectLayer != null)
+                    objectLayer.SetLayer(true);
+            }
+        }
+
     }
 
     private void OnDrawGizmos()

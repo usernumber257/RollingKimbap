@@ -17,6 +17,6 @@ public class ObjectLayer : MonoBehaviour
         if (setTop)
             sprite.sortingOrder = hasPriority ? playerSortingOrder + 2 : playerSortingOrder + 1;
         else
-            sprite.sortingOrder = hasPriority ? playerSortingOrder - 1 : playerSortingOrder - 2;
+            sprite.sortingOrder = hasPriority ? playerSortingOrder - 2 : playerSortingOrder - 1;
     }
 }
