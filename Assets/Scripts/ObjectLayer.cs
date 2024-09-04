@@ -12,10 +12,6 @@ public class ObjectLayer : MonoBehaviour
 
     int playerSortingOrder = 5;
 
-    /// <summary>
-    /// 플레이어의 머리와 충돌했을 경우 false, 플레이어의 몸과 충돌했을 경우 true
-    /// </summary>
-    /// <param name="setTop"></param>
     public void SetLayer(bool setTop)
     {
         if (setTop)
