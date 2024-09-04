@@ -10,7 +10,7 @@ using UnityEngine;
 public class ObjectDetector : MonoBehaviour
 {
     float radius = 0.2f;
-    float boundary = 0.3f;
+    float boundary = 0.4f;
     float distance = 0f;
 
     int objectLayerMask = (1 << 6);

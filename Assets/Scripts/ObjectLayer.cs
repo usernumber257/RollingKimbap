@@ -8,6 +8,7 @@ using UnityEngine;
 public class ObjectLayer : MonoBehaviour
 {
     [SerializeField] Renderer sprite;
+    [SerializeField] bool hasPriority;
 
     int playerSortingOrder = 5;
 
@@ -18,12 +19,8 @@ public class ObjectLayer : MonoBehaviour
     public void SetLayer(bool setTop)
     {
         if (setTop)
-        {
-            sprite.sortingOrder = playerSortingOrder + 1;
-        }
+            sprite.sortingOrder = hasPriority ? playerSortingOrder + 2 : playerSortingOrder + 1;
         else
-        {
-            sprite.sortingOrder = playerSortingOrder - 1;
-        }
+            sprite.sortingOrder = hasPriority ? playerSortingOrder - 1 : playerSortingOrder - 2;
     }
 }
