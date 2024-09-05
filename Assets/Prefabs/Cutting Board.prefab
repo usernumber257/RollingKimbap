@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 31937716709756391}
   - {fileID: 2940813344719571836}
-  - {fileID: 5984273651395754717}
+  - {fileID: 1015765292300884036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5838285600492812854
@@ -125,7 +125,7 @@ MonoBehaviour:
   keyboard_left: {fileID: 1121905784, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
   keyboard_right: {fileID: -1257604293, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
   commandUI: {fileID: 2261506793045030047}
-  kimbap: {fileID: 8946044572948996414}
+  foodStacker: {fileID: 5341994467898397814}
 --- !u!1 &427288468918119091
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,80 +294,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &2125894534126912293
-PrefabInstance:
+--- !u!1 &7294207000544703476
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3377649239493690879}
-    m_Modifications:
-    - target: {fileID: 2500077966220847165, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102729655335746852, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-      propertyPath: m_Name
-      value: Kimbap
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
---- !u!4 &5984273651395754717 stripped
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015765292300884036}
+  - component: {fileID: 5341994467898397814}
+  m_Layer: 6
+  m_Name: FoodStacker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1015765292300884036
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5660137420196690424, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-  m_PrefabInstance: {fileID: 2125894534126912293}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8946044572948996414 stripped
+  m_GameObject: {fileID: 7294207000544703476}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3377649239493690879}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5341994467898397814
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7036326812321571355, guid: aeefd0bc123acbb46a7867088c7f683c, type: 3}
-  m_PrefabInstance: {fileID: 2125894534126912293}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7294207000544703476}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fe1de124369b0643bb6a228af3fbfd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalKimbap: {fileID: 11400000, guid: 3a085a813f97a5842b530578ff259664, type: 2}
+  cheeseKimbap: {fileID: 11400000, guid: ba4c8fd60649ef24290c96cbb970b5af, type: 2}
+  kimchiKimbap: {fileID: 11400000, guid: 42c7405f4f334d747af00d3d38a8ae7d, type: 2}
+  tunaKimbap: {fileID: 11400000, guid: 88422081a9aa82e47972f7c42df7f753, type: 2}
+  curFoodType: 1

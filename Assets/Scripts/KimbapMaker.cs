@@ -6,16 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(InteractableObject))]
 public class KimbapMaker : Maker
 {
-    [SerializeField] Kimbap kimbap;
+    [SerializeField] FoodStacker foodStacker;
 
     InteractableObject interactableObject;
-
-    int originalKimbap = 7;
-    int cheeseKimbap = 8;
-    int kimchiKimbap = 8;
-    int tunaKimbap = 10;
-
-    int kimbapStack = -1;
 
     private void Awake()
     {
@@ -25,11 +18,12 @@ public class KimbapMaker : Maker
 
     public override void Make()
     {
-        OnKeyDown += kimbap.StackKimbap;
-        OnClear += kimbap.Complete;
+        foodStacker.InitFood(Food.FoodType.OriginalKimbap);
 
-        kimbap.curType = Kimbap.KimbapType.Original;
-        Minigame_Keyboard(originalKimbap);
+        OnKeyDown += foodStacker.StackIngredients;
+        OnClear += foodStacker.Complete; 
+
+        Minigame_Keyboard(foodStacker.originalKimbap.Ingredients.Count);
     }
 
     
