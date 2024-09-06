@@ -17,6 +17,8 @@ public class InteractableObject : MonoBehaviour
 
     public UnityAction OnInteract;
 
+    public bool canServe;
+
     private void Awake()
     {
         selecter = GetComponent<Selecter>();

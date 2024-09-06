@@ -4,14 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableObject))]
+[RequireComponent(typeof(FoodStacker))]
 public class KimbapMaker : Maker
 {
-    [SerializeField] FoodStacker foodStacker;
-
+    FoodStacker foodStacker;
     InteractableObject interactableObject;
 
     private void Awake()
     {
+        foodStacker = GetComponent<FoodStacker>();
         interactableObject = GetComponent<InteractableObject>();
         interactableObject.OnInteract += Make;
     }

@@ -1,27 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 public class Interactor : MonoBehaviour
 {
+    public InteractableObject curInteractObj;
+    public UnityAction<InteractableObject> OnTryInteract;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        InteractableObject interactAllower = collision.gameObject.GetComponent<InteractableObject>();
+        curInteractObj = collision.gameObject.GetComponent<InteractableObject>();
 
-        if (interactAllower != null)
+        if (curInteractObj != null)
         {
-            interactAllower.TryInteract(true);
+            OnTryInteract?.Invoke(curInteractObj);
+            curInteractObj.TryInteract(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        InteractableObject interactAllower = collision.gameObject.GetComponent<InteractableObject>();
+        curInteractObj = collision.gameObject.GetComponent<InteractableObject>();
 
-        if (interactAllower != null)
+        if (curInteractObj != null)
         {
-            interactAllower.TryInteract(false);
+            curInteractObj.TryInteract(false);
         }
     }
 }

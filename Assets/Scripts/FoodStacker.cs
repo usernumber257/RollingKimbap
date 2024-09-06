@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Server))]
 public class FoodStacker : MonoBehaviour
 {
     [Header("Kimbap")]
@@ -12,13 +13,24 @@ public class FoodStacker : MonoBehaviour
     public Food tunaKimbap;
 
     int curStack = 0;
-    public Food.FoodType curFoodType;
+
+    Food.FoodType curFoodType;
+    public Food.FoodType CurFoodType { get { return curFoodType; } }
+
     Food curFood;
+    public Food CurFood { get { return curFood; } }
 
     SpriteRenderer[] pool;
     int poolSize = 10;
 
     Vector3 spawnPos = new Vector3(0f, 0.2f, 0f);
+
+    Server server;
+
+    private void Awake()
+    {
+        server = GetComponent<Server>();
+    }
 
     private void Start()
     {
@@ -74,8 +86,10 @@ public class FoodStacker : MonoBehaviour
     {
         DisactiveAllIngredients();
 
-        pool[0].sprite = curFood.FoodModel;
-        pool[0].gameObject.SetActive(true);
+        GameObject newFood = Instantiate(Resources.Load<GameObject>("CompleteFood"));
+        newFood.gameObject.name = curFoodType.ToString();
+
+        server.Hold(newFood);
     }
 
     void DisactiveAllIngredients()

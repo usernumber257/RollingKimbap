@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Server : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Transform holdPlace;
+    public GameObject holdingObj;
 
-    // Update is called once per frame
-    void Update()
+    public void Hold(GameObject go)
     {
-        
+        go.transform.parent = holdPlace;
+        go.transform.localPosition = Vector3.zero;
+
+        holdingObj = go;
+    }    
+
+    public GameObject Serve()
+    {
+        return holdingObj;
     }
 }
