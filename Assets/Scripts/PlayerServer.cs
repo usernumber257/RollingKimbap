@@ -7,25 +7,49 @@ using UnityEngine;
 public class PlayerServer : Server
 {
     Interactor interactor;
-    public InteractableObject interactableObj;
+
+    public Server serveTarget;
+    public InteractableObject holdTarget;
 
     public void Awake()
     {
         interactor = GetComponent<Interactor>();
+        interactor.OnTryInteract += TryHold;
         interactor.OnTryInteract += TryServe;
     }
 
-    void TryServe(InteractableObject obj)
+    void TryHold(InteractableObject obj)
     {
-        if (!obj.canServe)
-            return;
+        if (obj.canServe)
+        {
+            holdTarget = obj;
+            obj.OnInteract += Hold;
+        }
+        else
+        {
+            obj.OnInteract += Serve;
+        }
 
-        interactableObj = obj;
-        obj.OnInteract += Hold;
     }
 
     void Hold()
     {
-        Hold(interactableObj.gameObject);
+        Hold(holdTarget.gameObject);
+    }
+
+    void TryServe(InteractableObject obj)
+    {
+        if (obj.canServe)
+            return;
+
+        serveTarget = obj.GetComponent<Server>();
+    }
+
+    new void Serve()
+    {
+        if (serveTarget == null || holdTarget == null)
+            return;
+
+        serveTarget.Hold(holdTarget.gameObject);
     }
 }

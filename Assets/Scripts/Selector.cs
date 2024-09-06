@@ -6,10 +6,11 @@ using UnityEngine.Events;
 public class Selecter : MonoBehaviour
 {
     public UnityAction<bool> OnSelected;
+    SelectableObject selectable;
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
             Select();
     }
 
@@ -19,10 +20,10 @@ public class Selecter : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject == gameObject)
-                OnSelected?.Invoke(true);
-            else
-                OnSelected?.Invoke(false);
+            selectable = hit.collider.gameObject.GetComponent<SelectableObject>();
+
+            if (selectable != null)
+                selectable.OnSelected?.Invoke(true);
         }
     }
 }

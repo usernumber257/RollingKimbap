@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1576623250352151165}
-  - component: {fileID: 1098547805885253092}
   - component: {fileID: 4243257603809094622}
   - component: {fileID: 4730461462825775542}
+  - component: {fileID: 142091760954965285}
   m_Layer: 6
   m_Name: CompleteFood
   m_TagString: Untagged
@@ -35,18 +35,6 @@ Transform:
   - {fileID: 2273993640500312799}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1098547805885253092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355934843416370730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbdc5b134c28a2b47b6765c7a2280ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &4243257603809094622
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -106,6 +94,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 668587844822510694}
   canServe: 1
+--- !u!114 &142091760954965285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7355934843416370730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca40db74696e8b648862632db00b714f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7976241407425907819
 GameObject:
   m_ObjectHideFlags: 0

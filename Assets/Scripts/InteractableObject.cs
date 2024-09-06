@@ -4,29 +4,32 @@ using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Selecter))]
+[RequireComponent(typeof(SelectableObject))]
 [RequireComponent(typeof(Collider2D))]
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] SpriteRenderer sprite;
 
-    Selecter selecter;
+    SelectableObject selectable;
 
     bool canInteract;
     bool isSelected;
 
     public UnityAction OnInteract;
 
+    /// <summary>
+    /// 만약 이게 false 라면 server를 넣어서 serve 하는 애가 될 수도 있음
+    /// </summary>
     public bool canServe;
 
     private void Awake()
     {
-        selecter = GetComponent<Selecter>();
+        selectable = GetComponent<SelectableObject>();
     }
 
     private void Start()
     {
-        selecter.OnSelected += Interact;
+        selectable.OnSelected += Interact;
     }
 
     public void TryInteract(bool canInteract)

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3377649239493690879}
   - component: {fileID: 5838285600492812854}
-  - component: {fileID: 7113946979014290563}
   - component: {fileID: 8424114374135403650}
   - component: {fileID: 4327381105016061431}
   - component: {fileID: 2616441744832710066}
   - component: {fileID: 8439254632220192407}
+  - component: {fileID: 7132787926281292812}
   m_Layer: 6
   m_Name: Cutting Board
   m_TagString: Untagged
@@ -85,18 +85,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7113946979014290563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203949079855450533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbdc5b134c28a2b47b6765c7a2280ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8424114374135403650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 5105096699064243385}
+  canServe: 0
 --- !u!114 &4327381105016061431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +116,6 @@ MonoBehaviour:
   keyboard_left: {fileID: 1121905784, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
   keyboard_right: {fileID: -1257604293, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
   commandUI: {fileID: 2261506793045030047}
-  foodStacker: {fileID: 0}
 --- !u!114 &2616441744832710066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +146,18 @@ MonoBehaviour:
   cheeseKimbap: {fileID: 11400000, guid: ba4c8fd60649ef24290c96cbb970b5af, type: 2}
   kimchiKimbap: {fileID: 11400000, guid: 42c7405f4f334d747af00d3d38a8ae7d, type: 2}
   tunaKimbap: {fileID: 11400000, guid: 88422081a9aa82e47972f7c42df7f753, type: 2}
-  server: {fileID: 2616441744832710066}
+--- !u!114 &7132787926281292812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203949079855450533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca40db74696e8b648862632db00b714f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &427288468918119091
 GameObject:
   m_ObjectHideFlags: 0
