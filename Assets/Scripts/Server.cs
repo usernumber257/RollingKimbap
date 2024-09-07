@@ -1,23 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.U2D;
 
-public class Server : MonoBehaviour
+[RequireComponent(typeof(Interactor))]
+[RequireComponent(typeof(Holder))]
+public class Server: MonoBehaviour
 {
-    [SerializeField] Transform holdPlace;
-    public GameObject holdingObj;
+    Interactor interactor;
 
-    public void Hold(GameObject go)
+    public Holder serveTarget;
+    public InteractableObject holdTarget;
+
+    Holder myholder;
+
+    public void Awake()
     {
-        go.transform.parent = holdPlace;
-        go.transform.localPosition = Vector3.zero;
+        interactor = GetComponent<Interactor>();
+        myholder = GetComponent<Holder>();
 
-        holdingObj = go;
-    }    
+        interactor.OnTryInteract += TryHold;
+        interactor.OnTryInteract += TryServe;
+    }
 
-    public GameObject Serve()
+    void TryHold(InteractableObject obj)
     {
-        return holdingObj;
+        if (obj.canServe)
+        {
+            holdTarget = obj;
+            obj.OnInteract += Hold;
+        }
+        else
+        {
+            obj.OnInteract += Serve;
+        }
+
+    }
+
+    void Hold()
+    {
+        myholder.Hold(holdTarget.gameObject);
+    }
+
+    void TryServe(InteractableObject obj)
+    {
+        if (obj.canServe)
+            return;
+
+        serveTarget = obj.GetComponent<Holder>();
+    }
+
+    void Serve()
+    {
+        if (serveTarget == null || holdTarget == null)
+            return;
+
+        serveTarget.Hold(holdTarget.gameObject);
+        myholder.holdingObj = null;
     }
 }

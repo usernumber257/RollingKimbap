@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(Server))]
+[RequireComponent(typeof(Holder))]
 public class FoodStacker : MonoBehaviour
 {
     [Header("Kimbap")]
@@ -25,11 +25,11 @@ public class FoodStacker : MonoBehaviour
 
     Vector3 spawnPos = new Vector3(0f, 0.2f, 0f);
 
-    Server server;
+    Holder server;
 
     private void Awake()
     {
-        server = GetComponent<Server>();
+        server = GetComponent<Holder>();
     }
 
     private void Start()
