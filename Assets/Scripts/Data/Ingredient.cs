@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Scriptable Object/Item", order = 1)]
+[CreateAssetMenu(fileName = "Item", menuName = "Scriptable Object/Ingredient", order = 1)]
 public class Ingredient : ScriptableObject
 {
-    MyEnum.IngredientType type;
+    [SerializeField] MyEnum.IngredientType type;
     public MyEnum.IngredientType Type { get { return type; } }
 
-    string ingredientName;
+    [SerializeField] string ingredientName;
     public string IngredientName { get { return ingredientName; } }
 
-    Sprite model;
+    [SerializeField] Sprite model;
     public Sprite Model { get { return model; } }
 }

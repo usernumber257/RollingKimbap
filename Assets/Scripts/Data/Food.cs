@@ -17,6 +17,6 @@ public class Food : ScriptableObject
     [SerializeField] int price;
     public int Price { get { return price; } }
 
-    [SerializeField] List<Sprite> ingredients;
-    public List<Sprite> Ingredients { get { return ingredients; } }
+    [SerializeField] List<Ingredient> ingredients;
+    public List<Ingredient> Ingredients { get { return ingredients; } }
 }

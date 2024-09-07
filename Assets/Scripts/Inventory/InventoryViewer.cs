@@ -62,6 +62,7 @@ public class InventoryViewer : MonoBehaviour
             }
         }
 
-        slots[numberData[item]].Count = count;
+        slots[numberData[item]].sprite.sprite = item.Model; 
+        slots[numberData[item]].Count += count;
     }
 }

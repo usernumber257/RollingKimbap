@@ -76,7 +76,7 @@ public class FoodStacker : MonoBehaviour
         if (curFood == null)
             return;
 
-        pool[curStack].sprite = curFood.Ingredients[curStack];
+        pool[curStack].sprite = curFood.Ingredients[curStack].Model;
         pool[curStack].gameObject.SetActive(true);
 
         curStack++;
