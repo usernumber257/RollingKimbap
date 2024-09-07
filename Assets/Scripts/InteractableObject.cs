@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(SelectableObject))]
 [RequireComponent(typeof(Collider2D))]
@@ -29,7 +32,7 @@ public class InteractableObject : MonoBehaviour
 
     private void Start()
     {
-        selectable.OnSelected += Interact;
+        selectable.OnSelected += Selected;
     }
 
     public void TryInteract(bool canInteract)
@@ -38,25 +41,27 @@ public class InteractableObject : MonoBehaviour
         CanInteractEffect(canInteract);
     }
     
-    void Interact(bool isSelected)
+    void Selected(bool isSelected)
     {
         this.isSelected = isSelected;
+
+        Interact();
     }
 
-    private void Update()
+    void Interact()
     {
-        if (isSelected && canInteract)
-        {
-            OnInteract?.Invoke();
+        if (!isSelected || !canInteract)
+            return;
 
-            isSelected = false;
-            canInteract = false;
+        OnInteract?.Invoke();
 
-            if (lerpColorRoutine != null)
-                StopCoroutine(lerpColorRoutine);
+        isSelected = false;
+        canInteract = false;
 
-            sprite.color = Color.white;
-        }
+        if (lerpColorRoutine != null)
+            StopCoroutine(lerpColorRoutine);
+
+        sprite.color = Color.white;
     }
 
     Coroutine lerpColorRoutine;
@@ -117,6 +122,4 @@ public class InteractableObject : MonoBehaviour
         
         
     }
-
-
 }

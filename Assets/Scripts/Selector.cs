@@ -16,14 +16,17 @@ public class Selecter : MonoBehaviour
 
     public void Select()
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-        if (hit.collider != null)
+        for (int i = 0; i < hits.Length; i++)
         {
-            selectable = hit.collider.gameObject.GetComponent<SelectableObject>();
+            if (hits[i].collider != null && hits[i].collider.gameObject.tag == "Selectable")
+            {
+                selectable = hits[i].collider.gameObject.GetComponent<SelectableObject>();
 
-            if (selectable != null)
-                selectable.OnSelected?.Invoke(true);
+                if (selectable != null)
+                    selectable.OnSelected?.Invoke(true);
+            }
         }
     }
 }

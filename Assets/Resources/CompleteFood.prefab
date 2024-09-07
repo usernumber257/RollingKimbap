@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4243257603809094622}
   - component: {fileID: 4730461462825775542}
   - component: {fileID: 142091760954965285}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CompleteFood
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2273993640500312799}
   - component: {fileID: 668587844822510694}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FoodModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
