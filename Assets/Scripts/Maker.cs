@@ -26,8 +26,6 @@ public abstract class Maker : MonoBehaviour
         commandUI.gameObject.SetActive(false);
     }
 
-    public abstract void Make();
-
     //키보드 미니게임 ---------------------------------
 
     enum Keyboard { Up, Down, Left, Right }

@@ -14,8 +14,8 @@ public class FoodStacker : MonoBehaviour
 
     int curStack = 0;
 
-    Food.FoodType curFoodType;
-    public Food.FoodType CurFoodType { get { return curFoodType; } }
+    MyEnum.FoodType curFoodType;
+    public MyEnum.FoodType CurFoodType { get { return curFoodType; } }
 
     Food curFood;
     public Food CurFood { get { return curFood; } }
@@ -25,11 +25,11 @@ public class FoodStacker : MonoBehaviour
 
     Vector3 spawnPos = new Vector3(0f, 0.2f, 0f);
 
-    Holder server;
+    Holder holder;
 
     private void Awake()
     {
-        server = GetComponent<Holder>();
+        holder = GetComponent<Holder>();
     }
 
     private void Start()
@@ -52,20 +52,20 @@ public class FoodStacker : MonoBehaviour
         }
     }
 
-    public void InitFood(Food.FoodType curFoodType)
+    public void InitFood(MyEnum.FoodType curFoodType)
     {
         switch (curFoodType)
         {
-            case Food.FoodType.OriginalKimbap:
+            case MyEnum.FoodType.OriginalKimbap:
                 curFood = originalKimbap;
                 break;
-            case Food.FoodType.CheeseKimbap:
+            case MyEnum.FoodType.CheeseKimbap:
                 curFood = cheeseKimbap;
                 break;
-            case Food.FoodType.KimchiKimbap:
+            case MyEnum.FoodType.KimchiKimbap:
                 curFood = kimchiKimbap;
                 break;
-            case Food.FoodType.TunaKimbap:
+            case MyEnum.FoodType.TunaKimbap:
                 curFood = tunaKimbap;
                 break;
         }
@@ -89,7 +89,7 @@ public class FoodStacker : MonoBehaviour
         GameObject newFood = Instantiate(Resources.Load<GameObject>("CompleteFood"));
         newFood.gameObject.name = curFoodType.ToString();
 
-        server.Hold(newFood);
+        holder.Hold(newFood);
     }
 
     void DisactiveAllIngredients()

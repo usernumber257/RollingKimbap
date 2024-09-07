@@ -17,9 +17,12 @@ public class KimbapMaker : Maker
         interactableObject.OnInteract += Make;
     }
 
-    public override void Make()
+    public void Make(bool isInteracted)
     {
-        foodStacker.InitFood(Food.FoodType.OriginalKimbap);
+        if (!isInteracted)
+            return;
+
+        foodStacker.InitFood(MyEnum.FoodType.OriginalKimbap);
 
         OnKeyDown += foodStacker.StackIngredients;
         OnClear += foodStacker.Complete; 

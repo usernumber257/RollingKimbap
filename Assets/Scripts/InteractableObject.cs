@@ -18,7 +18,7 @@ public class InteractableObject : MonoBehaviour
     bool canInteract;
     bool isSelected;
 
-    public UnityAction OnInteract;
+    public UnityAction<bool> OnInteract;
 
     /// <summary>
     /// 만약 이게 false 라면 server를 넣어서 serve 하는 애가 될 수도 있음
@@ -39,6 +39,9 @@ public class InteractableObject : MonoBehaviour
     {
         this.canInteract = canInteract;
         CanInteractEffect(canInteract);
+
+        if (canInteract == false)
+            OnInteract?.Invoke(false);
     }
     
     void Selected(bool isSelected)
@@ -53,7 +56,7 @@ public class InteractableObject : MonoBehaviour
         if (!isSelected || !canInteract)
             return;
 
-        OnInteract?.Invoke();
+        OnInteract?.Invoke(true);
 
         isSelected = false;
         canInteract = false;
