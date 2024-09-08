@@ -17,10 +17,10 @@ MonoBehaviour:
   foodModel: {fileID: 1498989029, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
   price: 3000
   ingredients:
-  - {fileID: -1380079573, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
-  - {fileID: -1207502196, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
-  - {fileID: -990864712, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
-  - {fileID: 598559532, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
-  - {fileID: -1971017791, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
-  - {fileID: -174596368, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
-  - {fileID: -276482916, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
+  - {fileID: 11400000, guid: 0ded54c3ddb0b914a924e0c60ae8a81a, type: 2}
+  - {fileID: 11400000, guid: f1cd465673e95ca449e6e96f7e0735ea, type: 2}
+  - {fileID: 11400000, guid: 0355885d62183ef4dad4f4c5e933a503, type: 2}
+  - {fileID: 11400000, guid: 4e0be00cb7a9baf41be985a70fb022fd, type: 2}
+  - {fileID: 11400000, guid: eb509bb129fb4794088b44929ebfe0ee, type: 2}
+  - {fileID: 11400000, guid: 992708319c3d2f84bbd37e7e9b964c5f, type: 2}
+  - {fileID: 11400000, guid: 86f6920910f9e9642ad678753ade8930, type: 2}

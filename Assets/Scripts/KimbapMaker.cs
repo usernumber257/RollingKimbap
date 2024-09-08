@@ -27,7 +27,7 @@ public class KimbapMaker : Maker
         OnKeyDown += foodStacker.StackIngredients;
         OnClear += foodStacker.Complete; 
 
-        Minigame_Keyboard(foodStacker.originalKimbap.Ingredients.Count);
+        Minigame_Keyboard(foodStacker.originalKimbap.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
     }
 
     

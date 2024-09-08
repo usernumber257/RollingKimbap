@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 7
   ingredientName: "\uB2F9\uADFC"
-  model: {fileID: -1207502196, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
+  model: {fileID: -276482916, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
