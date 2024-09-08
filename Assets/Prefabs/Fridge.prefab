@@ -266,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 8057279508297930194}
     - target: {fileID: 2942394031958205660, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_Name
-      value: InventoryViewer
+      value: FridgeInventory
       objectReference: {fileID: 0}
     - target: {fileID: 6491813204212484732, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_Pivot.x

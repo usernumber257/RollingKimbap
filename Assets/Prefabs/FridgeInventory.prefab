@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 7449022600426994941}
   - component: {fileID: 7135850477748861518}
   - component: {fileID: 2771886708420858145}
+  - component: {fileID: 4322630829390309636}
   m_Layer: 5
-  m_Name: InventoryViewer
+  m_Name: FridgeInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,6 +133,23 @@ MonoBehaviour:
   slotParent: {fileID: 4471388700192043827}
   interactable: {fileID: 0}
   body: {fileID: 6685244017587807989}
+--- !u!114 &4322630829390309636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942394031958205660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d76da8694ee0234d94a0e641030e3b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foods:
+  - {fileID: 11400000, guid: ba4c8fd60649ef24290c96cbb970b5af, type: 2}
+  - {fileID: 11400000, guid: 42c7405f4f334d747af00d3d38a8ae7d, type: 2}
+  - {fileID: 11400000, guid: 3a085a813f97a5842b530578ff259664, type: 2}
+  - {fileID: 11400000, guid: 88422081a9aa82e47972f7c42df7f753, type: 2}
 --- !u!1 &3154054147473406837
 GameObject:
   m_ObjectHideFlags: 0

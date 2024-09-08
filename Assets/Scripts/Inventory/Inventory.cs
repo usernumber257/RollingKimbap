@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     /// Ingredient 재료, int 수량
     /// </summary>
     Dictionary<Ingredient, int> slot = new Dictionary<Ingredient, int>();
-    public Dictionary<Ingredient, int> Slot = new Dictionary<Ingredient, int>();
+    public Dictionary<Ingredient, int> Slot { get { return slot; } }
 
     int slotSize = 20;
     public int SlotSize { get { return slotSize; } }
