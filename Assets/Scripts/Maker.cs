@@ -7,6 +7,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(FoodStacker))]
 public abstract class Maker : MonoBehaviour
 {
     Coroutine minigameRoutine;
@@ -21,9 +22,23 @@ public abstract class Maker : MonoBehaviour
     public UnityAction OnKeyDown;
     public UnityAction OnClear;
 
+    FoodStacker foodStacker;
+    public FoodStacker FoodStacker { get { return foodStacker; } }
+
+    public void Awake()
+    {
+        foodStacker = GetComponent<FoodStacker>();
+    }
+
     private void Start()
     {
         commandUI.gameObject.SetActive(false);
+    }
+
+    public void StartMake(Food food)
+    {
+        foodStacker.curFood = food;
+        foodStacker.canMakeFood = true;
     }
 
     //키보드 미니게임 ---------------------------------

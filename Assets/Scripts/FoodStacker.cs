@@ -14,11 +14,7 @@ public class FoodStacker : MonoBehaviour
 
     int curStack = 0;
 
-    MyEnum.FoodType curFoodType;
-    public MyEnum.FoodType CurFoodType { get { return curFoodType; } }
-
-    Food curFood;
-    public Food CurFood { get { return curFood; } }
+    public Food curFood;
 
     SpriteRenderer[] pool;
     int poolSize = 10;
@@ -26,6 +22,8 @@ public class FoodStacker : MonoBehaviour
     Vector3 spawnPos = new Vector3(0f, 0.2f, 0f);
 
     Holder holder;
+
+    public bool canMakeFood;
 
     private void Awake()
     {
@@ -52,28 +50,9 @@ public class FoodStacker : MonoBehaviour
         }
     }
 
-    public void InitFood(MyEnum.FoodType curFoodType)
-    {
-        switch (curFoodType)
-        {
-            case MyEnum.FoodType.OriginalKimbap:
-                curFood = originalKimbap;
-                break;
-            case MyEnum.FoodType.CheeseKimbap:
-                curFood = cheeseKimbap;
-                break;
-            case MyEnum.FoodType.KimchiKimbap:
-                curFood = kimchiKimbap;
-                break;
-            case MyEnum.FoodType.TunaKimbap:
-                curFood = tunaKimbap;
-                break;
-        }
-    }
-
     public void StackIngredients()
     {
-        if (curFood == null)
+        if (curFood == null || !canMakeFood)
             return;
 
         if (curStack < curFood.Ingredients.Count)
@@ -89,10 +68,13 @@ public class FoodStacker : MonoBehaviour
     {
         DisactiveAllIngredients();
 
-        GameObject newFood = Instantiate(Resources.Load<GameObject>("CompleteFood"));
-        newFood.gameObject.name = curFoodType.ToString();
+        CompleteFood newFood = Instantiate(Resources.Load<CompleteFood>("CompleteFood"));
+        newFood.gameObject.name = curFood.FoodName;
+        newFood.sprite.sprite = curFood.FoodModel; 
 
-        holder.Hold(newFood);
+        holder.Hold(newFood.gameObject);
+        curFood = null;
+        canMakeFood = false;
     }
 
     void DisactiveAllIngredients()

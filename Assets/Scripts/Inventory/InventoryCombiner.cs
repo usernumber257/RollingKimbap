@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public class InventoryCombiner : MonoBehaviour
@@ -22,6 +23,8 @@ public class InventoryCombiner : MonoBehaviour
     [SerializeField] GameObject body;
 
     int slotIndex;
+
+    [SerializeField] Maker maker;
 
     private void Awake()
     {
@@ -47,7 +50,11 @@ public class InventoryCombiner : MonoBehaviour
     void Show(bool isInterated)
     {
         body.SetActive(isInterated);
+
+        slotIndex = 0; //ΩΩ∑‘ √ ±‚»≠
+
         Combine();
+        SetMakeable();
     }
 
     void Combine()
@@ -71,8 +78,6 @@ public class InventoryCombiner : MonoBehaviour
                 }
             }
         }
-
-        SetMakeable();
     }
 
     void SetMakeable()
@@ -99,6 +104,9 @@ public class InventoryCombiner : MonoBehaviour
         slots[slotIndex].sprite.sprite = makeableFood.FoodModel;
         slots[slotIndex].nameText.text = makeableFood.FoodName;
         slots[slotIndex].gameObject.SetActive(true);
+
+        slots[slotIndex].GetComponent<Button>().onClick.AddListener(() => { maker.StartMake(makeableFood); }) ;
+
         slotIndex++;
     }
 }

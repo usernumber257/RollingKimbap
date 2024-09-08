@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4243257603809094622}
   - component: {fileID: 4730461462825775542}
   - component: {fileID: 142091760954965285}
+  - component: {fileID: 1615689076804476853}
   m_Layer: 0
   m_Name: CompleteFood
   m_TagString: Selectable
@@ -106,6 +107,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca40db74696e8b648862632db00b714f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1615689076804476853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7355934843416370730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313d54c5a9fcb8d4a83475756903b3f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodType: 0
+  sprite: {fileID: 668587844822510694}
 --- !u!1 &7976241407425907819
 GameObject:
   m_ObjectHideFlags: 0

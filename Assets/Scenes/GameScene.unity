@@ -863,6 +863,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1821220920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4327381105016061431, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
+  m_PrefabInstance: {fileID: 8595709145525211093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0916f7af2fcb18b4daf93acd4ccb4a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1894929632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,6 +1370,10 @@ PrefabInstance:
       propertyPath: m_Padding.m_Bottom
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3378017816362379288, guid: 594f44d09c8be2840b3342e7af39fd83, type: 3}
+      propertyPath: kimbapMaker
+      value: 
+      objectReference: {fileID: 1821220920}
     - target: {fileID: 3378017816362379288, guid: 594f44d09c8be2840b3342e7af39fd83, type: 3}
       propertyPath: interactable
       value: 

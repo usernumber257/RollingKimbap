@@ -4,30 +4,27 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableObject))]
-[RequireComponent(typeof(FoodStacker))]
 public class KimbapMaker : Maker
 {
-    FoodStacker foodStacker;
     InteractableObject interactableObject;
 
-    private void Awake()
+    private new void Awake()
     {
-        foodStacker = GetComponent<FoodStacker>();
+        base.Awake();
+
         interactableObject = GetComponent<InteractableObject>();
         interactableObject.OnInteract += Make;
     }
 
     public void Make(bool isInteracted)
     {
-        if (!isInteracted)
+        if (!isInteracted || FoodStacker.curFood == null)
             return;
 
-        foodStacker.InitFood(MyEnum.FoodType.OriginalKimbap);
+        OnKeyDown += FoodStacker.StackIngredients;
+        OnClear += FoodStacker.Complete; 
 
-        OnKeyDown += foodStacker.StackIngredients;
-        OnClear += foodStacker.Complete; 
-
-        Minigame_Keyboard(foodStacker.originalKimbap.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
+        Minigame_Keyboard(FoodStacker.curFood.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
     }
 
     
