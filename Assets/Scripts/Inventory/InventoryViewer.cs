@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Inventory))]
 public class InventoryViewer : MonoBehaviour
 {
-    Inventory inventory;
+    [SerializeField] Inventory inventory;
 
     Slot[] slots;
     [SerializeField] Slot slotPrefab;
@@ -21,7 +20,6 @@ public class InventoryViewer : MonoBehaviour
 
     private void Awake()
     {
-        inventory = GetComponent<Inventory>();
         inventory.OnUse += SetSlot;
         interactable.OnInteract += Show;
 
@@ -62,7 +60,8 @@ public class InventoryViewer : MonoBehaviour
             }
         }
 
-        slots[numberData[item]].sprite.sprite = item.Model; 
+        slots[numberData[item]].sprite.sprite = item.Model;
+        slots[numberData[item]].nameText.text = item.IngredientName;
         slots[numberData[item]].Count += count;
     }
 }

@@ -5,9 +5,12 @@ using UnityEngine;
 public class Temp : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
-    [SerializeField] Ingredient item;
-    public void Func()
+    [SerializeField] List<Ingredient> item = new List<Ingredient>();
+    public void Start()
     {
-        inventory.Store(item, 1);
+        foreach (Ingredient element in item)
+        {
+            inventory.Store(element, 2);
+        }
     }
 }

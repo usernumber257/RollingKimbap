@@ -260,6 +260,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 559413812250398610}
     m_Modifications:
+    - target: {fileID: 945424367099867540, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945424367099867540, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945424367099867540, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2771886708420858145, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: interactable
       value: 
@@ -267,6 +279,22 @@ PrefabInstance:
     - target: {fileID: 2942394031958205660, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_Name
       value: FridgeInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3285044063406917331, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_Size
+      value: 0.99974984
+      objectReference: {fileID: 0}
+    - target: {fileID: 4043306930502169539, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00010972683
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368553816901692247, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368553816901692247, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491813204212484732, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_Pivot.x

@@ -1,23 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-[RequireComponent(typeof(Inventory))]
 public class InventoryCombiner : MonoBehaviour
 {
-    Inventory inventory;
+    [SerializeField] Inventory inventory;
 
     [SerializeField] Food[] foods;
 
     Dictionary<Food, int> foodIngredients = new Dictionary<Food, int>(); //음식, 인벤토리에 있는 재료 수
     Dictionary<Food, bool> makeableFoods = new Dictionary<Food, bool>(); //음식, 만들 수 있는 지 여부
 
+    //UI
+    Slot[] slots;
+    int slotSize = 10;
+    [SerializeField] Slot slotPrefab;
+    [SerializeField] Transform slotParent;
+
+    [SerializeField] InteractableObject interactable;
+    [SerializeField] GameObject body;
+
+    int slotIndex;
+
     private void Awake()
     {
-        inventory = GetComponent<Inventory>();
+        interactable.OnInteract += Show;
+
+        Init();
     }
 
-    public void Combine()
+    void Init()
+    {
+        slots = new Slot[slotSize];
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i] = Instantiate(slotPrefab);
+            slots[i].transform.parent = slotParent;
+            slots[i].gameObject.SetActive(false);
+        }
+
+        body.SetActive(false);
+    }
+
+    void Show(bool isInterated)
+    {
+        body.SetActive(isInterated);
+        Combine();
+    }
+
+    void Combine()
     {
         for (int i = 0; i < foods.Length; i++)
             foodIngredients[foods[i]] = 0; //초기화
@@ -55,7 +88,17 @@ public class InventoryCombiner : MonoBehaviour
                     makeableFoods.Add(element, false);
 
                 makeableFoods[element] = true; //만들 수 있는 음식 true
+
+                ShowMakeable(element);
             }
         }
+    }
+
+    void ShowMakeable(Food makeableFood)
+    {
+        slots[slotIndex].sprite.sprite = makeableFood.FoodModel;
+        slots[slotIndex].nameText.text = makeableFood.FoodName;
+        slots[slotIndex].gameObject.SetActive(true);
+        slotIndex++;
     }
 }

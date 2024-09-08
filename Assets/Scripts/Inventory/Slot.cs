@@ -11,6 +11,7 @@ public class Slot : MonoBehaviour
     public int Count { get { return count; } set { count = value; UpdateCountText(value); } }
 
     [SerializeField] TMP_Text countText;
+    public TMP_Text nameText;
 
     void UpdateCountText(int value)
     {
