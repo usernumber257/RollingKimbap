@@ -87,11 +87,11 @@ public class InteractableObject : MonoBehaviour
     IEnumerator LerpColorTime()
     {
         float progress = 0f;
-        bool toCyan = true;
+        bool hover = true;
 
         while (true)
         {
-            if (toCyan)
+            if (hover)
             {
                 if (progress < 1f)
                 {
@@ -102,7 +102,7 @@ public class InteractableObject : MonoBehaviour
                 }
                 else
                 {
-                    toCyan = false;
+                    hover = false;
                     progress = 0f;
                 }
             }
@@ -117,7 +117,7 @@ public class InteractableObject : MonoBehaviour
                 }
                 else
                 {
-                    toCyan = true;
+                    hover = true;
                     progress = 0f;
                 }    
             }

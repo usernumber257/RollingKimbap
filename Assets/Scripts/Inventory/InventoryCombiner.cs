@@ -26,6 +26,7 @@ public class InventoryCombiner : MonoBehaviour
 
     [SerializeField] Maker maker;
 
+
     private void Awake()
     {
         interactable.OnInteract += Show;
@@ -99,14 +100,30 @@ public class InventoryCombiner : MonoBehaviour
         }
     }
 
+    Food _makeableFood;
+    Food makeableFood { get { return _makeableFood; } 
+        set 
+        {
+            _makeableFood = value;
+            StartMake();
+        }
+    }
+
     void ShowMakeable(Food makeableFood)
     {
         slots[slotIndex].sprite.sprite = makeableFood.FoodModel;
         slots[slotIndex].nameText.text = makeableFood.FoodName;
         slots[slotIndex].gameObject.SetActive(true);
 
-        slots[slotIndex].GetComponent<Button>().onClick.AddListener(() => { maker.StartMake(makeableFood); }) ;
+        Button button = slots[slotIndex].GetComponent<Button>();
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => { this.makeableFood = makeableFood; }) ;
 
         slotIndex++;
+    }
+
+    void StartMake()
+    {
+        maker.StartMake(makeableFood);
     }
 }

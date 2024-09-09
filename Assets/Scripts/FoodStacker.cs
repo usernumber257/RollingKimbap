@@ -66,14 +66,19 @@ public class FoodStacker : MonoBehaviour
 
     public void Complete()
     {
-        DisactiveAllIngredients();
-
         CompleteFood newFood = Instantiate(Resources.Load<CompleteFood>("CompleteFood"));
-        Debug.Log($"new Food {newFood == null} or curFood {curFood == null}");
         newFood.gameObject.name = curFood.FoodName;
         newFood.sprite.sprite = curFood.FoodModel; 
 
         holder.Hold(newFood.gameObject);
+
+        Stop();
+    }
+
+    public void Stop()
+    {
+        DisactiveAllIngredients();
+
         curFood = null;
         canMakeFood = false;
 

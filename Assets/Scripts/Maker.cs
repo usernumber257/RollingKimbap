@@ -41,6 +41,15 @@ public abstract class Maker : MonoBehaviour
         foodStacker.canMakeFood = true;
     }
 
+    public void StopMake()
+    {
+        commandUI.gameObject.SetActive(false);
+        foodStacker.canMakeFood = false;
+
+        if (minigameRoutine != null)
+            StopCoroutine(minigameRoutine);
+    }
+
     //키보드 미니게임 ---------------------------------
 
     enum Keyboard { Up, Down, Left, Right }
