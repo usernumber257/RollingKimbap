@@ -22,10 +22,16 @@ public class KimbapMaker : Maker
             return;
 
         OnKeyDown += FoodStacker.StackIngredients;
-        OnClear += FoodStacker.Complete; 
+        OnClear += FoodStacker.Complete;
+        OnClear += Complete;
 
         Minigame_Keyboard(FoodStacker.curFood.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
     }
 
+    public void Complete()
+    {
+        OnKeyDown -= FoodStacker.StackIngredients;
+        OnClear -= FoodStacker.Complete;
+    }
     
 }

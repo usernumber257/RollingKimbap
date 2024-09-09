@@ -58,10 +58,10 @@ public class Server: MonoBehaviour
         if (!isInterated)
             return;
 
-        if (serveTarget == null || holdTarget == null)
+        if (serveTarget == null || holdTarget == null || myholder.holdingObj == null)
             return;
 
-        serveTarget.Hold(holdTarget.gameObject);
+        serveTarget.Hold(myholder.holdingObj);
         myholder.holdingObj = null;
     }
 }
