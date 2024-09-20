@@ -1,33 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Seat : MonoBehaviour
 {
     [SerializeField] Holder chair;
     [SerializeField] Holder place;
 
-    Customer myCustomer;
-    MyEnum.FoodType myOrder;
+    MyEnum.FoodType myFoodType;
+    public Func<bool> OnFoodReadied;
+    public MyEnum.FoodType MyFoodType { get { return myFoodType; } set { myFoodType = value; OnFoodReadied?.Invoke(); } }
+    
+    CompleteFood readiedFood;
+    public CompleteFood ReadiedFood { get { return readiedFood; } }
 
-    public void OnCurstomerSit(Customer customer)
+    public void Sit(GameObject go)
     {
-        myCustomer = customer;
-        myOrder = customer.MyOrder;
-
+        chair.Hold(go);
         place.OnHold += CompareOrder;
     }
 
     void CompareOrder(GameObject go)
     {
-        CompleteFood readiedFood = go.GetComponent<CompleteFood>();
+        readiedFood = go.GetComponent<CompleteFood>();
 
         if (readiedFood == null)
             return;
 
-        if (readiedFood.foodType != myOrder)
-            return;
-        else
-            Debug.Log("Correct food");
+        myFoodType = readiedFood.foodType;
     }
 }

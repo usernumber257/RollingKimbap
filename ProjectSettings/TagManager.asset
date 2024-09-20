@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Selectable
-  - Sit
   - Exit
+  - Seat
+  - Sit
   layers:
   - Default
   - TransparentFX

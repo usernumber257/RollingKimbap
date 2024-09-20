@@ -13,11 +13,18 @@ public class CompleteFood : MonoBehaviour
     public MyEnum.FoodType foodType;
     public SpriteRenderer sprite;
 
+    Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Init(MyEnum.FoodType foodType)
     {
         this.foodType = foodType;
         
-        switch (foodType)
+        switch (this.foodType)
         {
             case MyEnum.FoodType.OriginalKimbap:
                 sprite.sprite = originalKimbap.FoodModel;
@@ -32,5 +39,18 @@ public class CompleteFood : MonoBehaviour
                 sprite.sprite = tunaKimbap.FoodModel;
                 break;
         }
+    }
+
+    public void Disappear()
+    {
+        animator.SetTrigger("Disappear");
+        destoryRoutine = StartCoroutine(DestroyTime());
+    }
+
+    Coroutine destoryRoutine;
+    IEnumerator DestroyTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }
