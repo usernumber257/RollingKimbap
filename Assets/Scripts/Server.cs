@@ -37,9 +37,9 @@ public class Server: MonoBehaviour
 
     }
 
-    void Hold(bool isInterated)
+    void Hold(bool isInteracted)
     {
-        if (!isInterated)
+        if (!isInteracted)
             return;
 
         myholder.Hold(holdTarget.gameObject);
@@ -53,9 +53,9 @@ public class Server: MonoBehaviour
         serveTarget = obj.GetComponent<Holder>();
     }
 
-    void Serve(bool isInterated)
+    void Serve(bool isInteracted)
     {
-        if (!isInterated)
+        if (!isInteracted)
             return;
 
         if (serveTarget == null || holdTarget == null || myholder.holdingObj == null)
