@@ -119,6 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313d54c5a9fcb8d4a83475756903b3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalKimbap: {fileID: 11400000, guid: 3a085a813f97a5842b530578ff259664, type: 2}
+  cheeseKimbap: {fileID: 11400000, guid: ba4c8fd60649ef24290c96cbb970b5af, type: 2}
+  kimchiKimbap: {fileID: 11400000, guid: 42c7405f4f334d747af00d3d38a8ae7d, type: 2}
+  tunaKimbap: {fileID: 11400000, guid: 88422081a9aa82e47972f7c42df7f753, type: 2}
   foodType: 0
   sprite: {fileID: 668587844822510694}
 --- !u!1 &7976241407425907819

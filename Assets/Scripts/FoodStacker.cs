@@ -67,8 +67,7 @@ public class FoodStacker : MonoBehaviour
     public void Complete()
     {
         CompleteFood newFood = Instantiate(Resources.Load<CompleteFood>("CompleteFood"));
-        newFood.gameObject.name = curFood.FoodName;
-        newFood.sprite.sprite = curFood.FoodModel; 
+        newFood.Init(curFood.FoodType);
 
         holder.Hold(newFood.gameObject);
 
