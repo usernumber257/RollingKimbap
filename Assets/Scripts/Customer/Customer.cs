@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,18 +9,19 @@ public class Customer : MonoBehaviour
 {
     public enum State { None, Sit, Order, Eat, Exit }
     State curState;
-    Seat mySeat;
+    public Seat mySeat;
     FSM fsm;
     MyEnum.FoodType myOrder;
     public MyEnum.FoodType MyOrder { get { return myOrder; } }
 
-    Transform exit;
+    public Transform exit;
 
-    [SerializeField] float speed = 0.05f;
+    public float speed = 0.05f;
 
     [Header("Order Bubble")]
-    [SerializeField] GameObject orderBubble;
-    [SerializeField] CompleteFood orderFood;
+    [SerializeField] public GameObject orderBubble;
+    [SerializeField] public TMP_Text orderBubbleText;
+    [SerializeField] public CompleteFood orderFood;
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class Customer : MonoBehaviour
         mySeat = GameObject.FindWithTag("Seat").GetComponent<Seat>();
         mySeat.OnFoodReadied += IsReceiveMyOrder;
 
-        fsm = new FSM(new SitState(transform, mySeat, speed, exit));
+        fsm = new FSM(new SitState(this));
 
         myOrder = ChoiceMyOrder();
 
@@ -68,16 +70,16 @@ public class Customer : MonoBehaviour
         switch (curState)
         {
             case State.Sit:
-                fsm.ChangeState(new SitState(transform, mySeat, speed, exit));
+                fsm.ChangeState(new SitState(this));
                 break;
             case State.Order:
-                fsm.ChangeState(new OrderState(myOrder, orderBubble, orderFood));
+                fsm.ChangeState(new OrderState(this));
                 break;
             case State.Eat:
-                fsm.ChangeState(new EatState(mySeat));
+                fsm.ChangeState(new EatState(this));
                 break;
             case State.Exit:
-                fsm.ChangeState(new ExitState(transform, speed, exit));
+                fsm.ChangeState(new ExitState(this));
                 break;
         }
     }
@@ -121,23 +123,14 @@ public class Customer : MonoBehaviour
 
 public class SitState : State
 {
-    Transform myTransform;
-    Seat mySeat;
-    Transform exit;
-
-    float speed;
-
-    public SitState(Transform myTransform, Seat mySeat, float speed, Transform exit)
+    public SitState(Customer customer)
     {
-        this.myTransform = myTransform;
-        this.mySeat = mySeat;
-        this.speed = speed;
-        this.exit = exit;
+        this.customer = customer;
     }
 
     public override void OnStateEnter()
     {
-        myTransform.position = exit.transform.position;
+        customer.transform.position = customer.exit.transform.position;
     }
 
     public override void OnStateUpdate()
@@ -147,33 +140,28 @@ public class SitState : State
     
     public override void OnStateExit()
     {
-        mySeat.Sit(myTransform.gameObject);
+        customer.mySeat.Sit(customer.transform.gameObject);
     }
 
 
     void MoveToSeat()
     {
-        myTransform.position = Vector2.MoveTowards(myTransform.position, mySeat.transform.position, speed);
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.transform.position, customer.speed);
     }
 }
 
 public class OrderState : State
 {
-    MyEnum.FoodType myOrder;
-    GameObject orderBubble;
-    CompleteFood orderFood;
-
-    public OrderState(MyEnum.FoodType myOrder, GameObject orderBubble, CompleteFood orderFood)
+    public OrderState(Customer customer)
     {
-        this.myOrder = myOrder; 
-        this.orderBubble = orderBubble;
-        this.orderFood = orderFood;
+        this.customer = customer;
     }
 
     public override void OnStateEnter()
     {
-        orderFood.Init(myOrder);
-        orderBubble.SetActive(true);
+        customer.orderFood.Init(customer.MyOrder);
+        customer.orderBubble.SetActive(true);
+        customer.orderBubbleText.text = customer.orderFood.myFood.FoodName;
     }
 
     public override void OnStateUpdate()
@@ -182,23 +170,20 @@ public class OrderState : State
 
     public override void OnStateExit()
     {
-        orderBubble.SetActive(false);
+        customer.orderBubble.SetActive(false);
     }
 }
 
 public class EatState : State
 {
-    Seat mySeat;
-    
-
-    public EatState(Seat mySeat)
+    public EatState(Customer customer)
     {
-        this.mySeat = mySeat;
+        this.customer = customer;
     }
 
     public override void OnStateEnter()
     {
-        mySeat.ReadiedFood.Disappear();
+        customer.mySeat.ReadiedFood.Disappear();
     }
 
     public override void OnStateUpdate()
@@ -212,15 +197,9 @@ public class EatState : State
 
 public class ExitState : State
 {
-    Transform exit;
-    Transform myTransform;
-    float speed;
-
-    public ExitState(Transform myTransform, float speed, Transform exit)
+    public ExitState(Customer customer)
     {
-        this.myTransform = myTransform;
-        this.speed = speed;
-        this.exit = exit;
+        this.customer = customer;
     }
 
     public override void OnStateEnter()
@@ -229,7 +208,7 @@ public class ExitState : State
 
     public override void OnStateUpdate()
     {
-        myTransform.position = Vector2.MoveTowards(myTransform.position, exit.position, speed);
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.exit.position, customer.speed);
     }
 
     public override void OnStateExit()

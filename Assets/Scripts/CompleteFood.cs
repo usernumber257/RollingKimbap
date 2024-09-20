@@ -10,6 +10,7 @@ public class CompleteFood : MonoBehaviour
     public Food kimchiKimbap;
     public Food tunaKimbap;
 
+    public Food myFood;
     public MyEnum.FoodType foodType;
     public SpriteRenderer sprite;
 
@@ -28,15 +29,19 @@ public class CompleteFood : MonoBehaviour
         {
             case MyEnum.FoodType.OriginalKimbap:
                 sprite.sprite = originalKimbap.FoodModel;
+                myFood = originalKimbap;
                 break;
             case MyEnum.FoodType.CheeseKimbap:
                 sprite.sprite = cheeseKimbap.FoodModel;
+                myFood = cheeseKimbap;
                 break;
             case MyEnum.FoodType.KimchiKimbap:
                 sprite.sprite = kimchiKimbap.FoodModel;
+                myFood = kimchiKimbap;
                 break;
             case MyEnum.FoodType.TunaKimbap:
                 sprite.sprite = tunaKimbap.FoodModel;
+                myFood = tunaKimbap;
                 break;
         }
     }

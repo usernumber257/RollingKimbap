@@ -149,6 +149,7 @@ MonoBehaviour:
   slotParent: {fileID: 4043306930502169539}
   interactable: {fileID: 0}
   body: {fileID: 3044738300442599616}
+  maker: {fileID: 0}
 --- !u!1 &2343472484423827354
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5368553816901692247}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9805145
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -361,7 +362,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7449022600426994941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0006748394}
+  m_AnchoredPosition: {x: 0.0035279603, y: 3.391687}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5798587762959365815
