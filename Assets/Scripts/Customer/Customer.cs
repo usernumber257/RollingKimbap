@@ -23,11 +23,13 @@ public class Customer : MonoBehaviour
     [SerializeField] public TMP_Text orderBubbleText;
     [SerializeField] public CompleteFood orderFood;
 
-    void Start()
+    public void Init(Seat seat)
     {
+        gameObject.SetActive(true);
+
         exit = GameObject.FindWithTag("Exit").transform;
 
-        mySeat = GameObject.FindWithTag("Seat").GetComponent<Seat>();
+        mySeat = seat;
         mySeat.OnFoodReadied += IsReceiveMyOrder;
 
         fsm = new FSM(new SitState(this));
@@ -36,6 +38,8 @@ public class Customer : MonoBehaviour
 
         curState = State.Sit;
         ChangeState(State.Sit);
+
+        GameManager.Flow.curActiveCustomers++;
     }
 
     private void Update()
@@ -86,7 +90,7 @@ public class Customer : MonoBehaviour
 
     MyEnum.FoodType ChoiceMyOrder()
     {
-        int randNum = Random.Range(0, GameManager.Data.foodCount);
+        int randNum = Random.Range(1, GameManager.Data.foodCount + 1);
 
         return (MyEnum.FoodType)randNum;
     }
@@ -116,8 +120,8 @@ public class Customer : MonoBehaviour
 
     void Clear()
     {
-        Debug.Log("Clear!");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        GameManager.Flow.curActiveCustomers--;
     }
 }
 
@@ -204,6 +208,7 @@ public class ExitState : State
 
     public override void OnStateEnter()
     {
+        customer.transform.SetParent(null);
     }
 
     public override void OnStateUpdate()

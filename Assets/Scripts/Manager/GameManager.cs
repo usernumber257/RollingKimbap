@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     static DataManager data;
     public static DataManager Data { get { return data; } }
 
+    static FlowManager flow;
+    public static FlowManager Flow { get { return flow; } }
+
     private void Awake()
     {
         if (instance != null)
@@ -27,6 +30,9 @@ public class GameManager : MonoBehaviour
     {
         if (data == null)
             data = CreateGameObject("DataManager").AddComponent<DataManager>();
+
+        if (flow == null)
+            flow = CreateGameObject("FlowManager").AddComponent<FlowManager>();
     }
 
     GameObject CreateGameObject(string name)
