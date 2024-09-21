@@ -1,54 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FlowManager : MonoBehaviour
 {
-    List<Seat> seats = new List<Seat>();
-    Customer[] customerPool;
+    public List<Seat> seats = new List<Seat>();
+    Dictionary<int, bool> emptySeats = new Dictionary<int, bool>(); 
+
+    Customer[] customers;
     int poolSize = 4;
+    Dictionary<int, bool> inactiveCustomers = new Dictionary<int, bool>();
     
-    public int curActiveCustomers = 0;
-    int _customerIndex = 0;
-    int customerIndex 
-    { 
-        get { return _customerIndex; } 
-        set 
-        {
-            _customerIndex = value;
-
-            if (_customerIndex >= poolSize) 
-                _customerIndex = 0;
-        } 
-    }
-
-    int _seatIndex = 0;
-    int seatIndex
-    {
-        get { return _seatIndex; }
-        set
-        {
-            _seatIndex = value;
-
-            if (_seatIndex >= seats.Count)
-                _seatIndex = 0;
-        }
-    }
 
     void Start()
     {
-        FindSeats();
+        AddSeats();
         CreateCustomerPool();
     }
 
-    void FindSeats()
+    void AddSeats()
     {
         GameObject[] newGo = GameObject.FindGameObjectsWithTag("Seat");
 
         for (int i = 0; i < newGo.Length; i++)
+        {
             seats.Add(newGo[i].GetComponent<Seat>());
+            emptySeats.Add(i, true);
+        }
     }
 
     float time = 0;
@@ -69,21 +46,63 @@ public class FlowManager : MonoBehaviour
 
     void CreateCustomerPool()
     {
-        customerPool = new Customer[poolSize];
+        customers = new Customer[poolSize];
         
         for (int i = 0; i < poolSize; i++)
         {
             GameObject newGo = Instantiate(Resources.Load<GameObject>("Customer"));
             newGo.SetActive(false);
-            customerPool[i] = newGo.GetComponent<Customer>();
+            customers[i] = newGo.GetComponent<Customer>();
+            customers[i].Init(i);
+            inactiveCustomers.Add(i, true);
         }
     }
 
     void NewCustomer()
     {
-        if (curActiveCustomers >= poolSize)
+        int inactiveCustomer = FindInactiveCustomer();
+
+        if (inactiveCustomer == -1)
             return;
 
-        customerPool[customerIndex++].Init(seats[seatIndex++]);
+        int mySeatNum = FindEmptySeat();
+
+        if (mySeatNum == -1)
+            return;
+
+        customers[inactiveCustomer].WakeUp(mySeatNum);
+        inactiveCustomers[inactiveCustomer] = false;
+
+        emptySeats[mySeatNum] = false;
+
+        MappingCustomerEvent(customers[inactiveCustomer]);
+    }
+
+    int FindInactiveCustomer()
+    {
+        for (int i = 0; i < customers.Length; i++)
+        {
+            if (inactiveCustomers[i])
+                return i;
+        }
+
+        return -1;
+    }
+
+    void MappingCustomerEvent(Customer who)
+    {
+        who.OnClear += (() => { emptySeats[who.MySeatNum] = true; });
+        who.OnClear += (() => { inactiveCustomers[who.MyNum] = true; });
+    }
+
+    int FindEmptySeat()
+    {
+        for (int i = 0; i < seats.Count; i++)
+        {
+            if (emptySeats[i])
+                return i;
+        }
+
+        return -1;
     }
 }

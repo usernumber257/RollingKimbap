@@ -4,12 +4,20 @@ using System.Xml.Serialization;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Customer : MonoBehaviour
 {
     public enum State { None, Sit, Order, Eat, Exit }
     State curState;
+
+    int myNum;
+    public int MyNum { get { return myNum; } }
+
+    int mySeatNum;
+    public int MySeatNum { get { return mySeatNum; } }
     public Seat mySeat;
+
     FSM fsm;
     MyEnum.FoodType myOrder;
     public MyEnum.FoodType MyOrder { get { return myOrder; } }
@@ -23,23 +31,28 @@ public class Customer : MonoBehaviour
     [SerializeField] public TMP_Text orderBubbleText;
     [SerializeField] public CompleteFood orderFood;
 
-    public void Init(Seat seat)
+    public UnityAction OnClear;
+
+    public void Init(int customerNum)
+    {
+        myNum = customerNum;
+        
+        exit = GameObject.FindWithTag("Exit").transform;
+        fsm = new FSM(new SitState(this));
+    }
+
+    public void WakeUp( int seatNum)
     {
         gameObject.SetActive(true);
 
-        exit = GameObject.FindWithTag("Exit").transform;
-
-        mySeat = seat;
+        mySeatNum = seatNum;
+        mySeat = GameManager.Flow.seats[mySeatNum];
         mySeat.OnFoodReadied += IsReceiveMyOrder;
-
-        fsm = new FSM(new SitState(this));
 
         myOrder = ChoiceMyOrder();
 
         curState = State.Sit;
         ChangeState(State.Sit);
-
-        GameManager.Flow.curActiveCustomers++;
     }
 
     private void Update()
@@ -120,8 +133,8 @@ public class Customer : MonoBehaviour
 
     void Clear()
     {
+        OnClear?.Invoke();
         gameObject.SetActive(false);
-        GameManager.Flow.curActiveCustomers--;
     }
 }
 
