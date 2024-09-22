@@ -348,6 +348,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6343306835499282537, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 7107233480198327283}
     - target: {fileID: 7523367440549147821, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_Name
       value: Seat_left
@@ -408,5 +412,10 @@ PrefabInstance:
 --- !u!4 &913207278496467897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8899068876318736028, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+  m_PrefabInstance: {fileID: 8634397536920220965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7107233480198327283 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1545436031210176214, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
   m_PrefabInstance: {fileID: 8634397536920220965}
   m_PrefabAsset: {fileID: 0}

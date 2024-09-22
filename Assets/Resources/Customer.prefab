@@ -44,10 +44,9 @@ GameObject:
   m_Component:
   - component: {fileID: 543662203033020564}
   - component: {fileID: 8310088578692447446}
-  - component: {fileID: 3709921438125235089}
-  - component: {fileID: 3426455597148264867}
   - component: {fileID: 3483028569744765061}
   - component: {fileID: 2534239583747232094}
+  - component: {fileID: 641908359271519326}
   m_Layer: 6
   m_Name: Customer
   m_TagString: Untagged
@@ -93,7 +92,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &3709921438125235089
+--- !u!114 &3483028569744765061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873800320058949981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cbaee8222c5cb41a71f1b83be01dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySeat: {fileID: 0}
+  exit: {fileID: 0}
+  speed: 0.01
+  orderBubble: {fileID: 2858435869012210465}
+  orderBubbleText: {fileID: 5035438594048358266}
+  orderFood: {fileID: 8594181925895654675}
+--- !u!114 &2534239583747232094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873800320058949981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e24704ff2eec3a4c99a1152bdcc9f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 5952480061122462729}
+  hasPriority: 1
+--- !u!58 &641908359271519326
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,52 +158,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.2}
   serializedVersion: 2
-  m_Radius: 0.2
---- !u!114 &3426455597148264867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4873800320058949981}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582e5604bf1746747bf53d841e02d5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boundary: 0.4
---- !u!114 &3483028569744765061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4873800320058949981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6cbaee8222c5cb41a71f1b83be01dbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mySeat: {fileID: 0}
-  exit: {fileID: 0}
-  speed: 0.01
-  orderBubble: {fileID: 2858435869012210465}
-  orderBubbleText: {fileID: 5035438594048358266}
-  orderFood: {fileID: 8594181925895654675}
---- !u!114 &2534239583747232094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4873800320058949981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e24704ff2eec3a4c99a1152bdcc9f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 5952480061122462729}
-  hasPriority: 1
+  m_Radius: 0.3
 --- !u!1 &6841980689229102294
 GameObject:
   m_ObjectHideFlags: 0

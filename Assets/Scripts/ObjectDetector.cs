@@ -9,14 +9,21 @@ using UnityEngine;
 /// </summary>
 public class ObjectDetector : MonoBehaviour
 {
-    float radius = 0.2f;
-    [SerializeField]float boundary = 0.4f;
+    [SerializeField] float width = 0.2f;
+    [SerializeField] float height = 0.2f;
+    [SerializeField] float boundary = 0.4f;
     float distance = 0f;
 
     int objectLayerMask = (1 << 6);
     
     ObjectLayer objectLayer;
 
+    Vector2 size;
+
+    private void Awake()
+    {
+        size = new Vector2(width, height);
+    }
 
     private void Update()
     {
@@ -26,7 +33,7 @@ public class ObjectDetector : MonoBehaviour
 
     void headHit()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(new Vector2(transform.position.x, transform.position.y + boundary), radius, transform.up, distance, objectLayerMask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(new Vector2(transform.position.x, transform.position.y + boundary), size, 0f, transform.forward, distance, objectLayerMask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -42,7 +49,7 @@ public class ObjectDetector : MonoBehaviour
 
     void BodyHit()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(new Vector2(transform.position.x, transform.position.y - boundary), radius, transform.up, distance, objectLayerMask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(new Vector2(transform.position.x, transform.position.y - boundary), size, 0f, transform.forward, distance, objectLayerMask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -59,8 +66,10 @@ public class ObjectDetector : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        size = new Vector2(width, height);
+
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + boundary, 0), radius);
-        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y - boundary, 0), radius);
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y + boundary, 0), size);
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y - boundary, 0), size);
     }
 }
