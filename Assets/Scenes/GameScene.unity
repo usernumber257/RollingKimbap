@@ -807,7 +807,9 @@ Transform:
   - {fileID: 985968848}
   - {fileID: 1567578420}
   - {fileID: 1999871173}
-  - {fileID: 1483123423}
+  - {fileID: 1373357688}
+  - {fileID: 2070980374}
+  - {fileID: 1821220921}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &985968848 stripped
@@ -864,68 +866,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2513471309480858096, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
   m_PrefabInstance: {fileID: 9210646338390259436}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1483123422
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1483123423}
-  - component: {fileID: 1483123424}
-  m_Layer: 0
-  m_Name: Parent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1483123423
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483123422}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1373357688}
-  - {fileID: 2070980374}
-  - {fileID: 1821220921}
-  m_Father: {fileID: 965037430}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1483123424
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483123422}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!4 &1567578420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1982791405767870805, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
@@ -939,6 +879,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 965037430}
     m_Modifications:
+    - target: {fileID: 631900939022273743, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1648654608416674616, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -998,6 +942,10 @@ PrefabInstance:
     - target: {fileID: 3064620297528640727, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185879289078533969, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5559967702505374707, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_Layer
@@ -1289,7 +1237,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1483123423}
+    m_TransformParent: {fileID: 965037430}
     m_Modifications:
     - target: {fileID: 1240881070296710462, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_Name
@@ -1486,6 +1434,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 965037430}
     m_Modifications:
+    - target: {fileID: 631900939022273743, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1648654608416674616, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1545,6 +1497,10 @@ PrefabInstance:
     - target: {fileID: 3897110797189950300, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185879289078533969, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5559967702505374707, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_Layer
@@ -1813,7 +1769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4836639226270720116, guid: 594f44d09c8be2840b3342e7af39fd83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000044866225
+      value: 0.00006449107
       objectReference: {fileID: 0}
     - target: {fileID: 4839708687512706700, guid: 594f44d09c8be2840b3342e7af39fd83, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1858,6 +1814,10 @@ PrefabInstance:
     - target: {fileID: 6041293247932528491, guid: 594f44d09c8be2840b3342e7af39fd83, type: 3}
       propertyPath: m_Name
       value: FridgeInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238987212848026980, guid: 594f44d09c8be2840b3342e7af39fd83, type: 3}
+      propertyPath: m_Size
+      value: 0.9931892
       objectReference: {fileID: 0}
     - target: {fileID: 6809312870362166799, guid: 594f44d09c8be2840b3342e7af39fd83, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -1955,7 +1915,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1483123423}
+    m_TransformParent: {fileID: 965037430}
     m_Modifications:
     - target: {fileID: 31937716709756391, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2028,7 +1988,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1483123423}
+    m_TransformParent: {fileID: 965037430}
     m_Modifications:
     - target: {fileID: 1240881070296710462, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_Name

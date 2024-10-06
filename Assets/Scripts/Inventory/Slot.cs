@@ -15,6 +15,7 @@ public class Slot : MonoBehaviour
 
     void UpdateCountText(int value)
     {
+        Debug.Log("update");
         countText.text = value.ToString();
     }
 }

@@ -62,6 +62,6 @@ public class InventoryViewer : MonoBehaviour
 
         slots[numberData[item]].sprite.sprite = item.Model;
         slots[numberData[item]].nameText.text = item.IngredientName;
-        slots[numberData[item]].Count += count;
+        slots[numberData[item]].Count = isStore ? slots[numberData[item]].Count + count : slots[numberData[item]].Count - count;
     }
 }

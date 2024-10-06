@@ -117,7 +117,7 @@ public class InventoryCombiner : MonoBehaviour
 
         Button button = slots[slotIndex].GetComponent<Button>();
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => { this.makeableFood = makeableFood; }) ;
+        button.onClick.AddListener(() => { this.makeableFood = makeableFood; ConsumeItems(makeableFood); }) ;
 
         slotIndex++;
     }
@@ -125,5 +125,11 @@ public class InventoryCombiner : MonoBehaviour
     void StartMake()
     {
         maker.StartMake(makeableFood);
+    }
+
+    void ConsumeItems(Food makeableFood)
+    {
+        foreach (Ingredient element in makeableFood.Ingredients)
+            inventory.Take(element, 1);
     }
 }
