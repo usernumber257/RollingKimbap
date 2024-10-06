@@ -23,7 +23,7 @@ public class FoodStacker : MonoBehaviour
 
     Holder holder;
 
-    public bool canMakeFood;
+    public bool makingFood;
 
     private void Awake()
     {
@@ -52,7 +52,7 @@ public class FoodStacker : MonoBehaviour
 
     public void StackIngredients()
     {
-        if (curFood == null || !canMakeFood)
+        if (curFood == null || !makingFood)
             return;
 
         if (curStack < curFood.Ingredients.Count)
@@ -79,7 +79,7 @@ public class FoodStacker : MonoBehaviour
         DisactiveAllIngredients();
 
         curFood = null;
-        canMakeFood = false;
+        makingFood = false;
 
         curStack = 0;
     }

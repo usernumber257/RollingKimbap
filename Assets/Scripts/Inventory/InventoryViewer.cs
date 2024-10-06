@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class InventoryViewer : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
 
-    Slot[] slots;
+    Slot[] slots; //슬롯 칸
     [SerializeField] Slot slotPrefab;
     [SerializeField] Transform slotParent;
 
-    //몇 번째 칸에 뭐가 들었는지 알기 위함
-    Dictionary<Ingredient, int> numberData = new Dictionary<Ingredient, int>();
+    List<Ingredient> existItems = new List<Ingredient>(); //슬롯에 존재하는 아이템 목록
 
     int usage = 0;
 
@@ -46,22 +46,26 @@ public class InventoryViewer : MonoBehaviour
 
     void SetSlot(Ingredient item, int count, bool isStore)
     {
-        if (isStore)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (!numberData.ContainsKey(item))
-                numberData.Add(item, usage++); //한 번도 추가 된 적 없는 아이템이면 슬롯 하나를 가져감
-        }
-        else
-        {
-            if (!numberData.ContainsKey(item))
-            {
-                Debug.Log($"we don't have slot for {item.name} but you're trying to remove");
-                return;
-            }
+            slots[i].sprite.sprite = null;
+            slots[i].nameText.text = "";
+            slots[i].Count = 0;
         }
 
-        slots[numberData[item]].sprite.sprite = item.Model;
-        slots[numberData[item]].nameText.text = item.IngredientName;
-        slots[numberData[item]].Count = isStore ? slots[numberData[item]].Count + count : slots[numberData[item]].Count - count;
+        if (inventory.Slot[item] <= 0)
+            existItems.Remove(item);
+
+        if (!existItems.Contains(item) && inventory.Slot[item] > 0)
+            existItems.Add(item);
+
+        int index = 0;
+        foreach (Ingredient element in existItems)
+        {
+            slots[index].sprite.sprite = element.Model;
+            slots[index].nameText.text = element.IngredientName;
+            slots[index].Count = inventory.Slot[element];
+            index++;
+        }
     }
 }

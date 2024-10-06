@@ -38,13 +38,13 @@ public abstract class Maker : MonoBehaviour
     public void StartMake(Food food)
     {
         foodStacker.curFood = food;
-        foodStacker.canMakeFood = true;
+        foodStacker.makingFood = true;
     }
 
     public void StopMake()
     {
         commandUI.gameObject.SetActive(false);
-        foodStacker.canMakeFood = false;
+        foodStacker.makingFood = false;
 
         if (minigameRoutine != null)
             StopCoroutine(minigameRoutine);
