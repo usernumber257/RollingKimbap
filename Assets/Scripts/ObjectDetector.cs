@@ -64,7 +64,8 @@ public class ObjectDetector : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
+    /*
+     * private void OnDrawGizmos()
     {
         size = new Vector2(width, height);
 
@@ -72,4 +73,5 @@ public class ObjectDetector : MonoBehaviour
         Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y + boundary, 0), size);
         Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y - boundary, 0), size);
     }
+    */
 }

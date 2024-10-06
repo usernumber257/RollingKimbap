@@ -161,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3, y: 0.2}
+  m_Size: {x: 1.3, y: 0.6}
   m_EdgeRadius: 0
 --- !u!114 &4939243260587328628
 MonoBehaviour:
@@ -231,6 +231,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1906182410581925627, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143527735952966732, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4250118194353239766, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -246,6 +254,14 @@ PrefabInstance:
     - target: {fileID: 5749719278767135768, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808980958488194275, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010334921515841108, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7523367440549147821, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_Name
@@ -265,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8899068876318736028, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 8899068876318736028, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_LocalPosition.z
@@ -348,10 +364,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5808980958488194275, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6343306835499282537, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: sprite
       value: 
       objectReference: {fileID: 7107233480198327283}
+    - target: {fileID: 7010334921515841108, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7523367440549147821, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_Name
       value: Seat_left
@@ -370,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8899068876318736028, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 8899068876318736028, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_LocalPosition.z

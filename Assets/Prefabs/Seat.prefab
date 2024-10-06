@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de45dc476a5168f41a4cecef175df34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chair: {fileID: 6666492377638811917}
+  chair: {fileID: 5547186921927224937}
   place: {fileID: 5414358914093003026}
 --- !u!1001 &2174533825726579888
 PrefabInstance:
@@ -57,17 +57,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8899068876318736028}
     m_Modifications:
-    - target: {fileID: 763121477749644915, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
       propertyPath: m_Name
       value: Chair_left
-      objectReference: {fileID: 0}
-    - target: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-      propertyPath: m_TagString
-      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 7994987728674482565, guid: 66e7506379bb95e46b7069d471323242, type: 3}
       propertyPath: m_LocalPosition.x
@@ -112,35 +104,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6666492377638811917}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e7506379bb95e46b7069d471323242, type: 3}
---- !u!1 &4739716791704198777 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
+--- !u!114 &5547186921927224937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5969222117763001049, guid: 66e7506379bb95e46b7069d471323242, type: 3}
   m_PrefabInstance: {fileID: 2174533825726579888}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6666492377638811917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4739716791704198777}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20be2682845cc0e4bba31a8a8f11eddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdPlace: {fileID: 5808980958488194275}
-  holdingObj: {fileID: 0}
---- !u!4 &5808980958488194275 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5670273384310859859, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-  m_PrefabInstance: {fileID: 2174533825726579888}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8133105122537303349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7994987728674482565, guid: 66e7506379bb95e46b7069d471323242, type: 3}
@@ -194,6 +170,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6853059430174090236, guid: 02ceb19ca87658540989d4eca4a24557, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853059430174090236, guid: 02ceb19ca87658540989d4eca4a24557, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8040342083649514129, guid: 02ceb19ca87658540989d4eca4a24557, type: 3}
       propertyPath: m_Name
       value: Place
@@ -227,21 +211,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8899068876318736028}
     m_Modifications:
-    - target: {fileID: 4054624463560728045, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
       propertyPath: m_Name
       value: Chair_right
-      objectReference: {fileID: 0}
-    - target: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-      propertyPath: m_TagString
-      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 7994987728674482565, guid: 66e7506379bb95e46b7069d471323242, type: 3}
       propertyPath: m_LocalPosition.x
@@ -286,37 +258,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4800075607880959215}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e7506379bb95e46b7069d471323242, type: 3}
 --- !u!4 &856581891017147802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7994987728674482565, guid: 66e7506379bb95e46b7069d471323242, type: 3}
   m_PrefabInstance: {fileID: 7282556218695216159}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1906182410581925627 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9179682419613545188, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-  m_PrefabInstance: {fileID: 7282556218695216159}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4250118194353239766 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6911800233093143241, guid: 66e7506379bb95e46b7069d471323242, type: 3}
-  m_PrefabInstance: {fileID: 7282556218695216159}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4800075607880959215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4250118194353239766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20be2682845cc0e4bba31a8a8f11eddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdPlace: {fileID: 1906182410581925627}
-  holdingObj: {fileID: 0}
