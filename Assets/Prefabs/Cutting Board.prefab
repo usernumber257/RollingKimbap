@@ -148,7 +148,7 @@ MonoBehaviour:
   kimchiKimbap: {fileID: 11400000, guid: 42c7405f4f334d747af00d3d38a8ae7d, type: 2}
   tunaKimbap: {fileID: 11400000, guid: 88422081a9aa82e47972f7c42df7f753, type: 2}
   curFood: {fileID: 0}
-  canMakeFood: 0
+  makingFood: 0
 --- !u!114 &7132787926281292812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 4711518603287487554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

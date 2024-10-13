@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.8, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &4730461462825775542
 MonoBehaviour:
@@ -124,6 +124,7 @@ MonoBehaviour:
   cheeseKimbap: {fileID: 11400000, guid: ba4c8fd60649ef24290c96cbb970b5af, type: 2}
   kimchiKimbap: {fileID: 11400000, guid: 42c7405f4f334d747af00d3d38a8ae7d, type: 2}
   tunaKimbap: {fileID: 11400000, guid: 88422081a9aa82e47972f7c42df7f753, type: 2}
+  myFood: {fileID: 0}
   foodType: 0
   sprite: {fileID: 668587844822510694}
 --- !u!95 &4901732561229787711
