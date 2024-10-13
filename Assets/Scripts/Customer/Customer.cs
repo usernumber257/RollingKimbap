@@ -31,6 +31,8 @@ public class Customer : MonoBehaviour
     [SerializeField] public TMP_Text orderBubbleText;
     [SerializeField] public CompleteFood orderFood;
 
+    [SerializeField] Animator anim; 
+
     public UnityAction OnClear;
 
     public void Init(int customerNum)
@@ -78,6 +80,25 @@ public class Customer : MonoBehaviour
         }
 
         fsm.UpdateState();
+
+        PlayAnimation();
+    }
+
+    Vector3 prevPosition;
+    Vector3 moveDir;
+    void PlayAnimation()
+    {
+        moveDir = gameObject.transform.position - prevPosition;
+
+        if (moveDir != Vector3.zero)
+            anim.SetBool("IsMove", true);
+        else
+            anim.SetBool("IsMove", false);
+        
+        anim.SetFloat("xDir", moveDir.x);
+        anim.SetFloat("yDir", moveDir.y);
+
+        prevPosition = gameObject.transform.position;
     }
 
     void ChangeState(State nextState)

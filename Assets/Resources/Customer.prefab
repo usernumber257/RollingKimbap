@@ -110,6 +110,7 @@ MonoBehaviour:
   orderBubble: {fileID: 2858435869012210465}
   orderBubbleText: {fileID: 5035438594048358266}
   orderFood: {fileID: 8594181925895654675}
+  anim: {fileID: 8310088578692447446}
 --- !u!114 &2534239583747232094
 MonoBehaviour:
   m_ObjectHideFlags: 0
