@@ -25,6 +25,8 @@ public abstract class Maker : MonoBehaviour
     FoodStacker foodStacker;
     public FoodStacker FoodStacker { get { return foodStacker; } }
 
+    [SerializeField] Inventory fridgeInventory;
+
     public void Awake()
     {
         foodStacker = GetComponent<FoodStacker>();
@@ -48,6 +50,13 @@ public abstract class Maker : MonoBehaviour
 
         if (minigameRoutine != null)
             StopCoroutine(minigameRoutine);
+
+        //만들기를 취소하면 인벤토리에 다시 재료들이 원상복구 되게
+        if (foodStacker.curFood == null)
+            return;
+
+        foreach (Ingredient element in foodStacker.curFood.Ingredients)
+            fridgeInventory.Store(element, 1);
     }
 
     //키보드 미니게임 ---------------------------------

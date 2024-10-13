@@ -50,6 +50,12 @@ public class InventoryCombiner : MonoBehaviour
 
     void Show(bool isInterated)
     {
+        if (maker.FoodStacker.makingFood) //만들어지고 있는 중이라면 조합을 더이상 보여주지 않음
+        {
+            body.SetActive(false);
+            return;
+        }
+
         body.SetActive(isInterated);
 
         slotIndex = 0; //슬롯 초기화
@@ -117,7 +123,7 @@ public class InventoryCombiner : MonoBehaviour
 
         Button button = slots[slotIndex].GetComponent<Button>();
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => { this.makeableFood = makeableFood; ConsumeItems(makeableFood); }) ;
+        button.onClick.AddListener(() => { this.makeableFood = makeableFood; ConsumeItems(makeableFood); body.SetActive(false); }) ;
 
         slotIndex++;
     }
