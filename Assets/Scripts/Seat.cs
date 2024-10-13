@@ -31,4 +31,9 @@ public class Seat : MonoBehaviour
 
         myFoodType = readiedFood.foodType;
     }
+
+    public void Clear()
+    {
+        readiedFood = null;
+    }
 }

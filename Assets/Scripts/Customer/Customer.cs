@@ -139,6 +139,9 @@ public class Customer : MonoBehaviour
         if (myOrder == MyEnum.FoodType.None)
             return false;
 
+        if (mySeat.ReadiedFood == null)
+            return false;
+
         return mySeat.MyFoodType == myOrder;
     }
 
@@ -222,6 +225,7 @@ public class EatState : State
     public override void OnStateEnter()
     {
         customer.mySeat.ReadiedFood.Disappear();
+        customer.mySeat.Clear();
     }
 
     public override void OnStateUpdate()
