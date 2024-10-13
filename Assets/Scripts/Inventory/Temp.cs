@@ -11,7 +11,7 @@ public class Temp : MonoBehaviour
     {
         foreach (Ingredient element in startItem)
         {
-            inventory.Store(element, 3);
+            inventory.Store(element, 30);
         }
     }
 }
