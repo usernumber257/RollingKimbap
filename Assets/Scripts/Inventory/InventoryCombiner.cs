@@ -58,10 +58,17 @@ public class InventoryCombiner : MonoBehaviour
 
         body.SetActive(isInterated);
 
-        slotIndex = 0; //슬롯 초기화
-
+        ResetSlots();
         Combine();
         SetMakeable();
+    }
+
+    void ResetSlots()
+    {
+        for (int i = 0; i < slots.Length; i++)
+            slots[i].gameObject.SetActive(false);
+
+        slotIndex = 0;
     }
 
     void Combine()
@@ -80,7 +87,10 @@ public class InventoryCombiner : MonoBehaviour
                         if (!foodIngredients.ContainsKey(foods[i]))
                             foodIngredients.Add(foods[i], 0);
 
-                        foodIngredients[foods[i]]++;
+                        if (inventory.Slot[element] <= 0) //인벤토리에 0개라면 모이지 않음
+                            continue;
+                        else
+                            foodIngredients[foods[i]]++;
                     }
                 }
             }
@@ -89,8 +99,8 @@ public class InventoryCombiner : MonoBehaviour
 
     void SetMakeable()
     {
-        for (int i = 0; i < foods.Length; i++)
-            makeableFoods[foods[i]] = false; //초기화
+        for (int i = 0; i < foods.Length; i++) //초기화
+            makeableFoods[foods[i]] = false;
 
         foreach (Food element in foodIngredients.Keys)
         {
