@@ -10,6 +10,7 @@ public class CoinText : MonoBehaviour
     private void Start()
     {
         GameManager.Data.OnCoinChanged += SetText;
+        SetText();
     }
 
     private void OnDisable()

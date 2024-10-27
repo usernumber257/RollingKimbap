@@ -13,4 +13,7 @@ public class Ingredient : ScriptableObject
 
     [SerializeField] Sprite model;
     public Sprite Model { get { return model; } }
+
+    [SerializeField] int price;
+    public int Price { get { return price; } }
 }

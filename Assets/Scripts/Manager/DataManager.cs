@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour
 {
     public int foodCount = 4;
 
-    int curCoin;
+    int curCoin = 50;
     public int CurCoin { 
         get { return curCoin; } 
         set 
@@ -30,5 +30,12 @@ public class DataManager : MonoBehaviour
     public void LostCoin(int howMuch)
     {
         CurCoin -= howMuch;
+    }
+
+    public DataReferencer dataReferencer;
+
+    private void Awake()
+    {
+        dataReferencer = Instantiate(Resources.Load<DataReferencer>("DataReferencer"));
     }
 }
