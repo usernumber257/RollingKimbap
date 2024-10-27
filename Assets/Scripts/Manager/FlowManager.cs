@@ -35,7 +35,7 @@ public class FlowManager : MonoBehaviour
         if (time > randTime)
         {
             NewCustomer();
-            randTime = Random.Range(10, 30f);
+            randTime = Random.Range(5, 20f);
 
             time = 0;
         }

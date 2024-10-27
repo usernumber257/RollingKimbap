@@ -21,7 +21,7 @@ public class Customer : MonoBehaviour
     FSM fsm;
     MyEnum.FoodType myOrder;
     public MyEnum.FoodType MyOrder { get { return myOrder; } }
-
+    
     public Transform exit;
 
     public float speed = 0.05f;
@@ -224,6 +224,8 @@ public class EatState : State
 
     public override void OnStateEnter()
     {
+        GameManager.Data.EarnCoin(customer.orderFood.myFood.Price);
+
         customer.mySeat.ReadiedFood.Disappear();
         customer.mySeat.Clear();
     }
