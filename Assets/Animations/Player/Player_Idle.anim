@@ -54,6 +54,24 @@ AnimationClip:
     classID: 212
     script: {fileID: 0}
     flags: 2
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: 1863354499, guid: b5586702e21d52c46a3bf75b293bd9b2, type: 3}
+    attribute: m_Sprite
+    path: model/Clothes/basicClothes
+    classID: 212
+    script: {fileID: 0}
+    flags: 2
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: 677314894, guid: 3bb32d3b2e791974ba1baae2d456d09a, type: 3}
+    attribute: m_Sprite
+    path: model/Pants/basicPants
+    classID: 212
+    script: {fileID: 0}
+    flags: 2
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -97,11 +115,31 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
       isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 1850728482
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 265404093
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: 1661300287, guid: de0a5a74b7ceb9543bad20e9764f6b89, type: 3}
     - {fileID: -1417125689, guid: 9e8a2b7bdb4df8146a3d1fbbd827ecec, type: 3}
     - {fileID: -1718233702, guid: 9e8a2b7bdb4df8146a3d1fbbd827ecec, type: 3}
     - {fileID: 218131866, guid: 9e8a2b7bdb4df8146a3d1fbbd827ecec, type: 3}
+    - {fileID: 1863354499, guid: b5586702e21d52c46a3bf75b293bd9b2, type: 3}
+    - {fileID: 677314894, guid: 3bb32d3b2e791974ba1baae2d456d09a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

@@ -119,6 +119,7 @@ public class InventoryCombiner : MonoBehaviour
     {
         slots[slotIndex].sprite.sprite = makeableFood.FoodModel;
         slots[slotIndex].nameText.text = makeableFood.FoodName;
+        slots[slotIndex].countText.gameObject.SetActive(false);
         slots[slotIndex].gameObject.SetActive(true);
 
         Button button = slots[slotIndex].GetComponent<Button>();
