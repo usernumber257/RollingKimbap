@@ -95,12 +95,21 @@ public class FlowManager : MonoBehaviour
         who.OnClear += (() => { inactiveCustomers[who.MyNum] = true; });
     }
 
+    int limit = 30;
     int FindEmptySeat()
     {
-        for (int i = 0; i < seats.Count; i++)
+        int limitCount = 0;
+
+        while (true)
         {
+            int i = Random.Range(0, seats.Count);
+
             if (emptySeats[i])
                 return i;
+
+            limitCount++;
+            if (limitCount > limit)
+                break;
         }
 
         return -1;
