@@ -61,6 +61,9 @@ public class InteractableObject : MonoBehaviour
         isSelected = false;
         canInteract = false;
 
+        if (sprite == null)
+            return;
+
         if (lerpColorRoutine != null)
             StopCoroutine(lerpColorRoutine);
 
@@ -70,6 +73,9 @@ public class InteractableObject : MonoBehaviour
     Coroutine lerpColorRoutine;
     void CanInteractEffect(bool doEffect)
     {
+        if (sprite == null)
+            return;
+
         if (doEffect)
             lerpColorRoutine = StartCoroutine(LerpColorTime());
         else

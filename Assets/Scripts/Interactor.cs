@@ -11,6 +11,9 @@ public class Interactor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (curInteractObj != null)
+            curInteractObj.TryInteract(false);
+
         curInteractObj = collision.gameObject.GetComponent<InteractableObject>();
 
         if (curInteractObj != null)
@@ -25,8 +28,6 @@ public class Interactor : MonoBehaviour
         curInteractObj = collision.gameObject.GetComponent<InteractableObject>();
 
         if (curInteractObj != null)
-        {
             curInteractObj.TryInteract(false);
-        }
     }
 }
