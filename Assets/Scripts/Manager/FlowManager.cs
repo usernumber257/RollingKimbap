@@ -7,7 +7,7 @@ public class FlowManager : MonoBehaviour
     Dictionary<int, bool> emptySeats = new Dictionary<int, bool>(); 
 
     Customer[] customers;
-    int poolSize = 4;
+    int poolSize = 10;
     Dictionary<int, bool> inactiveCustomers = new Dictionary<int, bool>();
     
 

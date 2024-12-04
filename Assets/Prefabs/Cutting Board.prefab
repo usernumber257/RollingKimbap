@@ -117,6 +117,7 @@ MonoBehaviour:
   keyboard_left: {fileID: 1121905784, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
   keyboard_right: {fileID: -1257604293, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
   commandUI: {fileID: 2261506793045030047}
+  fridgeInventory: {fileID: 0}
 --- !u!114 &2616441744832710066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +363,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 0
   m_Sprite: {fileID: 882893756, guid: 345e0971c8828a14a8de6a364b12ba0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

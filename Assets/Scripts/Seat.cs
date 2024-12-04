@@ -8,6 +8,7 @@ public class Seat : MonoBehaviour
 {
     [SerializeField] Holder chair;
     [SerializeField] Holder place;
+    [SerializeField] SpriteRenderer chairModel;
 
     MyEnum.FoodType myFoodType;
     public Func<bool> OnFoodReadied;
@@ -20,6 +21,15 @@ public class Seat : MonoBehaviour
     {
         chair.Hold(go);
         place.OnHold += CompareOrder;
+
+        //레이어 작업
+        chairModel.sortingOrder = -1;
+    }
+
+    public void Leave()
+    {
+        //레이어 작업
+        chairModel.sortingOrder = 0;
     }
 
     void CompareOrder(GameObject go)

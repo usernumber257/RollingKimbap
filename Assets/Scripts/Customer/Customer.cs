@@ -248,6 +248,7 @@ public class ExitState : State
 
     public override void OnStateEnter()
     {
+        customer.mySeat.Leave();
         customer.transform.SetParent(null);
     }
 

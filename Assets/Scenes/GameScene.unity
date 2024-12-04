@@ -422,6 +422,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8513177522935973719, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8865205617057692967, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.6
@@ -2218,7 +2222,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -50
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 5307c7b322b29a5408f966c44118ed86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2329,6 +2333,10 @@ PrefabInstance:
     - target: {fileID: 8513177522935973719, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513177522935973719, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8865205617057692967, guid: 6d981cc8e4152ca4c8073870bc9ad316, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2918,13 +2926,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1202729631075381027, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1728257751580703900, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2031330498422330014, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111780286242079158, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
+      propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296356151483423125, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519554282361308182, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5084658387685486655, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2966,6 +2990,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5561599733829080908, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5809645086653974988, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2973,6 +3001,10 @@ PrefabInstance:
     - target: {fileID: 7646219227638073079, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808883851906273044, guid: b8694f271a611024ba9e78e7ec64f1ab, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3791,7 +3823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2261506793045030047, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
       propertyPath: m_SortingOrder
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3377649239493690879, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3837,6 +3869,10 @@ PrefabInstance:
       propertyPath: fridgeInventory
       value: 
       objectReference: {fileID: 2063670326}
+    - target: {fileID: 5105096699064243385, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
