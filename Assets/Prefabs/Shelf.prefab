@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 2185340582352511469}
-  canServe: 0
+  canBeHolded: 0
 --- !u!1 &1775165968450815340
 GameObject:
   m_ObjectHideFlags: 0

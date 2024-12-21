@@ -25,21 +25,19 @@ public class Server: MonoBehaviour
 
     void TryHold(InteractableObject obj)
     {
-        if (obj.canServe)
-        {
-            holdTarget = obj;
-            obj.OnInteract += Hold;
-        }
-        else
-        {
-            obj.OnInteract += Serve;
-        }
+        if (!obj.canBeHolded)
+            return;
 
+        holdTarget = obj;
+        obj.OnInteract += Hold;
     }
 
     void Hold(bool isInteracted)
     {
         if (!isInteracted)
+            return;
+
+        if (myholder.holdingObj != null)
             return;
 
         myholder.Hold(holdTarget.gameObject);
@@ -51,10 +49,11 @@ public class Server: MonoBehaviour
 
     void TryServe(InteractableObject obj)
     {
-        if (obj.canServe)
+        if (obj.canBeHolded)
             return;
 
         serveTarget = obj.GetComponent<Holder>();
+        obj.OnInteract += Serve;
     }
 
     void Serve(bool isInteracted)

@@ -19,6 +19,7 @@ public class Interactor : MonoBehaviour
         {
             curInteractObj = newInteractObj;
             curInteractObj.TryInteract(true);
+            OnTryInteract?.Invoke(curInteractObj);
         }
     }
 
