@@ -15,6 +15,8 @@ public class FlowManager : MonoBehaviour
     {
         AddSeats();
         CreateCustomerPool();
+
+        randTime = Random.Range(GameManager.Level.VisitTime_min, GameManager.Level.VisitTime_max);
     }
 
     void AddSeats()
@@ -35,13 +37,12 @@ public class FlowManager : MonoBehaviour
         if (time > randTime)
         {
             NewCustomer();
-            randTime = Random.Range(5, 20f);
+            randTime = Random.Range(GameManager.Level.VisitTime_min, GameManager.Level.VisitTime_max);
 
             time = 0;
         }
 
         time += Time.deltaTime;
-
     }
 
     void CreateCustomerPool()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using TMPro;
 using Unity.VisualScripting;
@@ -24,12 +25,20 @@ public class Customer : MonoBehaviour
     
     public Transform exit;
 
-    public float speed = 0.05f;
+    float speed = 0.7f;
+    public float Speed { get { return speed; } }
 
     [Header("Order Bubble")]
     [SerializeField] public GameObject orderBubble;
     [SerializeField] public TMP_Text orderBubbleText;
     [SerializeField] public CompleteFood orderFood;
+
+    public enum Emotions { None, HalfAnger, FullAnger, Happy }
+    [Header("Emotions")]
+    [SerializeField] GameObject halfAnger;
+    [SerializeField] GameObject fullAnger;
+    [SerializeField] GameObject happy;
+    public Emotions curEmotion = Emotions.None;
 
     [SerializeField] Animator anim; 
 
@@ -43,7 +52,7 @@ public class Customer : MonoBehaviour
         fsm = new FSM(new SitState(this));
     }
 
-    public void WakeUp( int seatNum)
+    public void WakeUp(int seatNum)
     {
         gameObject.SetActive(true);
 
@@ -55,6 +64,11 @@ public class Customer : MonoBehaviour
 
         curState = State.Sit;
         ChangeState(State.Sit);
+
+        curEmotion = Emotions.None;
+        halfAnger.SetActive(false);
+        fullAnger.SetActive(false);
+        happy.SetActive(false);
     }
 
     private void Update()
@@ -68,6 +82,8 @@ public class Customer : MonoBehaviour
             case State.Order:
                 if (IsReceiveMyOrder())
                     ChangeState(State.Eat);
+                if (curEmotion == Emotions.FullAnger)
+                    ChangeState(State.Exit);
                 break;
             case State.Eat:
                 if (IsFoodDisappear())
@@ -160,6 +176,44 @@ public class Customer : MonoBehaviour
         OnClear?.Invoke();
         gameObject.SetActive(false);
     }
+
+    public void ChangeEmotion(bool increase)
+    {
+        halfAnger.SetActive(false);
+        fullAnger.SetActive(false);
+        happy.SetActive(false);
+
+        switch (curEmotion)
+        {
+            case Emotions.None:
+                curEmotion = increase ? Emotions.Happy : Emotions.HalfAnger;
+                break;
+            case Emotions.HalfAnger:
+                curEmotion = increase ? Emotions.None : Emotions.FullAnger;
+                break;
+            case Emotions.FullAnger:
+                curEmotion = increase ? Emotions.HalfAnger : Emotions.FullAnger;
+                break;
+            case Emotions.Happy:
+                curEmotion = increase ? Emotions.Happy : Emotions.None;
+                break;
+        }
+
+        switch (curEmotion)
+        {
+            case Emotions.None:
+                break;
+            case Emotions.HalfAnger:
+                halfAnger.SetActive(true);
+                break;
+            case Emotions.FullAnger:
+                fullAnger.SetActive(true);
+                break;
+            case Emotions.Happy:
+                happy.SetActive(true);
+                break;
+        }
+    }
 }
 
 public class SitState : State
@@ -187,12 +241,14 @@ public class SitState : State
 
     void MoveToSeat()
     {
-        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.transform.position, customer.speed);
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.transform.position, customer.Speed * Time.deltaTime);
     }
 }
 
 public class OrderState : State
 {
+    float waitTime = 0f;
+
     public OrderState(Customer customer)
     {
         this.customer = customer;
@@ -207,11 +263,26 @@ public class OrderState : State
 
     public override void OnStateUpdate()
     {
+        waitTime += Time.deltaTime;
+
+        if (waitTime > GameManager.Level.HalfAngerTime && waitTime <= GameManager.Level.FullAngerTime)
+        {
+            if (customer.curEmotion != Customer.Emotions.HalfAnger)
+                customer.ChangeEmotion(false);
+        }
+        else if (waitTime > GameManager.Level.FullAngerTime)
+        {
+            if (customer.curEmotion != Customer.Emotions.FullAnger)
+            {
+                customer.ChangeEmotion(false);
+            }
+        }
     }
 
     public override void OnStateExit()
     {
         customer.orderBubble.SetActive(false);
+        waitTime = 0f;
     }
 }
 
@@ -225,6 +296,8 @@ public class EatState : State
     public override void OnStateEnter()
     {
         GameManager.Data.EarnCoin(customer.orderFood.myFood.Price);
+
+        customer.ChangeEmotion(true);
 
         customer.mySeat.ReadiedFood.Disappear();
         customer.mySeat.Clear();
@@ -254,7 +327,7 @@ public class ExitState : State
 
     public override void OnStateUpdate()
     {
-        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.exit.position, customer.speed);
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.exit.position, customer.Speed * Time.deltaTime);
     }
 
     public override void OnStateExit()

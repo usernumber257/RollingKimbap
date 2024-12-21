@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     static FlowManager flow;
     public static FlowManager Flow { get { return flow; } }
 
+    static LevelManager level;
+    public static LevelManager Level { get { return level; } }
+
     private void Awake()
     {
         if (instance != null)
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour
 
         if (flow == null)
             flow = CreateGameObject("FlowManager").AddComponent<FlowManager>();
+
+        if (level == null)
+            level = CreateGameObject("LevelManager").AddComponent<LevelManager>();
     }
 
     GameObject CreateGameObject(string name)
