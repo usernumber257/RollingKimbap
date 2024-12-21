@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,26 +9,24 @@ public class Interactor : MonoBehaviour
 {
     public InteractableObject curInteractObj;
     public UnityAction<InteractableObject> OnTryInteract;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (curInteractObj != null)
-            curInteractObj.TryInteract(false);
+        InteractableObject newInteractObj = collision.gameObject.GetComponent<InteractableObject>();
 
-        curInteractObj = collision.gameObject.GetComponent<InteractableObject>();
-
-        if (curInteractObj != null)
+        if (newInteractObj != null)
         {
-            OnTryInteract?.Invoke(curInteractObj);
+            curInteractObj = newInteractObj;
             curInteractObj.TryInteract(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        curInteractObj = collision.gameObject.GetComponent<InteractableObject>();
+        InteractableObject newInteractObj = collision.gameObject.GetComponent<InteractableObject>();
 
-        if (curInteractObj != null)
-            curInteractObj.TryInteract(false);
+        if (newInteractObj != null)
+            newInteractObj.TryInteract(false);
     }
 }

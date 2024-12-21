@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.6}
+  m_Size: {x: 0.5, y: 1.6}
   m_EdgeRadius: 0
 --- !u!114 &1990950237258720974
 MonoBehaviour:
@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4043306930502169539, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00074706064
+      value: 0.000060149254
       objectReference: {fileID: 0}
     - target: {fileID: 5368553816901692247, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_AnchorMax.x

@@ -58,6 +58,7 @@ public class InteractableObject : MonoBehaviour
 
         OnInteract?.Invoke(true);
 
+        /* 상호작용 되면 상호작용 가능한 상태가 해제돼서 다시 콜리젼을 나갔다가 들어왔어야하는데, 번거로운 거 같아서 없앰
         isSelected = false;
         canInteract = false;
 
@@ -68,6 +69,7 @@ public class InteractableObject : MonoBehaviour
             StopCoroutine(lerpColorRoutine);
 
         sprite.color = Color.white;
+        */
     }
 
     Coroutine lerpColorRoutine;
@@ -80,7 +82,8 @@ public class InteractableObject : MonoBehaviour
             lerpColorRoutine = StartCoroutine(LerpColorTime());
         else
         {
-            StopCoroutine(lerpColorRoutine);
+            if (lerpColorRoutine != null)
+                StopCoroutine(lerpColorRoutine);
             sprite.color = Color.white;
         }
     }
