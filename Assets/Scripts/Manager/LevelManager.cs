@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,19 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    public void Init(float minTime, float maxTime, int halfAnger, int fullAnger, int happy, float halfAngerTime, float fullAngerTime)
+    {
+        visitTime_min = minTime;
+        visitTime_max = maxTime;
+
+        popularity_halfAnger = halfAnger;
+        popularity_fullAnger = fullAnger;
+        popularity_happy = happy;
+
+        this.halfAngerTime = halfAngerTime;
+        this.fullAngerTime = fullAngerTime;
+    }
+
     //popularity
     int popularity = 0;
     public int Popularity { get { return popularity; } }
@@ -46,12 +60,6 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] float visitTime_max;
     public float VisitTime_max { get { return visitTime_max; } }
-
-    private void Awake()
-    {
-        visitTime_min = 10f;
-        visitTime_max = 20f;
-    }
 
     void SetVisitTime()
     {

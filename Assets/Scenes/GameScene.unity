@@ -1790,6 +1790,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f57d2802dc1b4b46b854c26b800d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initCoin: 50
+  minTime: 10
+  maxTime: 20
+  halfAnger: -2
+  fullAnger: -3
+  happy: 2
+  halfAngerTime: 15
+  fullAngerTime: 20
 --- !u!4 &1092491364
 Transform:
   m_ObjectHideFlags: 0

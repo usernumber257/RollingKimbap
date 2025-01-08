@@ -6,9 +6,14 @@ using UnityEngine.Events;
 
 public class DataManager : MonoBehaviour
 {
+    public void Init(int initCoin)
+    {
+        curCoin = initCoin;
+    }
+
     public int foodCount = 4;
 
-    int curCoin = 500;
+    int curCoin = 50;
     public int CurCoin { 
         get { return curCoin; } 
         set 
