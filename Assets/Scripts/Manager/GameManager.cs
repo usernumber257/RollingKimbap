@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("창업 비용")]
     [Range(0, 1000)]
     [SerializeField] int initCoin = 50;
     [Header("손님 출현 최소, 최대 시간")]
