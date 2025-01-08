@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour
 {
     public int foodCount = 4;
 
-    int curCoin = 50;
+    int curCoin = 500;
     public int CurCoin { 
         get { return curCoin; } 
         set 

@@ -14,6 +14,9 @@ public class Store : MonoBehaviour
     Slot[] slots;
     [SerializeField] Inventory fridgeInventory;
 
+    int purchasedTable = 0;
+    int tableSlotIndex;
+
     private void Start()
     {
         MakePool();
@@ -25,7 +28,7 @@ public class Store : MonoBehaviour
 
     void MakePool()
     {
-        int slotCount = GameManager.Data.dataReferencer.ingredients.Count;
+        int slotCount = GameManager.Data.dataReferencer.sellItems.Count;
         slots = new Slot[slotCount];
 
         for (int i = 0; i < slots.Length; i++)
@@ -33,12 +36,20 @@ public class Store : MonoBehaviour
             slots[i] = Instantiate(slotPrefab);
             slots[i].transform.parent = slotParent;
 
-            Ingredient curIngredient = GameManager.Data.dataReferencer.ingredients[i];
-            slots[i].sprite.sprite = curIngredient.Model;
-            slots[i].nameText.text = curIngredient.IngredientName;
+            Item curItem = GameManager.Data.dataReferencer.sellItems[i];
+            
+            //아이템 UI Init
+            slots[i].sprite.sprite = curItem.Model;
+            slots[i].nameText.text = curItem.ItemName;
             slots[i].countText.gameObject.SetActive(false);
 
-            slots[i].GetComponent<Button>().onClick.AddListener(() => Sell(curIngredient));
+            if (curItem is Ingredient)
+                slots[i].GetComponent<Button>().onClick.AddListener(() => Sell((Ingredient)curItem));
+            else if (curItem is Table)
+            {
+                tableSlotIndex = i;
+                slots[i].GetComponent<Button>().onClick.AddListener(() => Sell((Table)curItem));
+            }
         }
     }
 
@@ -52,4 +63,16 @@ public class Store : MonoBehaviour
         fridgeInventory.Store(ingredient, 1);
         GameManager.Data.LostCoin(ingredient.Price);
     }
+
+    void Sell(Table table)
+    {
+        GameManager.Data.LostCoin(table.Price);
+        GameManager.Flow.UnlockSeat();
+        purchasedTable++;
+
+        //테이블은 최대 6개(1개는 기본으로 활성화), 그 이상 못 팔게 
+        if (purchasedTable >= GameManager.Flow.maxSeatSize - 1)
+            slots[tableSlotIndex].gameObject.SetActive(false);
+    }
+
 }

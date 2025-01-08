@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class DataReferencer : MonoBehaviour
 {
-    public List<Ingredient> ingredients = new List<Ingredient>();
+    public List<Item> sellItems = new List<Item>();
 }

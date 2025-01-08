@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376e4af5b17e4b244a40d819a6eafb30, type: 3}
   m_Name: Mayo
   m_EditorClassIdentifier: 
-  type: 12
-  ingredientName: "\uB9C8\uC694\uB124\uC988"
+  itemName: "\uB9C8\uC694\uB124\uC988"
   model: {fileID: 2126339288, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
   price: 1
+  type: 12

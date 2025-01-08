@@ -258,7 +258,7 @@ public class OrderState : State
     {
         customer.orderFood.Init(customer.MyOrder);
         customer.orderBubble.SetActive(true);
-        customer.orderBubbleText.text = customer.orderFood.myFood.FoodName;
+        customer.orderBubbleText.text = customer.orderFood.myFood.ItemName;
     }
 
     public override void OnStateUpdate()

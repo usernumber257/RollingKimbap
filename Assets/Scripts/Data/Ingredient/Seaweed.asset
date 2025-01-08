@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376e4af5b17e4b244a40d819a6eafb30, type: 3}
   m_Name: Seaweed
   m_EditorClassIdentifier: 
-  type: 1
-  ingredientName: "\uAE40"
+  itemName: "\uAE40"
   model: {fileID: -1380079573, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
   price: 1
+  type: 1

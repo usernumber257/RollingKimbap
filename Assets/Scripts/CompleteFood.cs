@@ -28,19 +28,19 @@ public class CompleteFood : MonoBehaviour
         switch (this.foodType)
         {
             case MyEnum.FoodType.OriginalKimbap:
-                sprite.sprite = originalKimbap.FoodModel;
+                sprite.sprite = originalKimbap.Model;
                 myFood = originalKimbap;
                 break;
             case MyEnum.FoodType.CheeseKimbap:
-                sprite.sprite = cheeseKimbap.FoodModel;
+                sprite.sprite = cheeseKimbap.Model;
                 myFood = cheeseKimbap;
                 break;
             case MyEnum.FoodType.KimchiKimbap:
-                sprite.sprite = kimchiKimbap.FoodModel;
+                sprite.sprite = kimchiKimbap.Model;
                 myFood = kimchiKimbap;
                 break;
             case MyEnum.FoodType.TunaKimbap:
-                sprite.sprite = tunaKimbap.FoodModel;
+                sprite.sprite = tunaKimbap.Model;
                 myFood = tunaKimbap;
                 break;
         }
