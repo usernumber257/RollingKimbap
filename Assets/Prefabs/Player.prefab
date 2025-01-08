@@ -335,7 +335,6 @@ GameObject:
   - component: {fileID: 7308365918432984561}
   - component: {fileID: 1337834989577888496}
   - component: {fileID: 3192964298352153754}
-  - component: {fileID: 1728257751580703900}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -526,24 +525,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPlace: {fileID: 1291917151572770707}
   holdingObj: {fileID: 0}
---- !u!114 &1728257751580703900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5809645086653974988}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d0b1a24331d9f4cbf962d9d46d50ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hairs:
-  - {fileID: 2296356151483423125}
-  - {fileID: 2519554282361308182}
-  - {fileID: 1202729631075381027}
-  clothes: {fileID: 0}
-  pants: {fileID: 0}
 --- !u!1 &6897621091822995975
 GameObject:
   m_ObjectHideFlags: 0

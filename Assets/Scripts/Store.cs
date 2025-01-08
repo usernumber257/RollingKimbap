@@ -9,15 +9,16 @@ public class Store : MonoBehaviour
     [SerializeField] Slot slotPrefab;
     [SerializeField] Transform slotParent;
     [SerializeField] GameObject body;
+    [SerializeField] GameObject fridgeInventoryBody;
     [SerializeField] Button button;
     Slot[] slots;
-
     [SerializeField] Inventory fridgeInventory;
 
     private void Start()
     {
         MakePool();
         body.SetActive(false);
+        fridgeInventoryBody.SetActive(false);
 
         MappingButton();
     }
@@ -43,7 +44,7 @@ public class Store : MonoBehaviour
 
     void MappingButton()
     {
-        button.onClick.AddListener(() => { body.SetActive(!body.activeInHierarchy); });
+        button.onClick.AddListener(() => { body.SetActive(!body.activeInHierarchy); fridgeInventoryBody.SetActive(!fridgeInventoryBody.activeInHierarchy); });
     }
 
     void Sell(Ingredient ingredient)

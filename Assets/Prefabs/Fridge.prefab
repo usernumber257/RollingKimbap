@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 7994983473027487628}
-  canServe: 0
+  canBeHolded: 0
 --- !u!1 &5909417575682776656
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,13 +292,21 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3304589845939073776, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304589845939073776, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.5000001
+      objectReference: {fileID: 0}
     - target: {fileID: 4043306930502169539, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.0008138995
       objectReference: {fileID: 0}
     - target: {fileID: 4043306930502169539, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000060149254
+      value: 0.00002861023
       objectReference: {fileID: 0}
     - target: {fileID: 5368553816901692247, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -311,6 +319,14 @@ PrefabInstance:
     - target: {fileID: 5368553816901692247, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814213284953459961, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_fontSize
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814213284953459961, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5966883198710338022, guid: d3adb64d5adb75f4598e2259c5a81f7b, type: 3}
       propertyPath: m_RenderMode

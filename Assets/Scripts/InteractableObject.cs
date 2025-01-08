@@ -88,7 +88,7 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    float speed = 0.01f;
+    float speed = 0.005f;
     Color originColor = Color.white;
     Color toColor = Color.gray;
     Color curColor;

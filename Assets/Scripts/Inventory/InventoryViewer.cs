@@ -21,7 +21,9 @@ public class InventoryViewer : MonoBehaviour
     private void Awake()
     {
         inventory.OnUse += SetSlot;
-        interactable.OnInteract += Show;
+
+        if (interactable != null)
+            interactable.OnInteract += Show;
 
         Init();
     }
