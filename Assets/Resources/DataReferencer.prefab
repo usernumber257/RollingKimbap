@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellItems:
-  - {fileID: 11400000, guid: f1cd465673e95ca449e6e96f7e0735ea, type: 2}
   - {fileID: 11400000, guid: 0ded54c3ddb0b914a924e0c60ae8a81a, type: 2}
+  - {fileID: 11400000, guid: f1cd465673e95ca449e6e96f7e0735ea, type: 2}
   - {fileID: 11400000, guid: 4e0be00cb7a9baf41be985a70fb022fd, type: 2}
   - {fileID: 11400000, guid: eb509bb129fb4794088b44929ebfe0ee, type: 2}
   - {fileID: 11400000, guid: 992708319c3d2f84bbd37e7e9b964c5f, type: 2}
