@@ -8,13 +8,27 @@ public class DataManager : MonoBehaviour
 {
     //캐릭터 커스터마이징
     public MyEnum.Hair curHair = MyEnum.Hair.None;
+    public MyEnum.HairColor curHairColor = MyEnum.HairColor.gray;
     public MyEnum.Uniform curUniform = MyEnum.Uniform.None;
+    public MyEnum.Hat curHat = MyEnum.Hat.None;
 
-    public void SetPlayerClothes(MyEnum.Hair hair, MyEnum.Uniform uniform)
+    public void SetPlayerClothes(MyEnum.Hair value)
     {
-        curHair = hair;
-        curUniform = uniform;
+        curHair = value;
     }
+    public void SetPlayerClothes(MyEnum.HairColor value)
+    {
+        curHairColor = value;
+    }
+    public void SetPlayerClothes(MyEnum.Uniform value)
+    {
+        curUniform = value;
+    }
+    public void SetPlayerClothes(MyEnum.Hat value)
+    {
+        curHat = value;
+    }
+
 
     public void Init(int initCoin)
     {

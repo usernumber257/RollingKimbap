@@ -71,15 +71,15 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += DetectSceneChange;
 
         player = GameObject.FindWithTag("Player");
+
+        if (data == null)
+            data = CreateGameObject("DataManager").AddComponent<DataManager>();
     }
 
     void InitManagers()
     {
-        if (data == null)
-        {
-            data = CreateGameObject("DataManager").AddComponent<DataManager>();
+        if (data != null)
             data.Init(initCoin);
-        }
 
         if (flow == null)
             flow = CreateGameObject("FlowManager").AddComponent<FlowManager>();
