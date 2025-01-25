@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Interactor))]
 [RequireComponent(typeof(Holder))]
@@ -13,6 +14,8 @@ public class Server: MonoBehaviour
     public InteractableObject holdTarget;
 
     Holder myholder;
+
+    public UnityAction OnServe;
 
     public void Awake()
     {
@@ -66,6 +69,7 @@ public class Server: MonoBehaviour
 
         serveTarget.Hold(myholder.holdingObj);
         myholder.holdingObj = null;
+        OnServe?.Invoke();
 
         Collider2D holdTargetCol = holdTarget.GetComponent<Collider2D>(); //다른 사물 위에 놓여졌을 땐 다시 들 수 있도록 콜라이더 켜주기
         if (holdTargetCol != null)

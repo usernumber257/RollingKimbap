@@ -19,7 +19,7 @@ public class FoodStacker : MonoBehaviour
     SpriteRenderer[] pool;
     int poolSize = 10;
 
-    Vector3 spawnPos = new Vector3(0f, 0.2f, 0f);
+    Vector3 spawnPos = new Vector3(0f, 0.02f, 0f);
 
     Holder holder;
 

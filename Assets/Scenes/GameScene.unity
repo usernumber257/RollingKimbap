@@ -782,7 +782,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.8627451, g: 0.98039216, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1796,7 +1796,7 @@ MonoBehaviour:
   halfAnger: -2
   fullAnger: -3
   happy: 2
-  halfAngerTime: 15
+  halfAngerTime: 10
   fullAngerTime: 20
 --- !u!4 &1092491364
 Transform:
@@ -2623,12 +2623,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 5307c7b322b29a5408f966c44118ed86, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d810b3743d3c92042946814e02e1354e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 19.199999, y: 10.799999}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3876,13 +3876,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 965037430}
     m_Modifications:
+    - target: {fileID: 31937716709756391, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.261
+      objectReference: {fileID: 0}
     - target: {fileID: 203949079855450533, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
       propertyPath: m_Name
       value: Cutting Board
       objectReference: {fileID: 0}
     - target: {fileID: 2261506793045030047, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3377649239493690879, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3930,7 +3934,7 @@ PrefabInstance:
       objectReference: {fileID: 2063670326}
     - target: {fileID: 5105096699064243385, guid: dc4c9cfed02dcf540908edc719351145, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

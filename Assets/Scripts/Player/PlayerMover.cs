@@ -9,13 +9,30 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float speed = 0.05f;
     [SerializeField] float moveSensitive = 0.1f;
 
+    [SerializeField] GameObject hat;
+
     Vector2 movement;
 
     Rigidbody2D rb;
 
+    //모자 SetActive 를 위함
+    Holder holder;
+    Server server;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        holder = GetComponent<Holder>();
+        server = GetComponent<Server>();
+
+        holder.OnHold += TakeOffHat;
+        server.OnServe += WearHat;
+    }
+
+    private void OnDestroy()
+    {
+        holder.OnHold -= TakeOffHat;
+        server.OnServe -= WearHat;
     }
 
     private void Update()
@@ -40,5 +57,15 @@ public class PlayerMover : MonoBehaviour
             return;
 
         rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed);
+    }
+
+    void WearHat()
+    {
+        hat.SetActive(true);
+    }
+
+    void TakeOffHat(GameObject holdingObj)
+    {
+        hat.SetActive(false);
     }
 }

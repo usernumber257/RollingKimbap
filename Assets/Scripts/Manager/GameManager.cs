@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,7 +62,8 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
-        InitManagers();
+
+        SceneManager.sceneLoaded += DetectSceneChange;
     }
 
     void InitManagers()
@@ -82,6 +84,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void DestroyManagers()
+    {
+        if (data != null)
+            Destroy(data);
+        
+        if (flow != null)
+            Destroy(flow);
+
+        if (level != null)
+            Destroy(level);
+    }
+
     GameObject CreateGameObject(string name)
     {
         GameObject newGO = new GameObject();
@@ -91,4 +105,16 @@ public class GameManager : MonoBehaviour
         return newGO;
     }
 
+    private void DetectSceneChange(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainMenuScene")
+            DestroyManagers();
+        else if (scene.name == "GameScene")
+            InitManagers();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= DetectSceneChange;
+    }
 }
