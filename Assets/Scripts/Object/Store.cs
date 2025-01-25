@@ -8,7 +8,7 @@ public class Store : MonoBehaviour
 {
     [SerializeField] Slot slotPrefab;
     [SerializeField] Transform slotParent;
-    [SerializeField] GameObject body;
+    [SerializeField] public GameObject body;
     [SerializeField] GameObject fridgeInventoryBody;
     [SerializeField] Button button;
     Slot[] slots;
@@ -60,12 +60,18 @@ public class Store : MonoBehaviour
 
     void Sell(Ingredient ingredient)
     {
+        if (GameManager.Data.CurCoin < ingredient.Price)
+            return;
+
         fridgeInventory.Store(ingredient, 1);
         GameManager.Data.LostCoin(ingredient.Price);
     }
 
     void Sell(Table table)
     {
+        if (GameManager.Data.CurCoin < table.Price)
+            return;
+
         GameManager.Data.LostCoin(table.Price);
         GameManager.Flow.UnlockSeat();
         purchasedTable++;
@@ -73,6 +79,20 @@ public class Store : MonoBehaviour
         //테이블은 최대 6개(1개는 기본으로 활성화), 그 이상 못 팔게 
         if (purchasedTable >= GameManager.Flow.maxSeatSize - 1)
             slots[tableSlotIndex].gameObject.SetActive(false);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnESC();
+    }
+
+    public void OnESC()
+    {
+        if (body.activeInHierarchy)
+        {
+            body.SetActive(false);
+            fridgeInventoryBody.SetActive(false);
+        }
     }
 
 }

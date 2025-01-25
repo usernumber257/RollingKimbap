@@ -44,7 +44,6 @@ public class InventoryCombiner : MonoBehaviour
             slots[i].transform.parent = slotParent;
             slots[i].gameObject.SetActive(false);
         }
-
         body.SetActive(false);
     }
 

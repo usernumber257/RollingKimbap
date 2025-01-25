@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class Customer : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class Customer : MonoBehaviour
     
     public Transform exit;
 
-    float speed = 0.7f;
+    float speed = 0.005f;
     public float Speed { get { return speed; } }
 
     [Header("Order Bubble")]
@@ -147,7 +148,7 @@ public class Customer : MonoBehaviour
 
     bool IsNearSeat()
     {
-        return Vector2.Distance(transform.position, mySeat.transform.position) < 0.1f;
+        return Vector2.Distance(transform.position, mySeat.transform.position) < 0.01f;
     }
 
     bool IsReceiveMyOrder()
@@ -168,7 +169,7 @@ public class Customer : MonoBehaviour
 
     bool IsNearExit()
     {
-        return Vector2.Distance(transform.position, exit.position) < 0.1f;
+        return Vector2.Distance(transform.position, exit.position) < 0.01f;
     }
 
     void Clear()
@@ -225,7 +226,7 @@ public class SitState : State
 
     public override void OnStateEnter()
     {
-        customer.transform.position = customer.exit.transform.position;
+        customer.transform.position = customer.mySeat.navPivot[0].position;
     }
 
     public override void OnStateUpdate()
@@ -238,10 +239,13 @@ public class SitState : State
         customer.mySeat.Sit(customer.transform.gameObject);
     }
 
-
+    int moveIndex = 0;
     void MoveToSeat()
     {
-        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.transform.position, customer.Speed * Time.deltaTime);
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.navPivot[moveIndex].position, customer.Speed);
+
+        if (Vector2.Distance(customer.transform.position, customer.mySeat.navPivot[moveIndex].position) < 0.001f)
+            moveIndex++;
     }
 }
 
@@ -323,11 +327,23 @@ public class ExitState : State
     {
         customer.mySeat.Leave();
         customer.transform.SetParent(null);
+        moveIndex = customer.mySeat.navPivot.Length - 1;
+
+        customer.transform.position = customer.mySeat.navPivot[moveIndex].position;
     }
 
     public override void OnStateUpdate()
     {
-        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.exit.position, customer.Speed * Time.deltaTime);
+        MoveToExit();
+    }
+
+    int moveIndex = 0;
+    void MoveToExit()
+    {
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.navPivot[moveIndex].position, customer.Speed);
+
+        if (Vector2.Distance(customer.transform.position, customer.mySeat.navPivot[moveIndex].position) < 0.001f)
+            moveIndex--;
     }
 
     public override void OnStateExit()

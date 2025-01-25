@@ -33,13 +33,16 @@ public class KimbapMaker : Maker
 
         OnClear += Done;
 
-        Minigame_Keyboard(FoodStacker.curFood.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
+        GameManager.Instance.player.GetComponent<PlayerMover>().StopMove(true);
+        Minigame_WASD(FoodStacker.curFood.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
     }
 
     public void Done()
     {
         OnKeyDown -= FoodStacker.StackIngredients;
         OnClear -= FoodStacker.Complete;
+
+        GameManager.Instance.player.GetComponent<PlayerMover>().StopMove(false);
     }
     
 }

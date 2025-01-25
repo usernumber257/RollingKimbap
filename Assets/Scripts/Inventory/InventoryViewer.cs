@@ -16,7 +16,7 @@ public class InventoryViewer : MonoBehaviour
     int usage = 0;
 
     [SerializeField] InteractableObject interactable;
-    [SerializeField] GameObject body;
+    [SerializeField] public GameObject body;
 
     private void Awake()
     {
@@ -40,7 +40,6 @@ public class InventoryViewer : MonoBehaviour
 
         body.SetActive(false);
     }
-
     void Show(bool isInterated)
     {
         body.SetActive(isInterated);
@@ -70,4 +69,5 @@ public class InventoryViewer : MonoBehaviour
             index++;
         }
     }
+
 }

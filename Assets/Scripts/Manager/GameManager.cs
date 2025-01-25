@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
     [Range(0, 20)]
     [SerializeField] int happy = 2;
     [Header("분노 타이머")]
-    [Range(0.5f, 10f)]
-    [SerializeField] float halfAngerTime = 15f;
-    [Range(0.5f, 20f)]
-    [SerializeField] float fullAngerTime = 20f;
+    [Range(0.5f, 60f)]
+    [SerializeField] float halfAngerTime = 20f;
+    [Range(0.5f, 60f)]
+    [SerializeField] float fullAngerTime = 40f;
 
     [ContextMenu("값 초기화")]
     public void InitValues()
@@ -52,6 +52,11 @@ public class GameManager : MonoBehaviour
     static LevelManager level;
     public static LevelManager Level { get { return level; } }
 
+    static UIManager ui;
+    public static UIManager UI { get { return ui; } }
+
+    public GameObject player;
+
     private void Awake()
     {
         if (instance != null)
@@ -64,6 +69,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += DetectSceneChange;
+
+        player = GameObject.FindWithTag("Player");
     }
 
     void InitManagers()
@@ -82,6 +89,9 @@ public class GameManager : MonoBehaviour
             level = CreateGameObject("LevelManager").AddComponent<LevelManager>();
             level.Init(minTime, maxTime, halfAnger, fullAnger, happy, halfAngerTime, fullAngerTime);
         }
+
+        if (ui == null)
+            ui = CreateGameObject("UIManager").AddComponent<UIManager>();
     }
 
     void DestroyManagers()

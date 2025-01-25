@@ -9,6 +9,8 @@ public class Seat : MonoBehaviour
     [SerializeField] Holder chair;
     [SerializeField] Holder place;
     [SerializeField] SpriteRenderer chairModel;
+    [SerializeField] Transform navPivotParent;
+    public Transform[] navPivot;
 
     MyEnum.FoodType myFoodType;
     public Func<bool> OnFoodReadied;
@@ -16,6 +18,24 @@ public class Seat : MonoBehaviour
     
     CompleteFood readiedFood;
     public CompleteFood ReadiedFood { get { return readiedFood; } }
+
+    private void Awake()
+    {
+        SetNavPivot();
+    }
+
+    void SetNavPivot()
+    {
+        int childCount = navPivotParent.childCount;
+
+        if (childCount == 0)
+            return;
+
+        navPivot = new Transform[childCount];
+
+        for (int i = 0; i < childCount; i++)
+            navPivot[i] = navPivotParent.GetChild(i);
+    }
 
     public void Sit(GameObject go)
     {

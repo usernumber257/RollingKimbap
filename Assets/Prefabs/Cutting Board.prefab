@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0916f7af2fcb18b4daf93acd4ccb4a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboard_up: {fileID: -1893905239, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
-  keyboard_down: {fileID: 1884252852, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
-  keyboard_left: {fileID: 1121905784, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
-  keyboard_right: {fileID: -1257604293, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
+  keyboard_W: {fileID: -1893905239, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
+  keyboard_S: {fileID: 1884252852, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
+  keyboard_A: {fileID: 1121905784, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
+  keyboard_D: {fileID: -1257604293, guid: dad3c9e44995d8e48a227a666cf7ce3a, type: 3}
   commandUI: {fileID: 2261506793045030047}
   fridgeInventory: {fileID: 0}
 --- !u!114 &2616441744832710066

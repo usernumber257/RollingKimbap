@@ -8,6 +8,9 @@ TagManager:
   - Exit
   - Seat
   - Sit
+  - SeatManager
+  - StoreUI
+  - FridgeUI
   layers:
   - Default
   - TransparentFX

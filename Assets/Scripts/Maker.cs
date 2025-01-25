@@ -12,10 +12,10 @@ public abstract class Maker : MonoBehaviour
 {
     Coroutine minigameRoutine;
 
-    [SerializeField] Sprite keyboard_up;
-    [SerializeField] Sprite keyboard_down;
-    [SerializeField] Sprite keyboard_left;
-    [SerializeField] Sprite keyboard_right;
+    [SerializeField] Sprite keyboard_W;
+    [SerializeField] Sprite keyboard_S;
+    [SerializeField] Sprite keyboard_A;
+    [SerializeField] Sprite keyboard_D;
 
     [SerializeField] SpriteRenderer commandUI;
 
@@ -62,7 +62,7 @@ public abstract class Maker : MonoBehaviour
     //키보드 미니게임 ---------------------------------
 
     enum Keyboard { Up, Down, Left, Right }
-    public void Minigame_Keyboard(int keyCount)
+    public void Minigame_WASD(int keyCount)
     {
         commandUI.gameObject.SetActive(true);
         minigameRoutine = StartCoroutine(Minigame_KeyboardTIme(keyCount));
@@ -84,38 +84,38 @@ public abstract class Maker : MonoBehaviour
             switch (curChoosedNum)
             {
                 case 0:
-                    commandUI.sprite = keyboard_up;
+                    commandUI.sprite = keyboard_W;
 
-                    index = Keyboard_Up() ? ++index : index;
+                    index = Keyboard_W() ? ++index : index;
 
-                    if (Keyboard_Up())
+                    if (Keyboard_W())
                         OnKeyDown?.Invoke();
 
                     break;
                 case 1:
-                    commandUI.sprite = keyboard_down;
+                    commandUI.sprite = keyboard_S;
 
-                    index = Keyboard_Down() ? ++index : index;
+                    index = Keyboard_S() ? ++index : index;
 
-                    if (Keyboard_Down())
+                    if (Keyboard_S())
                         OnKeyDown?.Invoke();
 
                     break;
                 case 2:
-                    commandUI.sprite = keyboard_left;
+                    commandUI.sprite = keyboard_A;
 
-                    index = Keyboard_Left() ? ++index : index;
+                    index = Keyboard_A() ? ++index : index;
 
-                    if (Keyboard_Left())
+                    if (Keyboard_A())
                         OnKeyDown?.Invoke();
 
                     break;
                 case 3:
-                    commandUI.sprite = keyboard_right;
+                    commandUI.sprite = keyboard_D;
 
-                    index = Keyboard_Right() ? ++index : index;
+                    index = Keyboard_D() ? ++index : index;
                     
-                    if (Keyboard_Right())
+                    if (Keyboard_D())
                         OnKeyDown?.Invoke();
 
                     break;
@@ -128,24 +128,24 @@ public abstract class Maker : MonoBehaviour
         OnClear?.Invoke();
     }
 
-    bool Keyboard_Up()
+    bool Keyboard_W()
     {
-        return Input.GetKeyDown(KeyCode.UpArrow);
+        return Input.GetKeyDown(KeyCode.W);
     }
 
-    bool Keyboard_Down()
+    bool Keyboard_S()
     {
-        return Input.GetKeyDown(KeyCode.DownArrow);
+        return Input.GetKeyDown(KeyCode.S);
     }
 
-    bool Keyboard_Left()
+    bool Keyboard_A()
     {
-        return Input.GetKeyDown(KeyCode.LeftArrow);
+        return Input.GetKeyDown(KeyCode.A);
     }
 
-    bool Keyboard_Right()
+    bool Keyboard_D()
     {
-        return Input.GetKeyDown(KeyCode.RightArrow);
+        return Input.GetKeyDown(KeyCode.D);
     }
 
     //휠 미니게임 ---------------------------------

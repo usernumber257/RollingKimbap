@@ -19,6 +19,8 @@ public class PlayerMover : MonoBehaviour
     Holder holder;
     Server server;
 
+    bool doMove = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,6 +44,9 @@ public class PlayerMover : MonoBehaviour
 
     void Move()
     {
+        if (!doMove)
+            return;
+
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
@@ -67,5 +72,16 @@ public class PlayerMover : MonoBehaviour
     void TakeOffHat(GameObject holdingObj)
     {
         hat.SetActive(false);
+    }
+
+    public void StopMove(bool isStop)
+    {
+        if (isStop)
+        {
+            doMove = false;
+            anim.SetBool("IsMove", false);
+        }
+        else
+            doMove = true;
     }
 }
