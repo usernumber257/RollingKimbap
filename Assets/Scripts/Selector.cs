@@ -8,6 +8,11 @@ public class Selecter : MonoBehaviour
     public UnityAction<bool> OnSelected;
     SelectableObject selectable;
 
+    private void Awake()
+    {
+        GameObject temp = GameObject.FindWithTag("Sounds");
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

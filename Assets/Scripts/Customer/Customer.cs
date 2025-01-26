@@ -45,6 +45,13 @@ public class Customer : MonoBehaviour
 
     public UnityAction OnClear;
 
+    public AudioSource done;
+
+    private void Awake()
+    {
+        done = GameObject.FindWithTag("Sounds").transform.GetChild(7).GetComponent<AudioSource>();
+    }
+
     public void Init(int customerNum)
     {
         myNum = customerNum;
@@ -302,6 +309,9 @@ public class EatState : State
         GameManager.Data.EarnCoin(customer.orderFood.myFood.Price);
 
         customer.ChangeEmotion(true);
+
+        if (customer.curEmotion == Customer.Emotions.Happy)
+            customer.done.Play();
 
         customer.mySeat.ReadiedFood.Disappear();
         customer.mySeat.Clear();

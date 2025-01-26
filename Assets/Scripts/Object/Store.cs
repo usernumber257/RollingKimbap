@@ -17,6 +17,13 @@ public class Store : MonoBehaviour
     int purchasedTable = 0;
     int tableSlotIndex;
 
+    AudioSource add;
+
+    private void Awake()
+    {
+        add = GameObject.FindWithTag("Sounds").transform.GetChild(3).GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         MakePool();
@@ -63,6 +70,8 @@ public class Store : MonoBehaviour
         if (GameManager.Data.CurCoin < ingredient.Price)
             return;
 
+        add.Play();
+        
         fridgeInventory.Store(ingredient, 1);
         GameManager.Data.LostCoin(ingredient.Price);
     }
@@ -71,6 +80,8 @@ public class Store : MonoBehaviour
     {
         if (GameManager.Data.CurCoin < table.Price)
             return;
+
+        add.Play();
 
         GameManager.Data.LostCoin(table.Price);
         GameManager.Flow.UnlockSeat();

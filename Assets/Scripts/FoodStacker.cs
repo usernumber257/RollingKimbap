@@ -25,9 +25,19 @@ public class FoodStacker : MonoBehaviour
 
     public bool makingFood;
 
+    AudioSource[] cook;
+    AudioSource done;
+
     private void Awake()
     {
         holder = GetComponent<Holder>();
+
+        cook = new AudioSource[3];
+
+        cook[0] = GameObject.FindWithTag("Sounds").transform.GetChild(4).GetComponent<AudioSource>();
+        cook[1] = GameObject.FindWithTag("Sounds").transform.GetChild(5).GetComponent<AudioSource>();
+        cook[2] = GameObject.FindWithTag("Sounds").transform.GetChild(6).GetComponent<AudioSource>();
+        done = GameObject.FindWithTag("Sounds").transform.GetChild(7).GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -57,6 +67,8 @@ public class FoodStacker : MonoBehaviour
 
         if (curStack < curFood.Ingredients.Count)
         {
+            cook[Random.Range(0, 3)].Play();
+
             pool[curStack].sprite = curFood.Ingredients[curStack].Model;
             pool[curStack].gameObject.SetActive(true);
         }
@@ -66,6 +78,8 @@ public class FoodStacker : MonoBehaviour
 
     public void Complete()
     {
+        done.Play();
+
         CompleteFood newFood = Instantiate(Resources.Load<CompleteFood>("CompleteFood"));
         Debug.Log(curFood.FoodType);
         newFood.Init(curFood.FoodType);

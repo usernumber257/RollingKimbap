@@ -11,6 +11,8 @@ TagManager:
   - SeatManager
   - StoreUI
   - FridgeUI
+  - Sounds
+  - FridgeInventoryBody
   layers:
   - Default
   - TransparentFX

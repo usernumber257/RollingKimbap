@@ -2472,7 +2472,6 @@ GameObject:
   - component: {fileID: 373162768}
   - component: {fileID: 373162767}
   - component: {fileID: 373162766}
-  - component: {fileID: 373162765}
   - component: {fileID: 373162764}
   m_Layer: 5
   m_Name: HowTo
@@ -2516,18 +2515,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
---- !u!114 &373162765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373162762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c2fbc51699de142a58f92ec48eb753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &373162766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,6 +2575,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2016661261}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3441,6 +3440,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2016661261}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5434,6 +5445,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1536293735}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &681698136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6114,6 +6137,63 @@ RectTransform:
   m_AnchoredPosition: {x: -89, y: -276}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &830335372
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669924505589462271, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636872315528025583, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+      propertyPath: m_Name
+      value: Sounds
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
 --- !u!1 &830530329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7864,6 +7944,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1536293735}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11278,6 +11370,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508531989}
   m_CullTransparentMesh: 1
+--- !u!82 &1531190071 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 367986073848285756, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+  m_PrefabInstance: {fileID: 830335372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1536293735 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7497305117103491513, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+  m_PrefabInstance: {fileID: 830335372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1544631135
 GameObject:
   m_ObjectHideFlags: 0
@@ -12600,6 +12702,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1800064076}
         m_TargetAssemblyTypeName: GameStartButton, Assembly-CSharp
         m_MethodName: GameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1531190071}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14280,6 +14394,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014780884}
   m_CullTransparentMesh: 1
+--- !u!82 &2016661261 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2583098284258512205, guid: 38cb04202e3e9024a9194dcb66709815, type: 3}
+  m_PrefabInstance: {fileID: 830335372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2019351735
 GameObject:
   m_ObjectHideFlags: 0
@@ -14848,3 +14967,4 @@ SceneRoots:
   - {fileID: 1752696039}
   - {fileID: 1047680771}
   - {fileID: 1054810320}
+  - {fileID: 830335372}
