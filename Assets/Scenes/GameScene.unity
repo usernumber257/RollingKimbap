@@ -2454,13 +2454,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initCoin: 50
-  minTime: 1
-  maxTime: 2
+  minTime: 10
+  maxTime: 20
   halfAnger: -2
   fullAnger: -3
   happy: 2
-  halfAngerTime: 1
-  fullAngerTime: 2
+  halfAngerTime: 15
+  fullAngerTime: 20
   player: {fileID: 0}
 --- !u!4 &1092491364
 Transform:

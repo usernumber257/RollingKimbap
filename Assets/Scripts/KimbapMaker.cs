@@ -7,6 +7,7 @@ using UnityEngine;
 public class KimbapMaker : Maker
 {
     InteractableObject interactableObject;
+    GameObject player;
 
     private new void Awake()
     {
@@ -14,8 +15,10 @@ public class KimbapMaker : Maker
 
         interactableObject = GetComponent<InteractableObject>();
         interactableObject.OnInteract += Make;
+
+        player = GameObject.FindWithTag("Player");
     }
-    
+
     public void Make(bool isInteracted)
     {
         if (!isInteracted || FoodStacker.curFood == null)
@@ -33,7 +36,7 @@ public class KimbapMaker : Maker
 
         OnClear += Done;
 
-        GameManager.Instance.player.GetComponent<PlayerMover>().StopMove(true);
+        player.GetComponent<PlayerMover>().StopMove(true);
         Minigame_WASD(FoodStacker.curFood.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
     }
 
@@ -42,7 +45,7 @@ public class KimbapMaker : Maker
         OnKeyDown -= FoodStacker.StackIngredients;
         OnClear -= FoodStacker.Complete;
 
-        GameManager.Instance.player.GetComponent<PlayerMover>().StopMove(false);
+        player.GetComponent<PlayerMover>().StopMove(false);
     }
     
 }

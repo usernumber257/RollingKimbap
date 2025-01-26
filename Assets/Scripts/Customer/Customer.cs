@@ -330,6 +330,8 @@ public class ExitState : State
         moveIndex = customer.mySeat.navPivot.Length - 1;
 
         customer.transform.position = customer.mySeat.navPivot[moveIndex].position;
+
+        GameManager.Level.SetPopularity(customer.curEmotion);
     }
 
     public override void OnStateUpdate()

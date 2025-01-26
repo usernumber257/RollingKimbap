@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
     static UIManager ui;
     public static UIManager UI { get { return ui; } }
 
-    public GameObject player;
-
     private void Awake()
     {
         if (instance != null)
@@ -70,7 +68,6 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += DetectSceneChange;
 
-        player = GameObject.FindWithTag("Player");
 
         if (data == null)
             data = CreateGameObject("DataManager").AddComponent<DataManager>();

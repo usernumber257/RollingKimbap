@@ -2390,7 +2390,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3925,7 +3925,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4748,14 +4748,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initCoin: 50
-  minTime: 1
-  maxTime: 2
+  minTime: 10
+  maxTime: 17
   halfAnger: -2
   fullAnger: -3
   happy: 2
-  halfAngerTime: 1
-  fullAngerTime: 2
-  player: {fileID: 0}
+  halfAngerTime: 15
+  fullAngerTime: 20
 --- !u!4 &617428155
 Transform:
   m_ObjectHideFlags: 0
@@ -4765,7 +4764,7 @@ Transform:
   m_GameObject: {fileID: 617428153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1782715, y: -0.9626993, z: -0.028982658}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5601,8 +5600,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1235725267}
-  - {fileID: 531408598}
   - {fileID: 364736974}
+  - {fileID: 531408598}
   - {fileID: 1105295707}
   - {fileID: 842188138}
   - {fileID: 2014780885}
