@@ -36,6 +36,7 @@ public class InventoryViewer : MonoBehaviour
         {
             slots[i] = Instantiate(slotPrefab);
             slots[i].transform.parent = slotParent;
+            slots[i].transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         }
 
         body.SetActive(false);

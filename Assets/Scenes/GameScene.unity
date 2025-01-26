@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelf (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2185340582352511469, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2513471309480858096, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.94
@@ -982,6 +986,10 @@ PrefabInstance:
     - target: {fileID: 1240881070296710462, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_Name
       value: Shelf (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185340582352511469, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2513471309480858096, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3525,6 +3533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelf (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2185340582352511469, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2513471309480858096, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.2
@@ -3642,7 +3654,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: d810b3743d3c92042946814e02e1354e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
@@ -3965,7 +3977,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: -566712697, guid: bb7d0a4893225484791a74a5fe53b4de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

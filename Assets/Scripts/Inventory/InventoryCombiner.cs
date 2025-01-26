@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventoryCombiner : MonoBehaviour
 {
@@ -47,6 +46,7 @@ public class InventoryCombiner : MonoBehaviour
             slots[i] = Instantiate(slotPrefab);
             slots[i].transform.parent = slotParent;
             slots[i].gameObject.SetActive(false);
+            slots[i].transform.localScale = new Vector3(2f, 2f, 2f);
         }
         body.SetActive(false);
     }

@@ -42,6 +42,7 @@ public class Store : MonoBehaviour
         {
             slots[i] = Instantiate(slotPrefab);
             slots[i].transform.parent = slotParent;
+            slots[i].transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 
             Item curItem = GameManager.Data.dataReferencer.sellItems[i];
             
