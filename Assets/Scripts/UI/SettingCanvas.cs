@@ -8,10 +8,10 @@ public class SettingCanvas : MonoBehaviour
 {
     public AudioMixer mixer;
 
-    private void Awake()
+    private void Start()
     {
-        SetBGM(0.5f);
-        SetSFX(0.5f);
+        SetBGM(0.2f);
+        SetSFX(0.8f);
     }
 
     public void SetBGM(float value)
