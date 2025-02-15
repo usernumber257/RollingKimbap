@@ -269,7 +269,7 @@ public class OrderState : State
     {
         customer.orderFood.Init(customer.MyOrder);
         customer.orderBubble.SetActive(true);
-        customer.orderBubbleText.text = customer.orderFood.myFood.ItemName;
+        customer.orderBubbleText.text = GameManager.Setting.isKor ? customer.orderFood.myFood.ItemName : customer.orderFood.myFood.ItemName_eng;
     }
 
     public override void OnStateUpdate()

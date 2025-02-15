@@ -65,7 +65,7 @@ public class InventoryViewer : MonoBehaviour
         foreach (Ingredient element in existItems)
         {
             slots[index].sprite.sprite = element.Model;
-            slots[index].nameText.text = element.ItemName;
+            slots[index].nameText.text = GameManager.Setting.isKor ? element.ItemName : element.ItemName_eng;
             slots[index].Count = inventory.Slot[element];
             index++;
         }

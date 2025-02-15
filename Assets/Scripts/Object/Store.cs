@@ -48,8 +48,8 @@ public class Store : MonoBehaviour
             
             //아이템 UI Init
             slots[i].sprite.sprite = curItem.Model;
-            slots[i].nameText.text = curItem.ItemName;
-            slots[i].countText.text = $"{curItem.Price.ToString()}원";
+            slots[i].nameText.text = GameManager.Setting.isKor ? curItem.ItemName : curItem.ItemName_eng;
+            slots[i].countText.text = GameManager.Setting.isKor ? $"{curItem.Price.ToString()}원" : $"{curItem.Price.ToString()}Won";
 
             if (curItem is Ingredient)
                 slots[i].GetComponent<Button>().onClick.AddListener(() => Sell((Ingredient)curItem));

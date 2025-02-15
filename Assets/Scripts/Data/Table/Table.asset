@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Table
   m_EditorClassIdentifier: 
   itemName: "\uD14C\uC774\uBE14"
+  itemName_eng: Table
   model: {fileID: 225535505, guid: bb7d0a4893225484791a74a5fe53b4de, type: 3}
   price: 50

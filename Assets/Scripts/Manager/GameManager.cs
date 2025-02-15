@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     static UIManager ui;
     public static UIManager UI { get { return ui; } }
 
+    static SettingManager setting;
+    public static SettingManager Setting { get { return setting; } }
+
     private void Awake()
     {
         if (instance != null)
@@ -71,6 +74,9 @@ public class GameManager : MonoBehaviour
 
         if (data == null)
             data = CreateGameObject("DataManager").AddComponent<DataManager>();
+
+        if (setting == null)
+            setting = CreateGameObject("SettingManager").AddComponent<SettingManager>();
     }
 
     void InitManagers()
@@ -101,6 +107,9 @@ public class GameManager : MonoBehaviour
 
         if (level != null)
             Destroy(level);
+
+        if (ui != null)
+            Destroy(ui);
     }
 
     GameObject CreateGameObject(string name)

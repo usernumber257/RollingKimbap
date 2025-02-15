@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: OriginalKimbap
   m_EditorClassIdentifier: 
   itemName: "\uAE40\uBC25"
+  itemName_eng: Basic Kimbap
   model: {fileID: 1498989029, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
   price: 10
   foodType: 1

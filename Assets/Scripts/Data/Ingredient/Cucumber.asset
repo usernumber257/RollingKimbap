@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cucumber
   m_EditorClassIdentifier: 
   itemName: "\uC624\uC774"
+  itemName_eng: Cucumber
   model: {fileID: -1971017791, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
   price: 1
   type: 5

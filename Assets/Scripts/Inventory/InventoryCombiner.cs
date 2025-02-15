@@ -131,7 +131,7 @@ public class InventoryCombiner : MonoBehaviour
     void ShowMakeable(Food makeableFood)
     {
         slots[slotIndex].sprite.sprite = makeableFood.Model;
-        slots[slotIndex].nameText.text = makeableFood.ItemName;
+        slots[slotIndex].nameText.text = GameManager.Setting.isKor ? makeableFood.ItemName : makeableFood.ItemName_eng;
         slots[slotIndex].countText.gameObject.SetActive(false);
         slots[slotIndex].gameObject.SetActive(true);
 

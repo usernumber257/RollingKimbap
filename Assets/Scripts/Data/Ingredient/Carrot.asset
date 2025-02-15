@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   itemName: "\uB2F9\uADFC"
+  itemName_eng: Carrot
   model: {fileID: -276482916, guid: 429cf15d8f57130448f03e43c58c2495, type: 3}
   price: 1
   type: 7
