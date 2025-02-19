@@ -9,20 +9,24 @@ public class SettingManager : MonoBehaviour
 {
     public bool isKor = false;
     public UnityAction OnLanguageChanged;
+    SettingCanvas settingCanvas;
 
     private void Awake()
     {
+        settingCanvas = GameObject.FindWithTag("Setting").GetComponent<SettingCanvas>();
+        settingCanvas.transform.parent = transform;
+
         Close();
     }
 
     public void Open()
     {
-        GameObject.FindWithTag("Setting").transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+        settingCanvas.ShowBody(false);
     }
 
     public void Close()
     {
-        GameObject.FindWithTag("Setting").transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+        settingCanvas.ShowBody(false);
     }
 
 }

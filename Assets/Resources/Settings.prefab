@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2594735065095327125}
   - component: {fileID: 7299373686072716336}
+  - component: {fileID: 4077347715255799824}
   m_Layer: 5
   m_Name: SoundSlider
   m_TagString: Untagged
@@ -64,6 +65,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &4077347715255799824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155044229217410831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831aac145649a9446b97de833f8d7a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 1240600649286168259}
+  sfx: {fileID: 4970478543793095334}
+  mixer: {fileID: 24100000, guid: 609824c7a5fd98b41a1b32c4c5fb8afa, type: 2}
 --- !u!1 &182077941124456378
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,9 +115,9 @@ RectTransform:
   - {fileID: 3381240280672703982}
   m_Father: {fileID: 7605718268580106113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 262.5, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3687843957393360602
@@ -198,9 +214,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8650443470744389371}
-        m_TargetAssemblyTypeName: BackToMain, Assembly-CSharp
-        m_MethodName: Back
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Localization_mainmenu, Assembly-CSharp
+        m_MethodName: Localization
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -272,9 +288,9 @@ RectTransform:
   - {fileID: 5913062002752273688}
   m_Father: {fileID: 2594735065095327125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 530, y: -105}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4970478543793095334
@@ -324,14 +340,14 @@ MonoBehaviour:
   m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.519
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2363102121097662684}
         m_TargetAssemblyTypeName: SettingCanvas, Assembly-CSharp
         m_MethodName: SetSFX
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1592,9 +1608,9 @@ RectTransform:
   - {fileID: 7841036157161905269}
   m_Father: {fileID: 2594735065095327125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 530, y: -25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240600649286168259
@@ -1644,7 +1660,7 @@ MonoBehaviour:
   m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.519
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1709,6 +1725,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 609824c7a5fd98b41a1b32c4c5fb8afa, type: 2}
+  body: {fileID: 7458096231374421861}
+  backToMain: {fileID: 8650443470744389371}
 --- !u!114 &8650443470744389371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,8 +2162,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7841036157161905269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5185185, y: 0}
-  m_AnchorMax: {x: 0.5185185, y: 1}
+  m_AnchorMin: {x: 0.1991992, y: 0}
+  m_AnchorMax: {x: 0.1991992, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2326,8 +2344,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5913062002752273688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5185185, y: 0}
-  m_AnchorMax: {x: 0.5185185, y: 1}
+  m_AnchorMin: {x: 0.4994995, y: 0}
+  m_AnchorMax: {x: 0.4994995, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2418,7 +2436,7 @@ RectTransform:
   m_Father: {fileID: 734981733780742756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5185185, y: 1}
+  m_AnchorMax: {x: 0.4994995, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2574,9 +2592,9 @@ RectTransform:
   - {fileID: 2916020794395361791}
   m_Father: {fileID: 7605718268580106113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 737.5, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8247578338576007103
@@ -2673,9 +2691,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 8650443470744389371}
-        m_TargetAssemblyTypeName: BackToMain, Assembly-CSharp
-        m_MethodName: Back
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Localization_mainmenu, Assembly-CSharp
+        m_MethodName: Localization
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2819,7 +2837,7 @@ RectTransform:
   m_Father: {fileID: 3305425610949189551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5185185, y: 1}
+  m_AnchorMax: {x: 0.1991992, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

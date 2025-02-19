@@ -13,6 +13,8 @@ TagManager:
   - FridgeUI
   - Sounds
   - FridgeInventoryBody
+  - Setting
+  - Localization
   layers:
   - Default
   - TransparentFX

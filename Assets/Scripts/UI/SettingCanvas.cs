@@ -6,27 +6,36 @@ using UnityEngine.SceneManagement;
 
 public class SettingCanvas : MonoBehaviour
 {
-    public AudioMixer mixer;
+    [SerializeField] AudioMixer mixer;
+    [SerializeField] GameObject body;
+    [SerializeField] BackToMain backToMain;
 
-    private void Start()
+    public void ShowBody(bool isOpen)
     {
-        SetBGM(0.2f);
-        SetSFX(0.8f);
+        body.SetActive(isOpen);
     }
 
     public void SetBGM(float value)
     {
-        mixer.SetFloat("BGM", Mathf.Log10(value) * 20);
+        float temp = Mathf.Log10(value) * 20;
+
+        mixer.SetFloat("BGM", temp);
+        PlayerPrefs.SetFloat("BGM", value);
     }
 
     public void SetSFX(float value)
     {
-        mixer.SetFloat("SFX", Mathf.Log10(value) * 20);
+        float temp = Mathf.Log10(value) * 20;
+
+        mixer.SetFloat("SFX", temp);
+        PlayerPrefs.SetFloat("SFX", value);
     }
 
     public void SetLanguage(bool isKor)
     {
         GameManager.Setting.isKor = isKor;
         GameManager.Setting.OnLanguageChanged.Invoke();
+
+        backToMain.Back();
     }
 }
