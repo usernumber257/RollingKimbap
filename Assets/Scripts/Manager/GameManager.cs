@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
         halfAnger = -2;
         fullAnger = -3;
         happy = 2;
-        halfAngerTime = 15f;
-        fullAngerTime = 20f;
+        halfAngerTime = 20f;
+        fullAngerTime = 40f;
     }
 
 

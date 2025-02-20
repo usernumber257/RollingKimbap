@@ -70,6 +70,8 @@ public class Customer : MonoBehaviour
         mySeat = GameManager.Flow.seats[mySeatNum];
         mySeat.OnFoodReadied += IsReceiveMyOrder;
 
+        moveIndex = 0;
+
         myOrder = ChoiceMyOrder();
 
         curState = State.Sit;

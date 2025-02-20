@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5650718706061077548
 Transform:
   m_ObjectHideFlags: 0
@@ -489,6 +489,7 @@ MonoBehaviour:
   curEmotion: 0
   anim: {fileID: 8310088578692447446}
   done: {fileID: 0}
+  moveIndex: 0
 --- !u!114 &2534239583747232094
 MonoBehaviour:
   m_ObjectHideFlags: 0
