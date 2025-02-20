@@ -65,6 +65,8 @@ public class FoodStacker : MonoBehaviour
         if (curFood == null || !makingFood)
             return;
 
+        Debug.Log($"{curFood.name} 쌓기 시작");
+
         if (curStack < curFood.Ingredients.Count)
         {
             cook[Random.Range(0, 3)].Play();
@@ -80,11 +82,15 @@ public class FoodStacker : MonoBehaviour
     {
         done.Play();
 
+        Debug.Log($"{curFood.name} 완료");
+
         CompleteFood newFood = Instantiate(Resources.Load<CompleteFood>("CompleteFood"));
-        Debug.Log(curFood.FoodType);
         newFood.Init(curFood.FoodType);
 
         holder.Hold(newFood.gameObject);
+
+        //holder.Hold(newFood.gameObject);
+        //holder.Hold(gameObject);
 
         Stop();
     }

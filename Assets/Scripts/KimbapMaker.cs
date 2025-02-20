@@ -46,6 +46,9 @@ public class KimbapMaker : Maker
         OnClear -= FoodStacker.Complete;
 
         player.GetComponent<PlayerMover>().StopMove(false);
+
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = true;
     }
     
 }

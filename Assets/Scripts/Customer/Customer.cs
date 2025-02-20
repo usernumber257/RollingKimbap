@@ -47,6 +47,8 @@ public class Customer : MonoBehaviour
 
     public AudioSource done;
 
+    public int moveIndex = 0;
+
     private void Awake()
     {
         done = GameObject.FindWithTag("Sounds").transform.GetChild(7).GetComponent<AudioSource>();
@@ -84,7 +86,8 @@ public class Customer : MonoBehaviour
         switch (curState)
         {
             case State.Sit:
-                if (IsNearSeat())
+                //if (IsNearSeat())
+                if (mySeat.navPivot.Length <= moveIndex)
                     ChangeState(State.Order);
                 break;
             case State.Order:
@@ -155,7 +158,7 @@ public class Customer : MonoBehaviour
 
     bool IsNearSeat()
     {
-        return Vector2.Distance(transform.position, mySeat.transform.position) < 0.01f;
+        return Vector2.Distance(transform.position, mySeat.transform.position) < 0.001f;
     }
 
     bool IsReceiveMyOrder()
@@ -246,13 +249,13 @@ public class SitState : State
         customer.mySeat.Sit(customer.transform.gameObject);
     }
 
-    int moveIndex = 0;
     void MoveToSeat()
     {
-        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.navPivot[moveIndex].position, customer.Speed);
+        Transform target = customer.mySeat.navPivot[customer.moveIndex];
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, target.position, customer.Speed);
 
-        if (Vector2.Distance(customer.transform.position, customer.mySeat.navPivot[moveIndex].position) < 0.001f)
-            moveIndex++;
+        if (Vector2.Distance(customer.transform.position, target.position) < 0.001f)
+            customer.moveIndex++;
     }
 }
 

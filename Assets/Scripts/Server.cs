@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.WSA;
 
 [RequireComponent(typeof(Interactor))]
 [RequireComponent(typeof(Holder))]
@@ -10,7 +12,7 @@ public class Server: MonoBehaviour
 {
     Interactor interactor;
 
-    public Holder serveTarget;
+    public InteractableObject serveTarget;
     public InteractableObject holdTarget;
 
     Holder myholder;
@@ -22,17 +24,50 @@ public class Server: MonoBehaviour
         interactor = GetComponent<Interactor>();
         myholder = GetComponent<Holder>();
 
-        interactor.OnTryInteract += TryHold;
-        interactor.OnTryInteract += TryServe;
+        interactor.OnTryInteract += DoHoldOrServe;
     }
 
-    void TryHold(InteractableObject obj)
+    void DoHoldOrServe(InteractableObject obj)
     {
-        if (!obj.canBeHolded)
+        Holder holder = obj.GetComponent<Holder>();
+
+        if (holder == null)
+        {
+            holdTarget = null;
+            serveTarget = null;
+            return;
+        }
+
+        if (holder.alreadyHold)
+        {
+            holdTarget = obj;
+            TryHold();
+        }
+        else
+        {
+            serveTarget = obj;
+            TryServe();
+        }
+    }
+
+    void TryHold()
+    {
+        if (myholder.holdingObj != null)
             return;
 
-        holdTarget = obj;
-        obj.OnInteract += Hold;
+        /*
+        if (!obj.canBeHolded)
+            return;
+        */
+
+        Holder holder = holdTarget.GetComponent<Holder>();
+
+        if (holder == null)
+            return;
+
+        holder.alreadyHold = false;
+
+        holdTarget.OnInteract += Hold;
     }
 
     void Hold(bool isInteracted)
@@ -40,23 +75,41 @@ public class Server: MonoBehaviour
         if (!isInteracted)
             return;
 
-        if (myholder.holdingObj != null)
+        if (holdTarget == null)
             return;
 
-        myholder.Hold(holdTarget.gameObject);
+        Holder targatHolder = holdTarget.GetComponent<Holder>();
 
+        if (targatHolder == null)
+            return;
+
+        myholder.Hold(holdTarget.GetComponent<Holder>().Give());
+        myholder.alreadyHold = true;
+
+        holdTarget.OnInteract -= Hold;
+        DoHoldOrServe(holdTarget);
+
+        /*
         Collider2D holdTargetCol = holdTarget.GetComponent<Collider2D>(); //들고있을 땐 다른 사물과 Interact 안 되게
         if (holdTargetCol != null)
             holdTargetCol.enabled = false;
+        */
     }
 
-    void TryServe(InteractableObject obj)
+    void TryServe()
     {
+        /*
         if (obj.canBeHolded)
             return;
+        */
 
-        serveTarget = obj.GetComponent<Holder>();
-        obj.OnInteract += Serve;
+        if (serveTarget == null)
+            return;
+
+        if (myholder.holdingObj == null)
+            return;
+
+        serveTarget.OnInteract += Serve;
     }
 
     void Serve(bool isInteracted)
@@ -64,15 +117,18 @@ public class Server: MonoBehaviour
         if (!isInteracted)
             return;
 
-        if (serveTarget == null || holdTarget == null || myholder.holdingObj == null)
-            return;
+        Debug.Log($"{serveTarget.name} 에게 {gameObject.name} 이 주려고 함");
 
-        serveTarget.Hold(myholder.holdingObj);
-        myholder.holdingObj = null;
+        serveTarget.GetComponent<Holder>().Hold(myholder.Give());
         OnServe?.Invoke();
 
+        serveTarget.OnInteract -= Serve;
+        DoHoldOrServe(serveTarget);
+
+        /*
         Collider2D holdTargetCol = holdTarget.GetComponent<Collider2D>(); //다른 사물 위에 놓여졌을 땐 다시 들 수 있도록 콜라이더 켜주기
         if (holdTargetCol != null)
             holdTargetCol.enabled = true;
+        */
     }
 }

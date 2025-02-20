@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 7301355493689889205}
-  canServe: 0
+  canBeHolded: 0
 --- !u!114 &3409876168330674416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.56, y: 0.3}
+  m_Size: {x: 0.56, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &7372257520229877346
 MonoBehaviour:

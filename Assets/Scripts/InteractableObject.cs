@@ -21,7 +21,7 @@ public class InteractableObject : MonoBehaviour
     /// <summary>
     /// 만약 이게 false 라면 server를 넣어서 serve 하는 애가 될 수도 있음
     /// </summary>
-    public bool canBeHolded;
+    //public bool canBeHolded;
 
     AudioSource click;
 

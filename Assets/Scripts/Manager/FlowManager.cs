@@ -63,20 +63,17 @@ public class FlowManager : MonoBehaviour
     float time = 0;
     float randTime;
 
-    bool newCustomerOut = false;
     private void Update()
     {
         if (time > randTime)
         {
             NewCustomer();
-            newCustomerOut = true;
             randTime = Random.Range(GameManager.Level.VisitTime_min, GameManager.Level.VisitTime_max);
 
             time = 0;
         }
 
-        if (!newCustomerOut)
-            time += Time.deltaTime;
+        time += Time.deltaTime;
     }
 
     void CreateCustomerPool()
@@ -126,7 +123,7 @@ public class FlowManager : MonoBehaviour
 
     void MappingCustomerEvent(Customer who)
     {
-        who.OnClear += (() => { emptySeats[who.MySeatNum] = true; newCustomerOut = false; inactiveCustomers[who.MyNum] = true; });
+        who.OnClear += (() => { emptySeats[who.MySeatNum] = true; inactiveCustomers[who.MyNum] = true; });
     }
 
     int limit = 30;
