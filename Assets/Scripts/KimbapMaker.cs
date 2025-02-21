@@ -21,7 +21,7 @@ public class KimbapMaker : Maker
 
     public void Make(bool isInteracted)
     {
-        if (!isInteracted || FoodStacker.curFood == null)
+        if (!isInteracted || FoodStacker.CurFood == null)
         {
             StopMake();
             FoodStacker.Stop();
@@ -32,18 +32,16 @@ public class KimbapMaker : Maker
         }
 
         OnKeyDown += FoodStacker.StackIngredients;
-        OnClear += FoodStacker.Complete; 
-
-        OnClear += Done;
 
         player.GetComponent<PlayerMover>().StopMove(true);
-        Minigame_WASD(FoodStacker.curFood.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
+        Minigame_WASD(FoodStacker.CurFood.Ingredients.Count + 1); //재료 수 + 1 해야 완성되게
     }
 
-    public void Done()
+    public override void Done()
     {
+        base.Done();
+
         OnKeyDown -= FoodStacker.StackIngredients;
-        OnClear -= FoodStacker.Complete;
 
         player.GetComponent<PlayerMover>().StopMove(false);
 

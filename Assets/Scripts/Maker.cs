@@ -36,7 +36,7 @@ public abstract class Maker : MonoBehaviour
 
     public void StartMake(Food food)
     {
-        foodStacker.curFood = food;
+        foodStacker.CurFood = food;
         foodStacker.makingFood = true;
     }
 
@@ -49,10 +49,10 @@ public abstract class Maker : MonoBehaviour
             StopCoroutine(minigameRoutine);
 
         //만들기를 취소하면 인벤토리에 다시 재료들이 원상복구 되게
-        if (foodStacker.curFood == null)
+        if (foodStacker.CurFood == null)
             return;
 
-        foreach (Ingredient element in foodStacker.curFood.Ingredients)
+        foreach (Ingredient element in foodStacker.CurFood.Ingredients)
             fridgeInventory.Store(element, 1);
     }
 
@@ -122,7 +122,13 @@ public abstract class Maker : MonoBehaviour
         }
 
         commandUI.gameObject.SetActive(false);
-        OnClear?.Invoke();
+        Done();
+    }
+
+    public virtual void Done()
+    {
+        if (minigameRoutine != null)
+            FoodStacker.Complete();
     }
 
     bool Keyboard_W()

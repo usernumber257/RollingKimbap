@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class DataManager : MonoBehaviour
 
     public void Init(int initCoin)
     {
-        curCoin = initCoin;
+        CurCoin = initCoin;
     }
 
     //음식 데이터

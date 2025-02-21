@@ -38,12 +38,12 @@ public class Server: MonoBehaviour
             return;
         }
 
-        if (holder.alreadyHold)
+        if (holder.alreadyHold && myholder.holdingObj == null)
         {
             holdTarget = obj;
             TryHold();
         }
-        else
+        else if (!holder.alreadyHold && myholder.holdingObj != null)
         {
             serveTarget = obj;
             TryServe();
@@ -87,7 +87,8 @@ public class Server: MonoBehaviour
         myholder.alreadyHold = true;
 
         holdTarget.OnInteract -= Hold;
-        DoHoldOrServe(holdTarget);
+        GetComponent<Collider2D>().enabled = false; //Hold 하면 다시 바로 Serve 할 수 있게
+        GetComponent<Collider2D>().enabled = true;
 
         /*
         Collider2D holdTargetCol = holdTarget.GetComponent<Collider2D>(); //들고있을 땐 다른 사물과 Interact 안 되게
@@ -117,13 +118,16 @@ public class Server: MonoBehaviour
         if (!isInteracted)
             return;
 
-        Debug.Log($"{serveTarget.name} 에게 {gameObject.name} 이 주려고 함");
+        if (serveTarget == null)
+            return;
 
         serveTarget.GetComponent<Holder>().Hold(myholder.Give());
         OnServe?.Invoke();
 
         serveTarget.OnInteract -= Serve;
-        DoHoldOrServe(serveTarget);
+
+        GetComponent<Collider2D>().enabled = false; //Serve 하면 다시 바로 Hold 할 수 있게
+        GetComponent<Collider2D>().enabled = true;
 
         /*
         Collider2D holdTargetCol = holdTarget.GetComponent<Collider2D>(); //다른 사물 위에 놓여졌을 땐 다시 들 수 있도록 콜라이더 켜주기

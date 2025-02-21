@@ -14,7 +14,8 @@ public class FoodStacker : MonoBehaviour
 
     int curStack = 0;
 
-    public Food curFood;
+    Food curFood;
+    public Food CurFood { get { return curFood; } set { curFood = value; } }
 
     SpriteRenderer[] pool;
     int poolSize = 10;
@@ -62,12 +63,10 @@ public class FoodStacker : MonoBehaviour
 
     public void StackIngredients()
     {
-        if (curFood == null || !makingFood)
+        if (CurFood == null || !makingFood)
             return;
 
-        Debug.Log($"{curFood.name} 쌓기 시작");
-
-        if (curStack < curFood.Ingredients.Count)
+        if (curStack < CurFood.Ingredients.Count)
         {
             cook[Random.Range(0, 3)].Play();
 
@@ -80,12 +79,14 @@ public class FoodStacker : MonoBehaviour
 
     public void Complete()
     {
+
+        if (CurFood == null)
+            return;
+
         done.Play();
 
-        Debug.Log($"{curFood.name} 완료");
-
         CompleteFood newFood = Instantiate(Resources.Load<CompleteFood>("CompleteFood"));
-        newFood.Init(curFood.FoodType);
+        newFood.Init(CurFood.FoodType);
 
         holder.Hold(newFood.gameObject);
 

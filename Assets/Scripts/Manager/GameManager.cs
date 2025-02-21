@@ -79,10 +79,10 @@ public class GameManager : MonoBehaviour
             setting = CreateGameObject("SettingManager").AddComponent<SettingManager>();
     }
 
+
     void InitManagers()
     {
-        if (data != null)
-            data.Init(initCoin);
+        data.Init(initCoin);
 
         if (flow == null)
             flow = CreateGameObject("FlowManager").AddComponent<FlowManager>();
@@ -100,16 +100,16 @@ public class GameManager : MonoBehaviour
     void DestroyManagers()
     {
         if (data != null)
-            Destroy(data);
+            Destroy(data.gameObject);
         
         if (flow != null)
-            Destroy(flow);
+            Destroy(flow.gameObject);
 
         if (level != null)
-            Destroy(level);
+            Destroy(level.gameObject);
 
         if (ui != null)
-            Destroy(ui);
+            Destroy(ui.gameObject);
     }
 
     GameObject CreateGameObject(string name)

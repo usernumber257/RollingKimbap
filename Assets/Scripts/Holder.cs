@@ -45,17 +45,22 @@ public class Holder : MonoBehaviour
             holdingObj.transform.parent = holdPlace;
             OnHold?.Invoke(targetHolder.holdingObj);
         }
-
-        alreadyHold = true;
     }    
 
     public GameObject Give()
     {
         GameObject temp = holdingObj;
 
-        alreadyHold = false;
         holdingObj = null;
         
         return temp;
+    }
+
+    private void Update()
+    {
+        if (!alreadyHold && holdingObj != null)
+            alreadyHold = true;
+        else if (alreadyHold && holdingObj == null)
+            alreadyHold = false;
     }
 }
