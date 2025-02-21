@@ -21,8 +21,8 @@ public class LevelManager : MonoBehaviour
     }
 
     //popularity
-    int popularity = 0;
-    public int Popularity { get { return popularity; } }
+    int popularity = 50;
+    public int Popularity { get { return popularity; } set { popularity = value; if (popularity < 0) popularity = 0; if (popularity >= 100) popularity = 100; } }
 
     int popularity_halfAnger = -2;
     int popularity_fullAnger = -3;
@@ -37,18 +37,23 @@ public class LevelManager : MonoBehaviour
             case Customer.Emotions.None:
                 break;
             case Customer.Emotions.HalfAnger:
-                popularity += popularity_halfAnger;
+                Popularity += popularity_halfAnger;
                 break;
             case Customer.Emotions.FullAnger:
-                popularity += popularity_fullAnger;
+                Popularity += popularity_fullAnger;
                 break;
             case Customer.Emotions.Happy:
-                popularity += popularity_happy;
+                Popularity += popularity_happy;
                 break;
         }
 
-        if (popularity < 0)
-            popularity = 0;
+        OnPopularityChanged?.Invoke();
+        SetVisitTime();
+    }
+
+    public void Debug_SetPopularity(int value)
+    {
+        Popularity += value;
 
         OnPopularityChanged?.Invoke();
         SetVisitTime();
@@ -63,12 +68,8 @@ public class LevelManager : MonoBehaviour
 
     void SetVisitTime()
     {
-        int temp = -popularity;
-        
-        //최솟값은 인기도 10씩 오를 때마다 1초씩 줄어들고
-        visitTime_min += temp * 0.1f;
-        //최댓값은 최솟값이 줄 수록 격차를 줄이고, 최솟값이 클 수록 격차를 늘리게
-        visitTime_max = visitTime_min * 2f;
+        visitTime_min = Mathf.Lerp(10f, 0.2f, Popularity / 100f);
+        visitTime_max = Mathf.Lerp(20f, 0.4f, Popularity / 100f);
     }
 
     //customer's patient

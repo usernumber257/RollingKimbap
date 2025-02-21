@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] int initCoin = 50;
     [Header("손님 출현 최소, 최대 시간")]
     [Range(1f, 20f)]
-    [SerializeField] float minTime = 10f;
+    [SerializeField] float minTime = 5f;
     [Range(2f, 40f)]
-    [SerializeField] float maxTime = 20f;
+    [SerializeField] float maxTime = 10f;
     [Header("손님 기분에 따른 인기도 감소, 증가")]
     [Range(-10, 0)]
     [SerializeField] int halfAnger = -2;
@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     public void InitValues()
     {
         initCoin = 50;
-        minTime = 10f;
-        maxTime = 20f;
+        minTime = 5f;
+        maxTime = 10f;
         halfAnger = -2;
         fullAnger = -3;
         happy = 2;
