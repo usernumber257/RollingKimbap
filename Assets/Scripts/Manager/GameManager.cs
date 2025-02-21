@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("창업 비용")]
     [Range(0, 1000)]
-    [SerializeField] int initCoin = 50;
+    [SerializeField] int initCoin = 100;
     [Header("손님 출현 최소, 최대 시간")]
     [Range(1f, 20f)]
     [SerializeField] float minTime = 5f;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     [ContextMenu("값 초기화")]
     public void InitValues()
     {
-        initCoin = 50;
+        initCoin = 100;
         minTime = 5f;
         maxTime = 10f;
         halfAnger = -2;

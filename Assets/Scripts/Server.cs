@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.WSA;
 
 [RequireComponent(typeof(Interactor))]
 [RequireComponent(typeof(Holder))]
