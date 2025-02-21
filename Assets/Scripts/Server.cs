@@ -8,7 +8,7 @@ using UnityEngine.WSA;
 
 [RequireComponent(typeof(Interactor))]
 [RequireComponent(typeof(Holder))]
-public class Server: MonoBehaviour
+public class Server : MonoBehaviour
 {
     Interactor interactor;
 
@@ -72,16 +72,22 @@ public class Server: MonoBehaviour
 
     void Hold(bool isInteracted)
     {
-        if (!isInteracted)
+        if (!isInteracted || holdTarget == null)
+        {
+            if (holdTarget != null)
+                holdTarget.OnInteract -= Hold;
             return;
-
-        if (holdTarget == null)
-            return;
+        }
 
         Holder targatHolder = holdTarget.GetComponent<Holder>();
 
         if (targatHolder == null)
+        {
+            holdTarget.OnInteract -= Hold;
             return;
+        }
+
+        Debug.Log("hold");
 
         myholder.Hold(holdTarget.GetComponent<Holder>().Give());
         myholder.alreadyHold = true;
@@ -115,11 +121,14 @@ public class Server: MonoBehaviour
 
     void Serve(bool isInteracted)
     {
-        if (!isInteracted)
+        if (!isInteracted || serveTarget == null)
+        {
+            if (serveTarget != null)
+                serveTarget.OnInteract -= Serve;
             return;
+        }
 
-        if (serveTarget == null)
-            return;
+        Debug.Log("serve");
 
         serveTarget.GetComponent<Holder>().Hold(myholder.Give());
         OnServe?.Invoke();

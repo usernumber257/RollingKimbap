@@ -15,5 +15,6 @@ public class Trashcan : MonoBehaviour
     void DestroyObject(GameObject go)
     {
         Destroy(go);
+        holder.OnHold -= DestroyObject;
     }
 }

@@ -60,6 +60,7 @@ public class Seat : MonoBehaviour
             return;
 
         myFoodType = readiedFood.foodType;
+        place.OnHold -= CompareOrder;
     }
 
     public void Clear()
