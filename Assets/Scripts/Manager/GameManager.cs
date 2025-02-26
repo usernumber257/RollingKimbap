@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] int happy = 2;
     [Header("분노 타이머")]
     [Range(0.5f, 60f)]
-    [SerializeField] float halfAngerTime = 20f;
+    [SerializeField] float halfAngerTime = 35f;
     [Range(0.5f, 60f)]
-    [SerializeField] float fullAngerTime = 40f;
+    [SerializeField] float fullAngerTime = 50f;
 
     [ContextMenu("값 초기화")]
     public void InitValues()
@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
         halfAnger = -2;
         fullAnger = -3;
         happy = 2;
-        halfAngerTime = 20f;
-        fullAngerTime = 40f;
+        halfAngerTime = 35f;
+        fullAngerTime = 50f;
     }
 
 
