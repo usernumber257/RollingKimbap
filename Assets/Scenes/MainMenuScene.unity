@@ -4422,10 +4422,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Move the player with WASD\nInteract with Left Click\n\n1. Click the Store
-    button to buy ingredients.\n\n\n\n2. Combine ingredients in the refrigerator
-    to prepare kimbap.                                                 \n\n3. Assemble
-    the kimbap on the cutting board. \n\n4. Serve the kimbap to customers, or place
-    it on the countertop to serve later.         "
+    button to buy ingredients.\n\n\n\n2. choose the recipe in the fridge to prepare
+    kimbap.                                                 \n\n3. Assemble the kimbap
+    on the cutting board. \n\n4. Serve the kimbap to customers, or place it on the
+    countertop to serve later.         "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -6657,8 +6657,8 @@ MonoBehaviour:
   halfAnger: -2
   fullAnger: -3
   happy: 2
-  halfAngerTime: 15
-  fullAngerTime: 20
+  halfAngerTime: 20
+  fullAngerTime: 30
 --- !u!4 &617428155
 Transform:
   m_ObjectHideFlags: 0
