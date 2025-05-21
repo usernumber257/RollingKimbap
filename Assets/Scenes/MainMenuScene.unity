@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'i
+  m_text: 'o
 
 '
   m_isRightToLeft: 0
@@ -490,7 +490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: c
+  m_text: m
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -1223,7 +1223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: n
+  m_text: p
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: o
+  m_text: b
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -2544,7 +2544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 118, y: 0}
+  m_AnchoredPosition: {x: 161, y: 0}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254723834
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: y
+  m_text: i
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -4422,7 +4422,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Move the player with WASD\nInteract with Left Click\n\n1. Click the Store
-    button to buy ingredients.\n\n\n\n2. choose the recipe in the fridge to prepare
+    button to buy ingredients.\n\n\n\n2. Choose the recipe in the fridge to prepare
     kimbap.                                                 \n\n3. Assemble the kimbap
     on the cutting board. \n\n4. Serve the kimbap to customers, or place it on the
     countertop to serve later.         "
@@ -5413,8 +5413,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -355, y: 0}
-  m_SizeDelta: {x: 100, y: 150}
+  m_AnchoredPosition: {x: -301, y: 0}
+  m_SizeDelta: {x: 131.9403, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513129613
 MonoBehaviour:
@@ -5436,7 +5436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: m
+  m_text: ll
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -7997,7 +7997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: 0}
+  m_AnchoredPosition: {x: -70, y: 0}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &772151851
@@ -8020,7 +8020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: p
+  m_text: g
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -9724,7 +9724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -247, y: 0}
+  m_AnchoredPosition: {x: -212, y: 0}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1010022602
@@ -9747,7 +9747,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: b
+  m_text: i
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -11391,7 +11391,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: a
+  m_text: n
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -13254,7 +13254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46, y: 0}
+  m_AnchoredPosition: {x: 84, y: 0}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388185428
@@ -13277,7 +13277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: T
+  m_text: K
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -14392,7 +14392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: K
+  m_text: R
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
@@ -15383,7 +15383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: o
+  m_text: a
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
   m_sharedMaterial: {fileID: 9108259917317179852, guid: eedbe49d284bc1d4b80f803e4a0a081b, type: 2}
