@@ -30,6 +30,14 @@ public class DataManager : MonoBehaviour
         curHat = value;
     }
 
+    public void ResetClothes()
+    {
+        curHair = MyEnum.Hair.None;
+        curHairColor = MyEnum.HairColor.gray;
+        curUniform = MyEnum.Uniform.None;
+        curHat = MyEnum.Hat.None;
+    }
+
 
     public void Init(int initCoin)
     {

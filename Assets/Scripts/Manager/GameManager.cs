@@ -124,7 +124,10 @@ public class GameManager : MonoBehaviour
     private void DetectSceneChange(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MainMenuScene")
+        {
             DestroyManagers();
+            data.ResetClothes();
+        }
         else if (scene.name == "GameScene")
             InitManagers();
     }

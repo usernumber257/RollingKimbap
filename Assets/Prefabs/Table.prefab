@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 225535505, guid: bb7d0a4893225484791a74a5fe53b4de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -251,6 +251,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5414358914093003026, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 6052330851633763500}
     - target: {fileID: 5749719278767135768, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -381,6 +385,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5414358914093003026, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 6052330851633763500}
     - target: {fileID: 5808980958488194275, guid: 612ee375ab3d06b479b042d36af11303, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0

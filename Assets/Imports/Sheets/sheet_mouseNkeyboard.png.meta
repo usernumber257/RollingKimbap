@@ -383,7 +383,7 @@ TextureImporter:
         width: 52
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -391,6 +391,27 @@ TextureImporter:
       bones: []
       spriteID: ccfb7eb267b8d254eabed7e5092742b4
       internalID: -1125413492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: recipe
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 44
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d298a9049b74d34b9171270c67293f9
+      internalID: 623867490
       vertices: []
       indices: 
       edges: []
@@ -408,6 +429,7 @@ TextureImporter:
     nameFileIdTable:
       coin: 99558692
       heart: -479440528
+      recipe: 623867490
       setting: -1125413492
       sheet_mouseNkeyboard_0: 1884252852
       sheet_mouseNkeyboard_1: -1893905239

@@ -9,7 +9,7 @@ public class Fridge : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (viewer.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
             OnESC();
     }
 

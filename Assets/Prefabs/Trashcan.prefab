@@ -51,6 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPlace: {fileID: 4496189187155347202}
   holdingObj: {fileID: 0}
+  sprite: {fileID: 7301355493689889205}
+  alreadyHold: 0
+  changeHoldingObjOrder: 1
 --- !u!114 &5099230094487346043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 7301355493689889205}
-  canBeHolded: 0
 --- !u!114 &3409876168330674416
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,5 +37,6 @@ public class SettingCanvas : MonoBehaviour
         GameManager.Setting.OnLanguageChanged.Invoke();
 
         backToMain.Back();
+        ShowBody(false);
     }
 }

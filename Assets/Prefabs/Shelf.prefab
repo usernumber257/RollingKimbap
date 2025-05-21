@@ -111,6 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPlace: {fileID: 1368633983567152446}
   holdingObj: {fileID: 0}
+  sprite: {fileID: 2185340582352511469}
+  alreadyHold: 0
 --- !u!114 &1865696354551815948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 2185340582352511469}
-  canBeHolded: 0
 --- !u!1 &1775165968450815340
 GameObject:
   m_ObjectHideFlags: 0

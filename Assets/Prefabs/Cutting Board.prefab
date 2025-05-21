@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 5105096699064243385}
-  canBeHolded: 0
 --- !u!114 &4327381105016061431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPlace: {fileID: 3341276425969460708}
   holdingObj: {fileID: 0}
+  sprite: {fileID: 5105096699064243385}
+  alreadyHold: 0
+  changeHoldingObjOrder: 1
 --- !u!114 &8439254632220192407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +150,6 @@ MonoBehaviour:
   cheeseKimbap: {fileID: 11400000, guid: ba4c8fd60649ef24290c96cbb970b5af, type: 2}
   kimchiKimbap: {fileID: 11400000, guid: 42c7405f4f334d747af00d3d38a8ae7d, type: 2}
   tunaKimbap: {fileID: 11400000, guid: 88422081a9aa82e47972f7c42df7f753, type: 2}
-  curFood: {fileID: 0}
   makingFood: 0
 --- !u!114 &7132787926281292812
 MonoBehaviour:
@@ -363,7 +364,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 882893756, guid: 345e0971c8828a14a8de6a364b12ba0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

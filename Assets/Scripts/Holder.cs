@@ -10,7 +10,19 @@ public class Holder : MonoBehaviour
     public GameObject holdingObj;
     public UnityAction<GameObject> OnHold;
 
+    [SerializeField] SpriteRenderer sprite;
+
     public bool alreadyHold;
+
+    int mySortingOrder = 0;
+    int originSortingOrder = 15;
+
+    //[SerializeField] bool changeHoldingObjOrder = true;
+
+    private void Awake()
+    {
+        mySortingOrder = sprite.sortingOrder + 1;
+    }
 
     public void Hold(GameObject go)
     {
@@ -45,11 +57,20 @@ public class Holder : MonoBehaviour
             holdingObj.transform.parent = holdPlace;
             OnHold?.Invoke(targetHolder.holdingObj);
         }
+
+        //if (changeHoldingObjOrder)
+        {
+            //김밥을 테이블에 놨을 때 레이어 정렬을 위함
+            go.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = mySortingOrder;
+        }
     }    
 
     public GameObject Give()
     {
         GameObject temp = holdingObj;
+
+        //정렬된 레이어 초기화
+        temp.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = originSortingOrder;
 
         holdingObj = null;
         
