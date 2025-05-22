@@ -1,7 +1,9 @@
+using BackEnd;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -71,12 +73,14 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += DetectSceneChange;
 
-
         if (data == null)
             data = CreateGameObject("DataManager").AddComponent<DataManager>();
 
         if (setting == null)
             setting = CreateGameObject("SettingManager").AddComponent<SettingManager>();
+
+        Backend.Initialize();
+        Login.Instance.TempLogin();
     }
 
 
@@ -92,6 +96,10 @@ public class GameManager : MonoBehaviour
             level = CreateGameObject("LevelManager").AddComponent<LevelManager>();
             level.Init(minTime, maxTime, halfAnger, fullAnger, happy, halfAngerTime, fullAngerTime);
         }
+        else
+        {
+            Debug.Log(level);
+        }
 
         if (ui == null)
             ui = CreateGameObject("UIManager").AddComponent<UIManager>();
@@ -99,9 +107,6 @@ public class GameManager : MonoBehaviour
 
     void DestroyManagers()
     {
-        if (data != null)
-            Destroy(data.gameObject);
-        
         if (flow != null)
             Destroy(flow.gameObject);
 
@@ -127,13 +132,30 @@ public class GameManager : MonoBehaviour
         {
             DestroyManagers();
             data.ResetClothes();
+
+            data.Timer(false);
+
+            Login.Instance.TempLogin();
+            Leaderboard.Instance.GetLeaderboard();
         }
         else if (scene.name == "GameScene")
+        {
             InitManagers();
+            Login.Instance.CustomLogin();
+            Backend.BMember.UpdateNickname(data.nickname);
+
+            data.Timer(true);
+        }
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= DetectSceneChange;
     }
+
+    public void OnExitDetected()
+    {
+        data.UpdateRank();
+    }
+
 }

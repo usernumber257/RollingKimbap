@@ -10,12 +10,18 @@ public class Localization_mainmenu: MonoBehaviour
     public Animator titleAnim;
     public TMP_Text gameStartText;
     public TMP_Text howToText;
+    
     public GameObject howTo_kor;
     public GameObject howTo_eng;
+    
     public GameObject custom_kor;
     public GameObject custom_eng;
+    
     public GameObject decide_kor;
     public GameObject decide_eng;
+
+    public GameObject ranking_kor;
+    public GameObject ranking_eng;
 
     private void Start()
     {
@@ -46,6 +52,9 @@ public class Localization_mainmenu: MonoBehaviour
 
         decide_kor.SetActive(isKor);
         decide_eng.SetActive(!isKor);
+
+        ranking_kor.SetActive(isKor);
+        ranking_eng.SetActive(!isKor);
     }
 
     
