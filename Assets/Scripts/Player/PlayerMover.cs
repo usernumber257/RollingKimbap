@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MyEnum;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float moveSensitive = 0.1f;
 
     [SerializeField] GameObject hat;
+    SpriteRenderer hatSpriteRenderer;
 
     Vector2 movement;
 
@@ -37,6 +39,11 @@ public class PlayerMover : MonoBehaviour
         server.OnServe -= WearHat;
     }
 
+    private void Start()
+    {
+        // hatSpriteRenderer Init, Only active child GameObjects are included in the search
+        hatSpriteRenderer = hat.GetComponentInChildren<SpriteRenderer>();
+    }
     private void Update()
     {
         Move();
@@ -58,10 +65,19 @@ public class PlayerMover : MonoBehaviour
         anim.SetFloat("xDir", movement.x);
         anim.SetFloat("yDir", movement.y);
 
-        if (movement.magnitude < moveSensitive)
-            return;
+        //if (movement.magnitude < moveSensitive)
+        //    return;
 
         rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed);
+
+        FlipHat();
+    }
+
+    void FlipHat()
+    {
+        if (hatSpriteRenderer == null) return;
+
+        hatSpriteRenderer.flipX = movement.x < 0 ? true : false;
     }
 
     void WearHat()
