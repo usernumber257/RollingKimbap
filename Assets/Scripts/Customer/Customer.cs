@@ -26,7 +26,7 @@ public class Customer : MonoBehaviour
     
     public Transform exit;
 
-    float speed = 0.005f;
+    float speed = 2f;
     public float Speed { get { return speed; } }
 
     [Header("Order Bubble")]
@@ -254,7 +254,7 @@ public class SitState : State
     void MoveToSeat()
     {
         Transform target = customer.mySeat.navPivot[customer.moveIndex];
-        customer.transform.position = Vector2.MoveTowards(customer.transform.position, target.position, customer.Speed);
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, target.position, customer.Speed * Time.deltaTime);
 
         if (Vector2.Distance(customer.transform.position, target.position) < 0.001f)
             customer.moveIndex++;
@@ -357,7 +357,7 @@ public class ExitState : State
     int moveIndex = 0;
     void MoveToExit()
     {
-        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.navPivot[moveIndex].position, customer.Speed);
+        customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.navPivot[moveIndex].position, customer.Speed * Time.deltaTime);
 
         if (Vector2.Distance(customer.transform.position, customer.mySeat.navPivot[moveIndex].position) < 0.001f)
             moveIndex--;

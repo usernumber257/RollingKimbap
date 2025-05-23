@@ -58,8 +58,10 @@ public class PlayerMover : MonoBehaviour
         anim.SetFloat("xDir", movement.x);
         anim.SetFloat("yDir", movement.y);
 
+        /*
         if (movement.magnitude < moveSensitive)
             return;
+        */
 
         rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed);
     }
