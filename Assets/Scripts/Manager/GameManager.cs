@@ -81,6 +81,10 @@ public class GameManager : MonoBehaviour
 
         Backend.Initialize();
         Login.Instance.TempLogin();
+
+        string googlehash = Backend.Utils.GetGoogleHash();
+
+        Debug.Log("구글 해시 키 : " + googlehash);
     }
 
 
@@ -128,7 +132,7 @@ public class GameManager : MonoBehaviour
 
     private void DetectSceneChange(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MainMenuScene")
+        if (scene.name == "MainMenuScene" || scene.name == "MainMenuScene_Mobile")
         {
             DestroyManagers();
             data.ResetClothes();
@@ -138,7 +142,7 @@ public class GameManager : MonoBehaviour
             Login.Instance.TempLogin();
             Leaderboard.Instance.GetLeaderboard();
         }
-        else if (scene.name == "GameScene")
+        else if (scene.name == "GameScene" || scene.name == "GameScene_Mobile")
         {
             InitManagers();
             Login.Instance.CustomLogin();

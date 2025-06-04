@@ -20,6 +20,7 @@ public class InventoryCombiner : MonoBehaviour
 
     [SerializeField] InteractableObject interactable;
     [SerializeField] GameObject body;
+    [SerializeField] GameObject inventoryBody;
 
     int slotIndex;
 
@@ -137,7 +138,7 @@ public class InventoryCombiner : MonoBehaviour
 
         Button button = slots[slotIndex].GetComponent<Button>();
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => { this.makeableFood = makeableFood; ConsumeItems(makeableFood); body.SetActive(false); click.Play(); }) ;
+        button.onClick.AddListener(() => { this.makeableFood = makeableFood; ConsumeItems(makeableFood); body.SetActive(false); inventoryBody.SetActive(false); click.Play(); }) ;
 
         slotIndex++;
     }

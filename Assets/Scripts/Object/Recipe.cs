@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Recipe : MonoBehaviour
@@ -18,8 +19,11 @@ public class Recipe : MonoBehaviour
             return;
 
         interactable.OnInteract += OpenRecipe;
-
         body.SetActive(false);
+
+#if UNITY_IOS || UNITY_ANDROID
+        MobileInputManager.Instance.cancel.onClick.AddListener(() => { body.SetActive(false); });
+#endif
     }
 
     private void OnDestroy()

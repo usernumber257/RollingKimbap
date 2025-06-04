@@ -31,6 +31,11 @@ public class SettingCanvas : MonoBehaviour
         PlayerPrefs.SetFloat("SFX", value);
     }
 
+    public void SetControllerSize(float value)
+    {
+        PlayerPrefs.SetFloat("ControllerSize", value);
+    }
+
     public void SetLanguage(bool isKor)
     {
         GameManager.Setting.isKor = isKor;

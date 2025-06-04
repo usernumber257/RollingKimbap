@@ -133,22 +133,42 @@ public abstract class Maker : MonoBehaviour
 
     bool Keyboard_W()
     {
+#if UNITY_STANDALONE_WIN
         return Input.GetKeyDown(KeyCode.W);
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+        return MobileInputManager.Instance.up.isPressed;
+#endif
     }
 
     bool Keyboard_S()
     {
+#if UNITY_STANDALONE_WIN
         return Input.GetKeyDown(KeyCode.S);
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+        return MobileInputManager.Instance.down.isPressed;
+#endif
     }
 
     bool Keyboard_A()
     {
+#if UNITY_STANDALONE_WIN
         return Input.GetKeyDown(KeyCode.A);
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+        return MobileInputManager.Instance.left.isPressed;
+#endif
     }
 
     bool Keyboard_D()
     {
+#if UNITY_STANDALONE_WIN
         return Input.GetKeyDown(KeyCode.D);
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+        return MobileInputManager.Instance.right.isPressed;
+#endif
     }
 
     //»Ÿ πÃ¥œ∞‘¿” ---------------------------------

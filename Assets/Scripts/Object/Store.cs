@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,9 @@ public class Store : MonoBehaviour
     private void Awake()
     {
         add = GameObject.FindWithTag("Sounds").transform.GetChild(3).GetComponent<AudioSource>();
+#if UNITY_IOS || UNITY_ANDROID
+        MobileInputManager.Instance.cancel.onClick.AddListener(OnESC);
+#endif
     }
 
     private void Start()

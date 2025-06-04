@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,13 +12,28 @@ public class Selecter : MonoBehaviour
     private void Awake()
     {
         GameObject temp = GameObject.FindWithTag("Sounds");
+
+#if UNITY_IOS || UNITY_ANDROID
+        MobileInputManager.Instance.confirm.onClick.AddListener(Mobile_Select);
+#endif
+    }
+
+
+    private void OnDestroy()
+    {
+#if UNITY_IOS || UNITY_ANDROID
+        MobileInputManager.Instance.confirm.onClick.RemoveAllListeners();
+#endif
     }
 
     private void Update()
     {
+#if UNITY_STANDALONE_WIN
         if (Input.GetMouseButtonDown(0))
             Select();
+#endif
     }
+
 
     public void Select()
     {
@@ -32,6 +48,27 @@ public class Selecter : MonoBehaviour
 
                 if (selectable != null)
                     selectable.OnSelected?.Invoke(true);
+
+                break;
+            }
+        }
+    }
+
+    public void Mobile_Select()
+    {
+        RaycastHit2D[] hits = Physics2D.CapsuleCastAll(transform.position, new Vector2(0.2f, 0.05f), CapsuleDirection2D.Vertical, 0f, Vector2.zero);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider != null && hits[i].collider.gameObject.tag == "Selectable")
+            {
+                selectable = hits[i].collider.gameObject.GetComponent<SelectableObject>();
+
+                if (selectable != null)
+                {
+                    Debug.Log($"{selectable.gameObject.name}");
+                    selectable.OnSelected?.Invoke(true);
+                }
 
                 break;
             }

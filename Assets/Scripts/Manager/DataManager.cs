@@ -44,6 +44,7 @@ public class DataManager : MonoBehaviour
         { 
             curCoin = value;
             OnCoinChanged?.Invoke();
+
             if (curCoin < 0) 
                 curCoin = 0;
         } 

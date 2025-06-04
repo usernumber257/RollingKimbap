@@ -14,9 +14,16 @@ public class Nickname : MonoBehaviour
     [SerializeField] AudioSource negative;
     [SerializeField] AudioSource positive;
     [SerializeField] GameObject customPlayer;
+    [SerializeField] GameObject nickName;
+
+    private float originY;
+    RectTransform nickNameRect;
 
     private void Awake()
     {
+        nickNameRect = nickName.GetComponent<RectTransform>();
+        originY = nickNameRect.position.y; //모바일 키보드 열었을 때를 위한 위치 캐싱
+
         next.onClick.AddListener(() => {
             if (string.IsNullOrWhiteSpace(inputField.text))
             {
@@ -29,6 +36,7 @@ public class Nickname : MonoBehaviour
             gameObject.SetActive(false);
             customPlayer.SetActive(true);
         });
+
     }
 
     private void OnEnable()
@@ -46,4 +54,21 @@ public class Nickname : MonoBehaviour
     {
         next.onClick.RemoveAllListeners();
     }
+
+
+    void Update()
+    {
+#if UNITY_ANDROID || UNITY_IOS
+        if (TouchScreenKeyboard.visible)
+        {
+            float keyboardHeight = TouchScreenKeyboard.area.height;
+            nickNameRect.position = new Vector2(nickNameRect.position.x, originY + keyboardHeight);
+        }
+        else
+        {
+            nickNameRect.position = new Vector2(nickNameRect.position.x, originY);
+        }
+#endif
+    }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MyEnum;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
@@ -11,7 +12,7 @@ public class PlayerMover : MonoBehaviour
 
     [SerializeField] GameObject hat;
 
-    Vector2 movement;
+    Vector2 movement = Vector2.zero;
 
     Rigidbody2D rb;
 
@@ -46,9 +47,48 @@ public class PlayerMover : MonoBehaviour
     {
         if (!doMove)
             return;
-
+#if UNITY_STANDALONE_WIN
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
+#endif
+
+#if UNITY_IOS || UNITY_ANDROID
+        if (MobileInputManager.Instance.up_left.isPressed)
+        {
+            movement.y = 1;
+            movement.x = -1;
+        }
+        else if (MobileInputManager.Instance.up_right.isPressed)
+        {
+            movement.y = 1;
+            movement.x = 1;
+        }
+        else if (MobileInputManager.Instance.down_left.isPressed)
+        {
+            movement.y = -1;
+            movement.x = -1;
+        }
+        else if (MobileInputManager.Instance.down_right.isPressed)
+        {
+            movement.y = -1;
+            movement.x = 1;
+        }
+        else
+        {
+            movement.y = 0;
+            movement.x = 0;
+
+            if (MobileInputManager.Instance.up.isPressed)
+                movement.y = 1;
+            else if (MobileInputManager.Instance.down.isPressed)
+                movement.y = -1;
+
+            if (MobileInputManager.Instance.left.isPressed)
+                movement.x = -1;
+            else if (MobileInputManager.Instance.right.isPressed)
+                movement.x = 1;
+        }
+#endif
 
         if (movement.x != 0 || movement.y != 0)
             anim.SetBool("IsMove", true);
@@ -58,12 +98,17 @@ public class PlayerMover : MonoBehaviour
         anim.SetFloat("xDir", movement.x);
         anim.SetFloat("yDir", movement.y);
 
-        /*
-        if (movement.magnitude < moveSensitive)
-            return;
-        */
+        if (movement.x < 0)
+            hat.transform.localScale = new Vector3(-1f, 1f, 1f);
+        else
+            hat.transform.localScale = Vector3.one;
 
-        rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed);
+            /*
+            if (movement.magnitude < moveSensitive)
+                return;
+            */
+
+            rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed);
     }
 
     void WearHat()

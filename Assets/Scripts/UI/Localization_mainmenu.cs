@@ -23,6 +23,9 @@ public class Localization_mainmenu: MonoBehaviour
     public GameObject ranking_kor;
     public GameObject ranking_eng;
 
+    public GameObject quitGame_kor;
+    public GameObject quitGame_eng;
+
     private void Start()
     {
         Localization();
@@ -55,6 +58,10 @@ public class Localization_mainmenu: MonoBehaviour
 
         ranking_kor.SetActive(isKor);
         ranking_eng.SetActive(!isKor);
+#if UNITY_IOS || UNITY_ANDROID
+        quitGame_kor.SetActive(isKor);
+        quitGame_eng.SetActive(!isKor);
+#endif
     }
 
     

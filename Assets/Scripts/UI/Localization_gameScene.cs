@@ -13,6 +13,14 @@ public class Localization_gameScene : MonoBehaviour
     public GameObject storeViewer_fridge_kor;
     public GameObject storeViewer_fridge_eng;
 
+    public GameObject backToMainText_kor;
+    public GameObject backToMainText_eng;
+    public GameObject backToMainText_yes_kor;
+    public GameObject backToMainText_yes_eng;
+
+    public GameObject backToMainText_no_kor;
+    public GameObject backToMainText_no_eng;
+
     private void Start()
     {
         Localization();
@@ -40,5 +48,14 @@ public class Localization_gameScene : MonoBehaviour
 
         storeViewer_fridge_kor.SetActive(isKor);
         storeViewer_fridge_eng.SetActive(!isKor);
+
+        backToMainText_kor.SetActive(isKor);
+        backToMainText_eng.SetActive(!isKor);
+
+        backToMainText_yes_kor.SetActive(isKor);
+        backToMainText_yes_eng.SetActive(!isKor);
+
+        backToMainText_no_kor.SetActive(isKor);
+        backToMainText_no_eng.SetActive(!isKor);
     }
 }
