@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// 음식들의 재료를 쌓습니다
+/// </summary>
 [RequireComponent(typeof(Holder))]
 public class FoodStacker : MonoBehaviour
 {
@@ -26,19 +26,11 @@ public class FoodStacker : MonoBehaviour
 
     public bool makingFood;
 
-    AudioSource[] cook;
-    AudioSource done;
+    int randNum = 0;
 
     private void Awake()
     {
         holder = GetComponent<Holder>();
-
-        cook = new AudioSource[3];
-
-        cook[0] = GameObject.FindWithTag("Sounds").transform.GetChild(4).GetComponent<AudioSource>();
-        cook[1] = GameObject.FindWithTag("Sounds").transform.GetChild(5).GetComponent<AudioSource>();
-        cook[2] = GameObject.FindWithTag("Sounds").transform.GetChild(6).GetComponent<AudioSource>();
-        done = GameObject.FindWithTag("Sounds").transform.GetChild(7).GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -68,7 +60,20 @@ public class FoodStacker : MonoBehaviour
 
         if (curStack < CurFood.Ingredients.Count)
         {
-            cook[Random.Range(0, 3)].Play();
+            randNum = Random.Range(0, 3);
+
+            switch (randNum)
+            {
+                case 0:
+                    SoundPlayer.Instance.Play(MyEnum.Sound.Cook1);
+                    break;
+                case 1:
+                    SoundPlayer.Instance.Play(MyEnum.Sound.Cook2);
+                    break;
+                case 2:
+                    SoundPlayer.Instance.Play(MyEnum.Sound.Cook3);
+                    break;
+            }
 
             pool[curStack].sprite = curFood.Ingredients[curStack].Model;
             pool[curStack].gameObject.SetActive(true);
@@ -79,19 +84,15 @@ public class FoodStacker : MonoBehaviour
 
     public void Complete()
     {
-
         if (CurFood == null)
             return;
 
-        done.Play();
+        SoundPlayer.Instance.Play(MyEnum.Sound.Done);
 
         CompleteFood newFood = Instantiate(Resources.Load<CompleteFood>("CompleteFood"));
         newFood.Init(CurFood.FoodType);
 
         holder.Hold(newFood.gameObject);
-
-        //holder.Hold(newFood.gameObject);
-        //holder.Hold(gameObject);
 
         Stop();
     }

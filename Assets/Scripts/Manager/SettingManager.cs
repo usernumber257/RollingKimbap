@@ -1,13 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SettingManager : MonoBehaviour
+/// <summary>
+/// 설정과 관련된 컴포넌트들을 다룹니다.
+/// </summary>
+public class SettingManager : Singleton<SettingManager>
 {
     [SerializeField] Slider bgm;
     [SerializeField] Slider sfx;
@@ -15,26 +14,18 @@ public class SettingManager : MonoBehaviour
 
     public bool isKor = false;
     public UnityAction OnLanguageChanged;
-    SettingCanvas settingCanvas;
 
-    private void Awake()
+    [SerializeField] SettingUI settingCanvas;
+    public SettingUI SettingCanvas => settingCanvas;
+
+    [SerializeField] ControllerCanvas controllerCanvas;
+    public ControllerCanvas ControllerCanvas => controllerCanvas;
+
+    protected override void Awake()
     {
-        settingCanvas = GameObject.FindWithTag("Setting").GetComponent<SettingCanvas>();
-        settingCanvas.transform.parent = transform;
+        base.Awake();
 
         if (Application.systemLanguage == SystemLanguage.Korean)
             isKor = true;
-
-        Close();
-    }
-
-    public void Open()
-    {
-        settingCanvas.ShowBody(false);
-    }
-
-    public void Close()
-    {
-        settingCanvas.ShowBody(false);
     }
 }

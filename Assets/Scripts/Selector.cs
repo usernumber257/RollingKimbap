@@ -11,8 +11,6 @@ public class Selecter : MonoBehaviour
 
     private void Awake()
     {
-        GameObject temp = GameObject.FindWithTag("Sounds");
-
 #if UNITY_IOS || UNITY_ANDROID
         MobileInputManager.Instance.confirm.onClick.AddListener(Mobile_Select);
 #endif
@@ -28,7 +26,7 @@ public class Selecter : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
             Select();
 #endif

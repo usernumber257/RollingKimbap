@@ -1,11 +1,12 @@
 using BackEnd;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+/// <summary>
+/// 다른 매니저들을 관리하며, 로그인, 난이도 조절을 합니다.
+/// </summary>
+public class GameManager : Singleton<GameManager>
 {
     [Header("창업 비용")]
     [Range(0, 1000)]
@@ -41,84 +42,53 @@ public class GameManager : MonoBehaviour
         fullAngerTime = 50f;
     }
 
-
-    static GameManager instance;
-    public static GameManager Instance { get { return instance; } }
-
-    static DataManager data;
-    public static DataManager Data { get { return data; } }
-
-    static FlowManager flow;
-    public static FlowManager Flow { get { return flow; } }
+    static SeatingManager seat;
+    public static SeatingManager Seat { get { return seat; } }
 
     static LevelManager level;
     public static LevelManager Level { get { return level; } }
 
-    static UIManager ui;
-    public static UIManager UI { get { return ui; } }
 
-    static SettingManager setting;
-    public static SettingManager Setting { get { return setting; } }
-
-    private void Awake()
+    protected override void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        base.Awake();
 
-        instance = this;
         DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += DetectSceneChange;
 
-        if (data == null)
-            data = CreateGameObject("DataManager").AddComponent<DataManager>();
-
-        if (setting == null)
-            setting = CreateGameObject("SettingManager").AddComponent<SettingManager>();
-
         Backend.Initialize();
         Login.Instance.TempLogin();
 
-        string googlehash = Backend.Utils.GetGoogleHash();
-
-        Debug.Log("구글 해시 키 : " + googlehash);
+        //string googlehash = Backend.Utils.GetGoogleHash();
+        //Debug.Log("구글 해시 키 : " + googlehash);
     }
 
 
     void InitManagers()
     {
-        data.Init(initCoin);
+        PlayerStatManager.Instance.Init(initCoin);
 
-        if (flow == null)
-            flow = CreateGameObject("FlowManager").AddComponent<FlowManager>();
+        if (seat == null)
+            seat = CreateGameObject("SeatingManager").AddComponent<SeatingManager>();
 
         if (level == null)
         {
             level = CreateGameObject("LevelManager").AddComponent<LevelManager>();
             level.Init(minTime, maxTime, halfAnger, fullAnger, happy, halfAngerTime, fullAngerTime);
         }
-        else
-        {
-            Debug.Log(level);
-        }
-
-        if (ui == null)
-            ui = CreateGameObject("UIManager").AddComponent<UIManager>();
     }
 
+    /// <summary>
+    /// 메인 씬에서 필요없는 manager 들은 삭제합니다
+    /// </summary>
     void DestroyManagers()
     {
-        if (flow != null)
-            Destroy(flow.gameObject);
+        if (seat != null)
+            Destroy(seat.gameObject);
 
         if (level != null)
             Destroy(level.gameObject);
-
-        if (ui != null)
-            Destroy(ui.gameObject);
     }
 
     GameObject CreateGameObject(string name)
@@ -130,26 +100,43 @@ public class GameManager : MonoBehaviour
         return newGO;
     }
 
+    public UnityAction OnSceneChanged;
+    public Scene curScene;
+
     private void DetectSceneChange(Scene scene, LoadSceneMode mode)
     {
+        curScene = scene;
+
         if (scene.name == "MainMenuScene" || scene.name == "MainMenuScene_Mobile")
         {
             DestroyManagers();
-            data.ResetClothes();
+            PlayerStatManager.Instance.ResetClothes();
 
-            data.Timer(false);
+            PlayerStatManager.Instance.Timer(false);
 
             Login.Instance.TempLogin();
             Leaderboard.Instance.GetLeaderboard();
+
+
+            if (SettingManager.Instance.ControllerCanvas != null)
+                SettingManager.Instance.ControllerCanvas.gameObject.SetActive(false);
         }
         else if (scene.name == "GameScene" || scene.name == "GameScene_Mobile")
         {
             InitManagers();
+#if UNITY_EDITOR
+            Login.Instance.TempLogin();
+#else
             Login.Instance.CustomLogin();
             Backend.BMember.UpdateNickname(data.nickname);
+#endif
+            PlayerStatManager.Instance.Timer(true);
 
-            data.Timer(true);
+            if (SettingManager.Instance.ControllerCanvas != null)
+                SettingManager.Instance.ControllerCanvas.gameObject.SetActive(true);
         }
+
+        OnSceneChanged?.Invoke();
     }
 
     private void OnDestroy()
@@ -159,7 +146,6 @@ public class GameManager : MonoBehaviour
 
     public void OnExitDetected()
     {
-        data.UpdateRank();
+        PlayerStatManager.Instance.UpdateRank();
     }
-
 }

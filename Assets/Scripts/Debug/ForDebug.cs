@@ -19,7 +19,7 @@ public class ForDebug : MonoBehaviour
 
     public void EarnCoin100()
     {
-        GameManager.Data.CurCoin += 100;
+        PlayerStatManager.Instance.CurCoin += 100;
     }
 
     public void PlusPopularity10()

@@ -7,7 +7,10 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 
-public class DataManager : MonoBehaviour
+/// <summary>
+/// 캐릭터 커마, 음식, 수익, 플레이 시간 데이터를 담고 있습니다.
+/// </summary>
+public class PlayerStatManager : Singleton<PlayerStatManager>
 {
     public string nickname = "";
 
@@ -19,6 +22,9 @@ public class DataManager : MonoBehaviour
 
     public DataReferencer dataReferencer;
 
+    /// <summary>
+    /// 새로운 게임을 위해 등록된 옷을 리셋합니다.
+    /// </summary>
     public void ResetClothes()
     {
         curHair = MyEnum.Hair.None;
@@ -30,7 +36,12 @@ public class DataManager : MonoBehaviour
     public void Init(int initCoin)
     {
         CurCoin = initCoin;
-        dataReferencer = Instantiate(Resources.Load<DataReferencer>("DataReferencer"));
+
+        if (dataReferencer == null)
+        {
+            dataReferencer = Instantiate(Resources.Load<DataReferencer>("DataReferencer"));
+            dataReferencer.transform.parent = transform;
+        }
     }
 
     //음식 데이터

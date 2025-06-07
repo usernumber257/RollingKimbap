@@ -1,11 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 랭킹 뷰어에 들어갈 데이터를 보여주는 UI
+/// </summary>
 public class RankingContent : MonoBehaviour
 {
     [SerializeField] TMP_Text rank;

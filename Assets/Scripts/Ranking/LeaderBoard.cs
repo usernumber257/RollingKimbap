@@ -1,5 +1,9 @@
 using UnityEngine;
 using BackEnd;
+
+/// <summary>
+/// 랭킹을 다룹니다
+/// </summary>
 public class Leaderboard : MonoBehaviour
 {
     private static Leaderboard _instance = null;
@@ -73,6 +77,9 @@ public class Leaderboard : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// 랭킹을 조회해 UI 를 세팅합니다.
+    /// </summary>
     public void GetLeaderboard()
     {
         BackEnd.Leaderboard.BackendUserLeaderboardReturnObject bro = null;
@@ -88,11 +95,15 @@ public class Leaderboard : MonoBehaviour
 
         Debug.Log("리더보드 총 유저 등록 수 : " + bro.GetTotalCount());
 
+        //UI 에 디스플레이 하기
+        if (rankingView == null)
+        rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
+
+        rankingView.Clear();
+
         foreach (BackEnd.Leaderboard.UserLeaderboardItem item in bro.GetUserLeaderboardList())
         {
-            Debug.Log(item.nickname);
-
-            if (item.nickname == Login.Instance.tempUser) //메인메뉴에서 쓸 임시 로그인 닉네임
+            if (item.nickname == Login.Instance.tempUser) //메인메뉴, 디버깅을 위한 임시 유저 아이디는 보여주지 않습니다.
                 continue;
 
             string[] extraData = item.extraData.Split("|");
@@ -104,9 +115,6 @@ public class Leaderboard : MonoBehaviour
             userData.hairColor = int.Parse(extraData[2].ToString());
             userData.uniform = int.Parse(extraData[3].ToString());
             userData.hat = int.Parse(extraData[4].ToString());
-
-            if (rankingView == null)
-                rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
 
             rankingView.AddContent(int.Parse(item.rank), int.Parse(item.score), item.nickname, userData.spentTime, userData.hair, userData.hairColor, userData.uniform, userData.hat);
         }

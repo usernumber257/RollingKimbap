@@ -10,4 +10,5 @@ public static class MyEnum
     public enum HairColor { gray, black, brown, red, orange, yellow, green, blue, navy, purple, pink }
     public enum Uniform { None, Cyan, Puple, Red, Yellow }
     public enum Hat { None, Box, Cloud, Kimbap }
+    public enum Sound { None, Click, Accept, Cancel, Add, Cook1, Cook2, Cook3, Done, BGM }
 }

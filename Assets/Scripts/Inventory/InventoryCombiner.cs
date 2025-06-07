@@ -1,8 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 인벤토리를 검사해 만들 수 있는 조합을 보여줍니다.
+/// </summary>
 public class InventoryCombiner : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
@@ -20,13 +22,11 @@ public class InventoryCombiner : MonoBehaviour
 
     [SerializeField] InteractableObject interactable;
     [SerializeField] GameObject body;
-    [SerializeField] GameObject inventoryBody;
 
     int slotIndex;
 
     [SerializeField] Maker maker;
-
-    AudioSource click;
+    [SerializeField] UIBase inventoryUI;
 
 
     private void Awake()
@@ -34,8 +34,6 @@ public class InventoryCombiner : MonoBehaviour
         interactable.OnInteract += Show;
 
         Init();
-
-        click = GameObject.FindWithTag("Sounds").transform.GetChild(0).GetComponent<AudioSource>();
     }
 
     void Init()
@@ -132,13 +130,19 @@ public class InventoryCombiner : MonoBehaviour
     void ShowMakeable(Food makeableFood)
     {
         slots[slotIndex].sprite.sprite = makeableFood.Model;
-        slots[slotIndex].nameText.text = GameManager.Setting.isKor ? makeableFood.ItemName : makeableFood.ItemName_eng;
+        slots[slotIndex].nameText.text = SettingManager.Instance.isKor ? makeableFood.ItemName : makeableFood.ItemName_eng;
         slots[slotIndex].countText.gameObject.SetActive(false);
         slots[slotIndex].gameObject.SetActive(true);
 
         Button button = slots[slotIndex].GetComponent<Button>();
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => { this.makeableFood = makeableFood; ConsumeItems(makeableFood); body.SetActive(false); inventoryBody.SetActive(false); click.Play(); }) ;
+        button.onClick.AddListener(() => { 
+            this.makeableFood = makeableFood; 
+            ConsumeItems(makeableFood); 
+            UIManager.Instance.CloseUI(inventoryUI); 
+            SoundPlayer.Instance.Play(MyEnum.Sound.Click);
+            body.SetActive(false);
+        }) ;
 
         slotIndex++;
     }

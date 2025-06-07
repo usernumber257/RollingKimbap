@@ -1,17 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlowManager : MonoBehaviour
+/// <summary>
+/// 좌석, 손님들의 현황을 다룹니다. 
+/// </summary>
+public class SeatingManager : MonoBehaviour
 {
     public Seat[] seats;
     Dictionary<int, bool> emptySeats = new Dictionary<int, bool>();
     int activeSeatIndex = 1; //처음에 두 좌석은 활성화 되어있음
-    SeatManager seatManager;
+    TableReferencer tableReferencer;
     public int maxSeatSize = 6;
 
     Customer[] customers;
     int maxCustomerSize = 12;
     Dictionary<int, bool> inactiveCustomers = new Dictionary<int, bool>();
+
+    Transform customerPoolParent;
     
 
     void Start()
@@ -24,10 +29,14 @@ public class FlowManager : MonoBehaviour
         InitSeats();
     }
 
+    public void RegisterTableReferencer(TableReferencer tableReferencer)
+    {
+        this.tableReferencer = tableReferencer;
+    }
+
     void InitSeats()
     {
-        seatManager = GameObject.FindWithTag("SeatManager").GetComponent<SeatManager>();
-        seats = seatManager.seats;
+        seats = tableReferencer.seats;
 
         for (int i = 0; i < seats.Length; i++)
             emptySeats.Add(i, false);
@@ -39,7 +48,7 @@ public class FlowManager : MonoBehaviour
 
     public void UnlockSeat()
     {
-        seatManager.ShowNewSeat();
+        tableReferencer.ShowNewSeat();
 
         activeSeatIndex += 1;
         emptySeats[activeSeatIndex] = true;
@@ -76,17 +85,26 @@ public class FlowManager : MonoBehaviour
         time += Time.deltaTime;
     }
 
+    /// <summary>
+    /// 씬 내에 parent 로 둘 게임 오브젝트를 생성 후 그 안에 customer 게임 오브젝트들을 풀로 갖습니다.
+    /// </summary>
     void CreateCustomerPool()
     {
+        customerPoolParent = new GameObject().transform;
+        customerPoolParent.name = "customer pool";
+
         customers = new Customer[maxCustomerSize];
         
         for (int i = 0; i < maxCustomerSize; i++)
         {
             GameObject newGo = Instantiate(Resources.Load<GameObject>("Customer"));
-            newGo.SetActive(false);
+
             customers[i] = newGo.GetComponent<Customer>();
             customers[i].Init(i);
             inactiveCustomers.Add(i, true);
+
+            newGo.transform.parent = customerPoolParent;
+            newGo.SetActive(false);
         }
     }
 

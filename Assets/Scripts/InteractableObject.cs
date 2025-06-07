@@ -23,13 +23,9 @@ public class InteractableObject : MonoBehaviour
     /// </summary>
     //public bool canBeHolded;
 
-    AudioSource click;
-
     private void Awake()
     {
         selectable = GetComponent<SelectableObject>();
-
-        click = GameObject.FindWithTag("Sounds").transform.GetChild(0).GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -48,6 +44,7 @@ public class InteractableObject : MonoBehaviour
     
     void Selected(bool isSelected)
     {
+        Debug.Log($"{gameObject.name} selected");
         this.isSelected = isSelected;
 
         Interact();
@@ -58,8 +55,10 @@ public class InteractableObject : MonoBehaviour
         if (!isSelected || !canInteract)
             return;
 
+        Debug.Log($"{gameObject.name} interacted");
+
         OnInteract?.Invoke(true);
-        click.Play();
+        SoundPlayer.Instance.Play(MyEnum.Sound.Click);
 
         /* 상호작용 되면 상호작용 가능한 상태가 해제돼서 다시 콜리젼을 나갔다가 들어왔어야하는데, 번거로운 거 같아서 없앰
         isSelected = false;

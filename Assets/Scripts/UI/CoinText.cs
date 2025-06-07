@@ -9,17 +9,17 @@ public class CoinText : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Data.OnCoinChanged += SetText;
+        PlayerStatManager.Instance.OnCoinChanged += SetText;
         SetText();
     }
 
     private void OnDisable()
     {
-        GameManager.Data.OnCoinChanged -= SetText;
+        PlayerStatManager.Instance.OnCoinChanged -= SetText;
     }
 
     void SetText()
     {
-        text.text = GameManager.Data.CurCoin.ToString();
+        text.text = PlayerStatManager.Instance.CurCoin.ToString();
     }
 }

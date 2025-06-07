@@ -426,8 +426,8 @@ GameObject:
   - component: {fileID: 2558461682191698425}
   - component: {fileID: 4427184327791690509}
   m_Layer: 5
-  m_Name: Store
-  m_TagString: StoreUI
+  m_Name: StoreUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,9 +528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4708fb95f5de84046937a89a98658b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 6997391927028067597}
   slotPrefab: {fileID: 5963083308926637874, guid: 911cf41f41c1abc4cb9e93311d47f78f, type: 3}
   slotParent: {fileID: 6502790530450774789}
-  body: {fileID: 6997391927028067597}
   fridgeInventoryBody: {fileID: 5558091039726280492}
   button: {fileID: 0}
   fridgeInventory: {fileID: 0}

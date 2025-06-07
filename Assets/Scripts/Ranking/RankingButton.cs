@@ -9,12 +9,12 @@ public class RankingButton : MonoBehaviour
 
     private void Start()
     {
-        kor.SetActive(GameManager.Setting.isKor);
-        eng.SetActive(!GameManager.Setting.isKor);
+        kor.SetActive(SettingManager.Instance.isKor);
+        eng.SetActive(!SettingManager.Instance.isKor);
     }
 
     public void Ranking()
     {
-        GameManager.Data.UpdateRank();
+        PlayerStatManager.Instance.UpdateRank();
     }
 }

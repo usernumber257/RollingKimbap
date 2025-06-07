@@ -1,12 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Xml.Serialization;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public class Customer : MonoBehaviour
 {
@@ -45,14 +39,8 @@ public class Customer : MonoBehaviour
 
     public UnityAction OnClear;
 
-    public AudioSource done;
-
     public int moveIndex = 0;
 
-    private void Awake()
-    {
-        done = GameObject.FindWithTag("Sounds").transform.GetChild(7).GetComponent<AudioSource>();
-    }
 
     public void Init(int customerNum)
     {
@@ -67,7 +55,7 @@ public class Customer : MonoBehaviour
         gameObject.SetActive(true);
 
         mySeatNum = seatNum;
-        mySeat = GameManager.Flow.seats[mySeatNum];
+        mySeat = GameManager.Seat.seats[mySeatNum];
         mySeat.OnFoodReadied += IsReceiveMyOrder;
 
         moveIndex = 0;
@@ -153,7 +141,7 @@ public class Customer : MonoBehaviour
 
     MyEnum.FoodType ChoiceMyOrder()
     {
-        int randNum = Random.Range(1, GameManager.Data.foodCount + 1);
+        int randNum = Random.Range(1, PlayerStatManager.Instance.foodCount + 1);
 
         return (MyEnum.FoodType)randNum;
     }
@@ -274,7 +262,7 @@ public class OrderState : State
     {
         customer.orderFood.Init(customer.MyOrder);
         customer.orderBubble.SetActive(true);
-        customer.orderBubbleText.text = GameManager.Setting.isKor ? customer.orderFood.myFood.ItemName : customer.orderFood.myFood.ItemName_eng;
+        customer.orderBubbleText.text = SettingManager.Instance.isKor ? customer.orderFood.myFood.ItemName : customer.orderFood.myFood.ItemName_eng;
     }
 
     public override void OnStateUpdate()
@@ -311,12 +299,12 @@ public class EatState : State
 
     public override void OnStateEnter()
     {
-        GameManager.Data.EarnCoin(customer.orderFood.myFood.Price);
+        PlayerStatManager.Instance.EarnCoin(customer.orderFood.myFood.Price);
 
         customer.ChangeEmotion(true);
 
         if (customer.curEmotion == Customer.Emotions.Happy)
-            customer.done.Play();
+            SoundPlayer.Instance.Play(MyEnum.Sound.Done);
 
         customer.mySeat.ReadiedFood.Disappear();
         customer.mySeat.Clear();

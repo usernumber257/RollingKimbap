@@ -25,17 +25,17 @@ public class Localization_gameScene : MonoBehaviour
     {
         Localization();
 
-        GameManager.Setting.OnLanguageChanged += Localization;
+        SettingManager.Instance.OnLanguageChanged += Localization;
     }
 
     private void OnDisable()
     {
-        GameManager.Setting.OnLanguageChanged -= Localization;
+        SettingManager.Instance.OnLanguageChanged -= Localization;
     }
 
     public void Localization()
     {
-        bool isKor = GameManager.Setting.isKor;
+        bool isKor = SettingManager.Instance.isKor;
 
         store_kor.SetActive(isKor);
         store_eng.SetActive(!isKor);

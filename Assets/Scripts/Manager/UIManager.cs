@@ -2,41 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+/// <summary>
+/// UI 들을 관리합니다.
+/// </summary>
+public class UIManager : Singleton<UIManager>
 {
-    Store store;
-    Fridge fridge;
+    List<UIBase> uis = new List<UIBase>();
+    UIBase curOpenUI;
 
-    bool storeActive = false;
-    bool fridgeActive = false;
-
-    private void Awake()
+    protected override void Awake()
     {
-        store = GameObject.FindWithTag("StoreUI").GetComponent<Store>();
-        fridge = GameObject.FindWithTag("FridgeUI").GetComponent<Fridge>();
+        base.Awake();
+
+        //모바일의 경우 cancel 버튼을 누를 시 현재 UI 를 닫습니다.
+#if UNITY_IOS || UNITY_ANDROID
+        MobileInputManager.Instance.cancel.onClick.AddListener(CloseCurrentUI);
+#endif
+    }
+
+    private void Start()
+    {
+        CloseAllUI();
     }
 
     private void Update()
     {
-        if (store.body.activeInHierarchy && fridgeActive == false)
-            storeActive = true;
-        else
-            storeActive = false;
+        //윈도우 환경의 경우 ESC 를 누를 시 현재 UI를 닫습니다.
+        if (Input.GetKeyDown(KeyCode.Escape))
+            CloseCurrentUI();
+    }
 
-        if (fridge.combiner.activeInHierarchy && storeActive == false)
-            fridgeActive = true;
-        else
-            fridgeActive = false;
+    public void OpenUI(UIBase ui)
+    {
+        if (curOpenUI != null)
+            curOpenUI.UIManager_Close();
 
-        if (storeActive && fridge.combiner.activeInHierarchy)
+        ui.UIManager_Open();
+
+        curOpenUI = ui;
+    }
+
+    public void CloseUI(UIBase ui)
+    {
+        curOpenUI = null;
+
+        ui.UIManager_Close();
+    }
+
+    public void RegisterUI(UIBase ui)
+    {
+        if (!uis.Contains(ui))
+            uis.Add(ui);
+    }
+
+    void CloseCurrentUI()
+    {
+        if (curOpenUI != null)
+            curOpenUI.UIManager_Close();
+    }
+
+    void CloseAllUI()
+    {
+        for (int i = 0; i < uis.Count; i++)
         {
-            store.OnESC();
-            storeActive = false;
-        }
-        if (fridgeActive && store.body.activeInHierarchy)
-        {
-            fridge.OnESC();
-            fridgeActive = false;
+            if (uis[i] != null)
+                uis[i].UIManager_Close();
         }
     }
+
 }

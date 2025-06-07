@@ -47,7 +47,7 @@ public class Recipe : MonoBehaviour
             koreanRecipe.SetActive(false);
             engRecipe.SetActive(false);
 
-            if (GameManager.Setting.isKor)
+            if (SettingManager.Instance.isKor)
                 koreanRecipe.SetActive(true);
             else
                 engRecipe.SetActive(true);

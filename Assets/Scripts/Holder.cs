@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.U2D;
 
+/// <summary>
+/// 게임 오브젝트를 잡고 다른 holder 에게 넘깁니다
+/// </summary>
 public class Holder : MonoBehaviour
 {
     [SerializeField] Transform holdPlace;
@@ -24,6 +24,10 @@ public class Holder : MonoBehaviour
         mySortingOrder = sprite.sortingOrder + 1;
     }
 
+    /// <summary>
+    /// 집으려는 시도
+    /// </summary>
+    /// <param name="go"></param>
     public void Hold(GameObject go)
     {
         //go.transform.parent = holdPlace;
@@ -36,7 +40,7 @@ public class Holder : MonoBehaviour
 
         Holder targetHolder = go.GetComponent<Holder>();
 
-        if (targetHolder == null)
+        if (targetHolder == null) //타겟이 holder 가 없다면(무언가를 집을 수 없다면), 이 경우 CompleteFood 가 해당 됨
         {
             if (go.GetComponent<CompleteFood>() == null)//food stacker 가 holder 가 없는 그냥 김밥 아이템을 건네줌
                 return;
@@ -70,7 +74,8 @@ public class Holder : MonoBehaviour
         GameObject temp = holdingObj;
 
         //정렬된 레이어 초기화
-        temp.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = originSortingOrder;
+        if (temp != null)
+            temp.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = originSortingOrder;
 
         holdingObj = null;
         

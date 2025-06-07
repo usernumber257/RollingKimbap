@@ -4,7 +4,7 @@ using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CustomPlayer : MonoBehaviour
+public class CustomPlayer : UIBase
 {
     public bool isIngame = false;
 
@@ -17,16 +17,16 @@ public class CustomPlayer : MonoBehaviour
         if (!isIngame)
             return;
 
-        if (GameManager.Data.curHair != 0)
-            hairs[(int)GameManager.Data.curHair - 1].gameObject.SetActive(true);
+        if (PlayerStatManager.Instance.curHair != 0)
+            hairs[(int)PlayerStatManager.Instance.curHair - 1].gameObject.SetActive(true);
 
-        if (GameManager.Data.curUniform != 0)
-            uniforms[(int)GameManager.Data.curUniform - 1].gameObject.SetActive(true);
+        if (PlayerStatManager.Instance.curUniform != 0)
+            uniforms[(int)PlayerStatManager.Instance.curUniform - 1].gameObject.SetActive(true);
 
-        if (GameManager.Data.curHat != 0)
-            hats[(int)GameManager.Data.curHat - 1].gameObject.SetActive(true);
+        if (PlayerStatManager.Instance.curHat != 0)
+            hats[(int)PlayerStatManager.Instance.curHat - 1].gameObject.SetActive(true);
 
-        ChangeHairColor((int)GameManager.Data.curHairColor);
+        ChangeHairColor((int)PlayerStatManager.Instance.curHairColor);
     }
 
     public void OffAllHairs(int value)
@@ -34,7 +34,7 @@ public class CustomPlayer : MonoBehaviour
         foreach (GameObject element in hairs)
             element.SetActive(false);
 
-        GameManager.Data.curHair = (MyEnum.Hair)value;
+        PlayerStatManager.Instance.curHair = (MyEnum.Hair)value;
     }
 
     public void ChangeHairColor(int hairColor)
@@ -78,7 +78,7 @@ public class CustomPlayer : MonoBehaviour
                 break;
         }
 
-        GameManager.Data.curHairColor = (MyEnum.HairColor)hairColor;
+        PlayerStatManager.Instance.curHairColor = (MyEnum.HairColor)hairColor;
 
         foreach (GameObject element in hairs)
         {
@@ -96,7 +96,7 @@ public class CustomPlayer : MonoBehaviour
         foreach (GameObject element in uniforms)
             element.SetActive(false);
 
-        GameManager.Data.curUniform = (MyEnum.Uniform)value;
+        PlayerStatManager.Instance.curUniform = (MyEnum.Uniform)value;
     }
 
     public void OffAllHats(int value)
@@ -104,6 +104,6 @@ public class CustomPlayer : MonoBehaviour
         foreach (GameObject element in hats)
             element.SetActive(false);
 
-        GameManager.Data.curHat = (MyEnum.Hat)value;
+        PlayerStatManager.Instance.curHat = (MyEnum.Hat)value;
     }
 }

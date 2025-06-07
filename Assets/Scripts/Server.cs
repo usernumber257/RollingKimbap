@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// holder 와 상호작용하여 holder 가 들고 있는 오브젝트를 다른 holder 에게 건넴
+/// </summary>
 [RequireComponent(typeof(Interactor))]
 [RequireComponent(typeof(Holder))]
 public class Server : MonoBehaviour
@@ -18,6 +17,9 @@ public class Server : MonoBehaviour
 
     public UnityAction OnServe;
 
+    Holder curHolder;
+    Server curServer;
+
     public void Awake()
     {
         interactor = GetComponent<Interactor>();
@@ -28,23 +30,25 @@ public class Server : MonoBehaviour
 
     void DoHoldOrServe(InteractableObject obj)
     {
-        Holder holder = obj.GetComponent<Holder>();
+        curHolder = obj.GetComponent<Holder>();
 
-        if (holder == null)
+        if (curHolder == null)
         {
             holdTarget = null;
             serveTarget = null;
             return;
         }
 
-        if (holder.alreadyHold && myholder.holdingObj == null)
+        if (curHolder.alreadyHold && myholder.holdingObj == null)
         {
             holdTarget = obj;
+            serveTarget = obj;
             TryHold();
         }
-        else if (!holder.alreadyHold && myholder.holdingObj != null)
+        else if (!curHolder.alreadyHold && myholder.holdingObj != null)
         {
             serveTarget = obj;
+            holdTarget = obj;
             TryServe();
         }
     }
@@ -54,17 +58,7 @@ public class Server : MonoBehaviour
         if (myholder.holdingObj != null)
             return;
 
-        /*
-        if (!obj.canBeHolded)
-            return;
-        */
-
-        Holder holder = holdTarget.GetComponent<Holder>();
-
-        if (holder == null)
-            return;
-
-        holder.alreadyHold = false;
+        curHolder.alreadyHold = false;
 
         holdTarget.OnInteract += Hold;
     }
@@ -86,8 +80,7 @@ public class Server : MonoBehaviour
             return;
         }
 
-        Debug.Log("hold");
-
+        //다른 holder 로 부터 건네받음
         myholder.Hold(holdTarget.GetComponent<Holder>().Give());
         myholder.alreadyHold = true;
 
@@ -104,11 +97,6 @@ public class Server : MonoBehaviour
 
     void TryServe()
     {
-        /*
-        if (obj.canBeHolded)
-            return;
-        */
-
         if (serveTarget == null)
             return;
 
@@ -124,10 +112,9 @@ public class Server : MonoBehaviour
         {
             if (serveTarget != null)
                 serveTarget.OnInteract -= Serve;
+
             return;
         }
-
-        Debug.Log("serve");
 
         serveTarget.GetComponent<Holder>().Hold(myholder.Give());
         OnServe?.Invoke();

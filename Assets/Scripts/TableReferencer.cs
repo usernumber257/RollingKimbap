@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeatManager : MonoBehaviour
+/// <summary>
+/// 게임 씬 내의 테이블에 대한 참조를 합니다.
+/// </summary>
+public class TableReferencer : MonoBehaviour
 {
     public GameObject[] table = new GameObject[6];
     public Seat[] seats = new Seat[12];
@@ -12,6 +15,8 @@ public class SeatManager : MonoBehaviour
     {
         for (int i = 1; i < table.Length; i++)
             table[i].gameObject.SetActive(false);
+
+        GameManager.Seat.RegisterTableReferencer(this);
     }
 
     public void ShowNewSeat()
