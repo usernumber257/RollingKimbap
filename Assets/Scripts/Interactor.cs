@@ -19,7 +19,6 @@ public class Interactor : MonoBehaviour
         {
             curInteractObj = newInteractObj;
             curInteractObj.TryInteract(true);
-            Debug.Log(curInteractObj.transform.parent.gameObject.name);
             OnTryInteract?.Invoke(curInteractObj);
         }
     }

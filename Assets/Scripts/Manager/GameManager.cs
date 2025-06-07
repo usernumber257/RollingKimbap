@@ -128,7 +128,7 @@ public class GameManager : Singleton<GameManager>
             Login.Instance.TempLogin();
 #else
             Login.Instance.CustomLogin();
-            Backend.BMember.UpdateNickname(data.nickname);
+            Backend.BMember.UpdateNickname(PlayerStatManager.Instance.nickname);
 #endif
             PlayerStatManager.Instance.Timer(true);
 

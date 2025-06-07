@@ -94,6 +94,10 @@ public class FoodStacker : MonoBehaviour
 
         holder.Hold(newFood.gameObject);
 
+        //김밥이 바로 안 집히는 경우가 있음
+        holder.GetComponent<Collider2D>().enabled = false;
+        holder.GetComponent<Collider2D>().enabled = true;
+
         Stop();
     }
 
