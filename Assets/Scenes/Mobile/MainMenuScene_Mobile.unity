@@ -1834,6 +1834,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8694623161710379167, guid: 6848f1702d559d7439c2922505aa25c2, type: 3}
+      propertyPath: maxTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694623161710379167, guid: 6848f1702d559d7439c2922505aa25c2, type: 3}
+      propertyPath: minTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694623161710379167, guid: 6848f1702d559d7439c2922505aa25c2, type: 3}
+      propertyPath: fullAnger
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694623161710379167, guid: 6848f1702d559d7439c2922505aa25c2, type: 3}
+      propertyPath: halfAnger
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694623161710379167, guid: 6848f1702d559d7439c2922505aa25c2, type: 3}
+      propertyPath: fullAngerTime
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694623161710379167, guid: 6848f1702d559d7439c2922505aa25c2, type: 3}
+      propertyPath: halfAngerTime
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14988,6 +15012,8 @@ MonoBehaviour:
   ranking_eng: {fileID: 46650103}
   quitGame_kor: {fileID: 1355314456}
   quitGame_eng: {fileID: 1156755322}
+  nickname_kor: {fileID: 1266334239}
+  nickname_eng: {fileID: 256602755}
 --- !u!4 &1343513759
 Transform:
   m_ObjectHideFlags: 0

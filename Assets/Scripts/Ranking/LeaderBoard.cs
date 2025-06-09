@@ -17,7 +17,7 @@ public class Leaderboard : MonoBehaviour
 
     RankingView rankingView;
 
-    private void OnEnable()
+    private void Start()
     {
         rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
         GetLeaderboard();

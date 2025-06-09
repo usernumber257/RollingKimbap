@@ -26,6 +26,9 @@ public class Localization_mainmenu: MonoBehaviour
     public GameObject quitGame_kor;
     public GameObject quitGame_eng;
 
+    public GameObject nickname_kor;
+    public GameObject nickname_eng;
+
     private void Start()
     {
         Localization();
@@ -62,6 +65,9 @@ public class Localization_mainmenu: MonoBehaviour
         quitGame_kor.SetActive(isKor);
         quitGame_eng.SetActive(!isKor);
 #endif
+
+        nickname_kor.SetActive(isKor);
+        nickname_eng.SetActive(!isKor);
     }
 
     

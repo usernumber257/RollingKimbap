@@ -69,5 +69,7 @@ public class Login
         {
             Debug.LogError("로그인이 실패했습니다. : " + login);
         }
+
+        Backend.BMember.UpdateNickname(PlayerStatManager.Instance.nickname);
     }
 }

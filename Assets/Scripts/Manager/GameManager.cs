@@ -13,33 +13,33 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] int initCoin = 100;
     [Header("손님 출현 최소, 최대 시간")]
     [Range(1f, 20f)]
-    [SerializeField] float minTime = 5f;
+    [SerializeField] float minTime = 20f;
     [Range(2f, 40f)]
-    [SerializeField] float maxTime = 10f;
+    [SerializeField] float maxTime = 30f;
     [Header("손님 기분에 따른 인기도 감소, 증가")]
     [Range(-10, 0)]
-    [SerializeField] int halfAnger = -2;
+    [SerializeField] int halfAnger = -1;
     [Range(-10, 0)]
-    [SerializeField] int fullAnger = -3;
+    [SerializeField] int fullAnger = -2;
     [Range(0, 20)]
-    [SerializeField] int happy = 2;
+    [SerializeField] int happy = 1;
     [Header("분노 타이머")]
-    [Range(0.5f, 60f)]
-    [SerializeField] float halfAngerTime = 35f;
-    [Range(0.5f, 60f)]
-    [SerializeField] float fullAngerTime = 50f;
+    [Range(0.5f, 100f)]
+    [SerializeField] float halfAngerTime = 45f;
+    [Range(0.5f, 120f)]
+    [SerializeField] float fullAngerTime = 70f;
 
     [ContextMenu("값 초기화")]
     public void InitValues()
     {
         initCoin = 100;
-        minTime = 5f;
-        maxTime = 10f;
-        halfAnger = -2;
-        fullAnger = -3;
+        minTime = 8f;
+        maxTime = 15f;
+        halfAnger = -1;
+        fullAnger = -2;
         happy = 2;
-        halfAngerTime = 35f;
-        fullAngerTime = 50f;
+        halfAngerTime = 45f;
+        fullAngerTime = 70f;
     }
 
     static SeatingManager seat;
@@ -58,10 +58,9 @@ public class GameManager : Singleton<GameManager>
         SceneManager.sceneLoaded += DetectSceneChange;
 
         Backend.Initialize();
-        Login.Instance.TempLogin();
 
-        //string googlehash = Backend.Utils.GetGoogleHash();
-        //Debug.Log("구글 해시 키 : " + googlehash);
+        string googlehash = Backend.Utils.GetGoogleHash();
+        Debug.Log("구글 해시 키 : " + googlehash);
     }
 
 
@@ -122,17 +121,15 @@ public class GameManager : Singleton<GameManager>
         else if (scene.name == "GameScene" || scene.name == "GameScene_Mobile")
         {
             InitManagers();
+
 #if UNITY_EDITOR
             Login.Instance.TempLogin();
-#else
-           if (PlayerStatManager.Instance.nickname == "temp")
+#endif
+#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
+            if (PlayerStatManager.Instance.nickname == "temp")
                 Login.Instance.TempLogin();
             else
-            {
                 Login.Instance.CustomLogin();
-                Backend.BMember.UpdateNickname(PlayerStatManager.Instance.nickname);
-            }
-
 #endif
             PlayerStatManager.Instance.Timer(true);
 

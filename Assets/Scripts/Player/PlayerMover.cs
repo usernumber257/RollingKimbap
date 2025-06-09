@@ -7,7 +7,7 @@ using static MyEnum;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    [SerializeField] float speed = 0.12f;
+    [SerializeField] float speed = 0.09f;
     [SerializeField] float moveSensitive = 0.1f;
 
     [SerializeField] GameObject hat;
