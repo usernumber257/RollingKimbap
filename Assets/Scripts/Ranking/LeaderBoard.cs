@@ -1,4 +1,5 @@
 using UnityEngine;
+#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
 using BackEnd;
 
 /// <summary>
@@ -119,3 +120,4 @@ public class Leaderboard : MonoBehaviour
         }
     }
 }
+#endif

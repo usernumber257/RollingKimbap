@@ -1,4 +1,4 @@
-using BackEnd;
+//using BackEnd;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +63,9 @@ public class PlayerStatManager : Singleton<PlayerStatManager>
 
     public void UpdateRank()
     {
+        #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
         Leaderboard.Instance.UpdateLeaderboard(curCoin, $"{spentTime}|{(int)curHair}|{(int)curHairColor}|{(int)curUniform}|{(int)curHat}");
+#endif
     }
 
     public UnityAction OnCoinChanged;

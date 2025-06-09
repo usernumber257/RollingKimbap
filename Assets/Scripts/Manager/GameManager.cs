@@ -1,4 +1,4 @@
-using BackEnd;
+//using BackEnd;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -57,10 +57,14 @@ public class GameManager : Singleton<GameManager>
 
         SceneManager.sceneLoaded += DetectSceneChange;
 
+#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
+
         Backend.Initialize();
 
         string googlehash = Backend.Utils.GetGoogleHash();
         Debug.Log("구글 해시 키 : " + googlehash);
+#endif
+
     }
 
 
@@ -113,7 +117,9 @@ public class GameManager : Singleton<GameManager>
 
             PlayerStatManager.Instance.Timer(false);
 
+            #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
             Login.Instance.TempLogin();
+#endif
 
             if (SettingManager.Instance.ControllerCanvas != null)
                 SettingManager.Instance.ControllerCanvas.gameObject.SetActive(false);
@@ -121,9 +127,10 @@ public class GameManager : Singleton<GameManager>
         else if (scene.name == "GameScene_Window" || scene.name == "GameScene_Mobile" || scene.name == "GameScene_Web")
         {
             InitManagers();
-
+            #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
 #if UNITY_EDITOR
             Login.Instance.TempLogin();
+#endif
 #endif
 #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
             if (PlayerStatManager.Instance.nickname == "temp")

@@ -48,7 +48,7 @@ public class PlayerMover : MonoBehaviour
     {
         if (!doMove)
             return;
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR || UNITY_WEBGL
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 #endif

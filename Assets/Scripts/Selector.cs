@@ -23,7 +23,7 @@ public class Selecter : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR || UNITY_WEBGL
         if (Input.GetMouseButtonDown(0))
             Select();
 #endif

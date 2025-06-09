@@ -1,3 +1,4 @@
+#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
 using UnityEngine;
 using BackEnd;
 
@@ -73,3 +74,4 @@ public class Login
         Backend.BMember.UpdateNickname(PlayerStatManager.Instance.nickname);
     }
 }
+#endif

@@ -7,6 +7,13 @@ public class SettingUI : UIBase
     [SerializeField] BackToMain backToMain;
 
 
+    private void Start()
+    {
+        SetBGM(0.2f);
+        SetSFX(0.2f);
+    }
+
+
     public override void UIManager_Open()
     {
         base.UIManager_Open();
