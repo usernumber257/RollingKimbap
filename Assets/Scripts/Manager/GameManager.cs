@@ -12,9 +12,9 @@ public class GameManager : Singleton<GameManager>
     [Range(0, 1000)]
     [SerializeField] int initCoin = 100;
     [Header("손님 출현 최소, 최대 시간")]
-    [Range(1f, 20f)]
+    [Range(1f, 30f)]
     [SerializeField] float minTime = 20f;
-    [Range(2f, 40f)]
+    [Range(2f, 60f)]
     [SerializeField] float maxTime = 30f;
     [Header("손님 기분에 따른 인기도 감소, 증가")]
     [Range(-10, 0)]
@@ -33,8 +33,8 @@ public class GameManager : Singleton<GameManager>
     public void InitValues()
     {
         initCoin = 100;
-        minTime = 8f;
-        maxTime = 15f;
+        minTime = 20f;
+        maxTime = 30f;
         halfAnger = -1;
         fullAnger = -2;
         happy = 2;
@@ -106,7 +106,7 @@ public class GameManager : Singleton<GameManager>
     {
         curScene = scene;
 
-        if (scene.name == "MainMenuScene" || scene.name == "MainMenuScene_Mobile")
+        if (scene.name == "MainMenuScene_Window" || scene.name == "MainMenuScene_Mobile" || scene.name == "MainMenuScene_Web")
         {
             DestroyManagers();
             PlayerStatManager.Instance.ResetClothes();
@@ -118,7 +118,7 @@ public class GameManager : Singleton<GameManager>
             if (SettingManager.Instance.ControllerCanvas != null)
                 SettingManager.Instance.ControllerCanvas.gameObject.SetActive(false);
         }
-        else if (scene.name == "GameScene" || scene.name == "GameScene_Mobile")
+        else if (scene.name == "GameScene_Window" || scene.name == "GameScene_Mobile" || scene.name == "GameScene_Web")
         {
             InitManagers();
 

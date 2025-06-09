@@ -29,8 +29,6 @@ public class SettingUI : UIBase
 
         mixer.SetFloat("BGM", temp);
         PlayerPrefs.SetFloat("BGM", value);
-
-        Debug.Log(PlayerPrefs.GetFloat("BGM"));
     }
 
     public void SetSFX(float value)
@@ -49,6 +47,9 @@ public class SettingUI : UIBase
 
     public void SetLanguage(bool isKor)
     {
+        if (SettingManager.Instance.isKor == isKor)
+            return;
+
         SettingManager.Instance.isKor = isKor;
         SettingManager.Instance.OnLanguageChanged.Invoke();
 

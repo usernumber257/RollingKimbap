@@ -59,15 +59,17 @@ public class Localization_mainmenu: MonoBehaviour
         decide_kor.SetActive(isKor);
         decide_eng.SetActive(!isKor);
 
+#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
         ranking_kor.SetActive(isKor);
         ranking_eng.SetActive(!isKor);
-#if UNITY_IOS || UNITY_ANDROID
+
         quitGame_kor.SetActive(isKor);
         quitGame_eng.SetActive(!isKor);
-#endif
 
         nickname_kor.SetActive(isKor);
         nickname_eng.SetActive(!isKor);
+#endif
+
     }
 
     

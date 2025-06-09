@@ -1647,7 +1647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6253159732931261925}
   m_Layer: 5
-  m_Name: Controller
+  m_Name: Controller_forMobile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

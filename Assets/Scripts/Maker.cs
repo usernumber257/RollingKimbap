@@ -133,7 +133,7 @@ public abstract class Maker : MonoBehaviour
 
     bool Keyboard_W()
     {
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
         return Input.GetKeyDown(KeyCode.W);
 #endif
 #if UNITY_ANDROID || UNITY_IOS
@@ -143,7 +143,7 @@ public abstract class Maker : MonoBehaviour
 
     bool Keyboard_S()
     {
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
         return Input.GetKeyDown(KeyCode.S);
 #endif
 #if UNITY_ANDROID || UNITY_IOS
@@ -153,7 +153,7 @@ public abstract class Maker : MonoBehaviour
 
     bool Keyboard_A()
     {
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
         return Input.GetKeyDown(KeyCode.A);
 #endif
 #if UNITY_ANDROID || UNITY_IOS
@@ -163,7 +163,7 @@ public abstract class Maker : MonoBehaviour
 
     bool Keyboard_D()
     {
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
         return Input.GetKeyDown(KeyCode.D);
 #endif
 #if UNITY_ANDROID || UNITY_IOS

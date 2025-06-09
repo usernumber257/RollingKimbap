@@ -8,8 +8,6 @@ public class NicknameUI : UIBase
     [SerializeField] GameObject text_kor;
     [SerializeField] TMP_InputField inputField;
     [SerializeField] Button next;
-    [SerializeField] AudioSource negative;
-    [SerializeField] AudioSource positive;
     [SerializeField] UIBase customPlayer;
 
     protected override void Awake()
@@ -19,11 +17,11 @@ public class NicknameUI : UIBase
         next.onClick.AddListener(() => {
             if (string.IsNullOrWhiteSpace(inputField.text))
             {
-                negative.Play();
+                SoundPlayer.Instance.Play(MyEnum.Sound.Cancel);
                 return;
             }
 
-            positive.Play();
+            SoundPlayer.Instance.Play(MyEnum.Sound.Accept);
             PlayerStatManager.Instance.nickname = inputField.text;
             UIManager.Instance.OpenUI(customPlayer);
         });

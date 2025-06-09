@@ -7,8 +7,9 @@ using static MyEnum;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    [SerializeField] float speed = 0.09f;
     [SerializeField] float moveSensitive = 0.1f;
+
+    float speed = 3.5f;
 
     [SerializeField] GameObject hat;
 
@@ -38,7 +39,7 @@ public class PlayerMover : MonoBehaviour
         server.OnServe -= WearHat;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -81,12 +82,12 @@ public class PlayerMover : MonoBehaviour
         else
             hat.transform.localScale = Vector3.one;
 
-            /*
-            if (movement.magnitude < moveSensitive)
-                return;
-            */
+        /*
+        if (movement.magnitude < moveSensitive)
+            return;
+        */
 
-            rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed);
+        rb.MovePosition(transform.position + new Vector3(movement.x, movement.y, 0f) * speed * Time.deltaTime);
     }
 
     void WearHat()
