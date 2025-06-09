@@ -115,8 +115,6 @@ public class GameManager : Singleton<GameManager>
             PlayerStatManager.Instance.Timer(false);
 
             Login.Instance.TempLogin();
-            Leaderboard.Instance.GetLeaderboard();
-
 
             if (SettingManager.Instance.ControllerCanvas != null)
                 SettingManager.Instance.ControllerCanvas.gameObject.SetActive(false);
@@ -127,8 +125,14 @@ public class GameManager : Singleton<GameManager>
 #if UNITY_EDITOR
             Login.Instance.TempLogin();
 #else
-            Login.Instance.CustomLogin();
-            Backend.BMember.UpdateNickname(PlayerStatManager.Instance.nickname);
+           if (PlayerStatManager.Instance.nickname == "temp")
+                Login.Instance.TempLogin();
+            else
+            {
+                Login.Instance.CustomLogin();
+                Backend.BMember.UpdateNickname(PlayerStatManager.Instance.nickname);
+            }
+
 #endif
             PlayerStatManager.Instance.Timer(true);
 

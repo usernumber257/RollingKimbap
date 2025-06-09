@@ -20,6 +20,7 @@ public class Leaderboard : MonoBehaviour
     private void OnEnable()
     {
         rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
+        GetLeaderboard();
     }
 
     public void UpdateLeaderboard(int score, string extraData)
@@ -97,9 +98,7 @@ public class Leaderboard : MonoBehaviour
 
         //UI 에 디스플레이 하기
         if (rankingView == null)
-        rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
-
-        rankingView.Clear();
+            rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
 
         foreach (BackEnd.Leaderboard.UserLeaderboardItem item in bro.GetUserLeaderboardList())
         {

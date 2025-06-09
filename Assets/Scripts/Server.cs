@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -56,10 +57,9 @@ public class Server : MonoBehaviour
     void TryHold()
     {
         if (myholder.holdingObj != null)
-            return;
+            holdTarget.OnInteract -= Hold; //이전 타겟과의 이벤트 해지
 
         curHolder.alreadyHold = false;
-
         holdTarget.OnInteract += Hold;
     }
 
@@ -67,8 +67,10 @@ public class Server : MonoBehaviour
     {
         if (!isInteracted || holdTarget == null)
         {
+            //이전 타겟과의 이벤트 해지를 위함
             if (holdTarget != null)
-                holdTarget.OnInteract -= Hold;
+                holdTarget.OnInteract -= Hold; 
+
             return;
         }
 
@@ -77,6 +79,7 @@ public class Server : MonoBehaviour
         if (targatHolder == null)
         {
             holdTarget.OnInteract -= Hold;
+
             return;
         }
 
@@ -85,8 +88,8 @@ public class Server : MonoBehaviour
         myholder.alreadyHold = true;
 
         holdTarget.OnInteract -= Hold;
-        GetComponent<Collider2D>().enabled = false; //Hold 하면 다시 바로 Serve 할 수 있게
-        GetComponent<Collider2D>().enabled = true;
+
+        StartCoroutine(ColliderEnableTime());
 
         /*
         Collider2D holdTargetCol = holdTarget.GetComponent<Collider2D>(); //들고있을 땐 다른 사물과 Interact 안 되게
@@ -110,6 +113,7 @@ public class Server : MonoBehaviour
     {
         if (!isInteracted || serveTarget == null)
         {
+            //이전 타겟과의 이벤트 해지를 위함
             if (serveTarget != null)
                 serveTarget.OnInteract -= Serve;
 
@@ -121,13 +125,23 @@ public class Server : MonoBehaviour
 
         serveTarget.OnInteract -= Serve;
 
-        GetComponent<Collider2D>().enabled = false; //Serve 하면 다시 바로 Hold 할 수 있게
-        GetComponent<Collider2D>().enabled = true;
+        StartCoroutine(ColliderEnableTime());
 
         /*
         Collider2D holdTargetCol = holdTarget.GetComponent<Collider2D>(); //다른 사물 위에 놓여졌을 땐 다시 들 수 있도록 콜라이더 켜주기
         if (holdTargetCol != null)
             holdTargetCol.enabled = true;
         */
+    }
+
+    /// <summary>
+    /// Serve 또는 Hold 했던 대상과 바로 Serve 또는 Hold 를 시도하기 위함
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ColliderEnableTime()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        yield return null;
+        GetComponent<Collider2D>().enabled = true;
     }
 }

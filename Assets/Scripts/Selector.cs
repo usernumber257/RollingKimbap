@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,7 +42,7 @@ public class Selecter : MonoBehaviour
                 selectable = hits[i].collider.gameObject.GetComponent<SelectableObject>();
 
                 if (selectable != null)
-                    selectable.OnSelected?.Invoke(true);
+                    selectable.OnSelect();
 
                 break;
             }
@@ -63,10 +60,7 @@ public class Selecter : MonoBehaviour
                 selectable = hits[i].collider.gameObject.GetComponent<SelectableObject>();
 
                 if (selectable != null)
-                {
-                    Debug.Log($"{selectable.gameObject.name}");
-                    selectable.OnSelected?.Invoke(true);
-                }
+                    selectable.OnSelect();
 
                 break;
             }

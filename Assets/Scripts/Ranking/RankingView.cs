@@ -20,13 +20,4 @@ public class RankingView : MonoBehaviour
         newGo.GetComponent<RankingContent>().Init(rank, coin, nickname, playTime, hair, hairColor, uniform, hat);
         contents.Add(newGo);
     }
-
-    public void Clear()
-    {
-        for (int i = 0; i < contents.Count; i++)
-        {
-            Destroy(contents[i].gameObject);
-            contents.RemoveAt(i);
-        }
-    }
 }

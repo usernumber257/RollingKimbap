@@ -284,6 +284,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1386526396457881333, guid: b27747de4c5401c4da427c083f29bdca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905391530761232426, guid: b27747de4c5401c4da427c083f29bdca, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3786777873810948315, guid: b27747de4c5401c4da427c083f29bdca, type: 3}
       propertyPath: move
       value: 
@@ -292,6 +300,14 @@ PrefabInstance:
       propertyPath: choice
       value: 
       objectReference: {fileID: 266745257346285847}
+    - target: {fileID: 4362947274765148635, guid: b27747de4c5401c4da427c083f29bdca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037213905758019155, guid: b27747de4c5401c4da427c083f29bdca, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6456842810814328204, guid: b27747de4c5401c4da427c083f29bdca, type: 3}
       propertyPath: m_SortingOrder
       value: 51

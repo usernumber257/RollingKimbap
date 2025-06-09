@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(SelectableObject))]
 [RequireComponent(typeof(Collider2D))]
@@ -28,8 +25,9 @@ public class InteractableObject : MonoBehaviour
         selectable = GetComponent<SelectableObject>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        selectable.OnSelected -= Selected;
         selectable.OnSelected += Selected;
     }
 
@@ -44,7 +42,12 @@ public class InteractableObject : MonoBehaviour
     
     void Selected(bool isSelected)
     {
-        Debug.Log($"{gameObject.name} selected");
+        if (this.isSelected && isSelected)
+        {
+            //연속 상호작용 가능하게
+            this.isSelected = false;
+        }
+
         this.isSelected = isSelected;
 
         Interact();
@@ -54,8 +57,6 @@ public class InteractableObject : MonoBehaviour
     {
         if (!isSelected || !canInteract)
             return;
-
-        Debug.Log($"{gameObject.name} interacted");
 
         OnInteract?.Invoke(true);
         SoundPlayer.Instance.Play(MyEnum.Sound.Click);
@@ -90,7 +91,7 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    float speed = 0.005f;
+    float speed = 1.5f;
     Color originColor = Color.white;
     Color toColor = Color.gray;
     Color curColor;
@@ -108,7 +109,7 @@ public class InteractableObject : MonoBehaviour
                 {
                     curColor = Color.Lerp(originColor, toColor, progress);
                     sprite.color = curColor;
-                    progress += speed;
+                    progress += speed * Time.deltaTime;
                     yield return null;
                 }
                 else
@@ -123,7 +124,7 @@ public class InteractableObject : MonoBehaviour
                 {
                     curColor = Color.Lerp(toColor, originColor, progress);
                     sprite.color = curColor;
-                    progress += speed;
+                    progress += speed * Time.deltaTime;
                     yield return null;
                 }
                 else

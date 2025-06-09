@@ -1857,6 +1857,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1303301043}
     m_Modifications:
+    - target: {fileID: 1127468200191203622, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1240881070296710462, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_Name
       value: Shelf (4)
@@ -2542,6 +2546,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1303301043}
     m_Modifications:
+    - target: {fileID: 1127468200191203622, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1240881070296710462, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_Name
       value: Shelf (3)
@@ -8236,6 +8244,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 552043011621088769, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1214382598299584193, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
@@ -8267,6 +8279,14 @@ PrefabInstance:
     - target: {fileID: 2616278937679926111, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SettingUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633599127479808478, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3679963440978291690, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4792579882393029849, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
       propertyPath: m_Name
@@ -8334,6 +8354,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6492799714940864850, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218652978963715369, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8623177322867731566, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
@@ -9749,6 +9773,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1303301043}
     m_Modifications:
+    - target: {fileID: 1127468200191203622, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1240881070296710462, guid: 9675b5a109c9b2940be64550652759ee, type: 3}
       propertyPath: m_Name
       value: Shelf (2)

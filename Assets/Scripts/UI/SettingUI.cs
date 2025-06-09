@@ -11,7 +11,7 @@ public class SettingUI : UIBase
     {
         base.UIManager_Open();
 
-        if (GameManager.Instance.curScene.name != "GameScene_Mobile")
+        if (GameManager.Instance.curScene.name == "MainMenuScene_Mobile")
             SettingManager.Instance.ControllerCanvas.gameObject.SetActive(true);
     }
 
@@ -19,7 +19,7 @@ public class SettingUI : UIBase
     {
         base.UIManager_Close();
 
-        if (GameManager.Instance.curScene.name != "GameScene_Mobile")
+        if (GameManager.Instance.curScene.name == "MainMenuScene_Mobile")
             SettingManager.Instance.ControllerCanvas.gameObject.SetActive(false);
     }
 
