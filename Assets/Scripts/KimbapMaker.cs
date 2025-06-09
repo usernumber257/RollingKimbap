@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableObject))]
@@ -44,9 +41,6 @@ public class KimbapMaker : Maker
         OnKeyDown -= FoodStacker.StackIngredients;
 
         player.GetComponent<PlayerMover>().StopMove(false);
-
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<Collider2D>().enabled = true;
     }
     
 }

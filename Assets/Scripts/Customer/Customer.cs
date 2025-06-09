@@ -345,6 +345,9 @@ public class ExitState : State
     int moveIndex = 0;
     void MoveToExit()
     {
+        if (moveIndex < 0)
+            return;
+
         customer.transform.position = Vector2.MoveTowards(customer.transform.position, customer.mySeat.navPivot[moveIndex].position, customer.Speed * Time.deltaTime);
 
         if (Vector2.Distance(customer.transform.position, customer.mySeat.navPivot[moveIndex].position) < 0.001f)

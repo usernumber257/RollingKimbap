@@ -95,9 +95,9 @@ public class FoodStacker : MonoBehaviour
 
         holder.Hold(newFood.gameObject);
 
+
         //김밥이 바로 안 집히는 경우가 있음
         StartCoroutine(HolderEnableTime());
-
         Stop();
     }
 
@@ -116,7 +116,6 @@ public class FoodStacker : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
             pool[i].gameObject.SetActive(false);
     }
-
     IEnumerator HolderEnableTime()
     {
         holder.GetComponent<Collider2D>().enabled = false;

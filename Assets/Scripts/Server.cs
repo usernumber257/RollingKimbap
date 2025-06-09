@@ -75,7 +75,7 @@ public class Server : MonoBehaviour
         }
 
         Holder targatHolder = holdTarget.GetComponent<Holder>();
-
+        
         if (targatHolder == null)
         {
             holdTarget.OnInteract -= Hold;
