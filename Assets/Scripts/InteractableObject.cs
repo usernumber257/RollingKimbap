@@ -103,6 +103,9 @@ public class InteractableObject : MonoBehaviour
 
         while (true)
         {
+            if (!canInteract)
+                break;
+
             if (hover)
             {
                 if (progress < 1f)

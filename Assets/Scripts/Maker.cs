@@ -52,8 +52,10 @@ public abstract class Maker : MonoBehaviour
         if (foodStacker.CurFood == null)
             return;
 
+        /*
         foreach (Ingredient element in foodStacker.CurFood.Ingredients)
             fridgeInventory.Store(element, 1);
+        */
     }
 
     //키보드 미니게임 ---------------------------------

@@ -20,7 +20,7 @@ public class KimbapMaker : Maker
     {
         if (!isInteracted || FoodStacker.CurFood == null)
         {
-            StopMake();
+           StopMake();
             FoodStacker.Stop();
 
             Done();
