@@ -1,3 +1,5 @@
+using BackEnd;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +11,7 @@ public class NicknameUI : UIBase
     [SerializeField] TMP_InputField inputField;
     [SerializeField] Button next;
     [SerializeField] UIBase customPlayer;
+    [SerializeField] Animator nicknameAlert;
 
     protected override void Awake()
     {
@@ -21,9 +24,25 @@ public class NicknameUI : UIBase
                 return;
             }
 
-            SoundPlayer.Instance.Play(MyEnum.Sound.Accept);
-            PlayerStatManager.Instance.nickname = inputField.text;
-            UIManager.Instance.OpenUI(customPlayer);
+            if (inputField.text == "tempUser257")
+            {
+                SoundPlayer.Instance.Play(MyEnum.Sound.Accept);
+                UIManager.Instance.CloseUI(this);
+                UIManager.Instance.OpenUI(customPlayer);
+                return;
+            }
+
+            BackendReturnObject bro = Backend.BMember.CheckNicknameDuplication(inputField.text);
+
+            if (bro.IsSuccess())
+            {
+                SoundPlayer.Instance.Play(MyEnum.Sound.Accept);
+                PlayerStatManager.Instance.nickname = inputField.text;
+                UIManager.Instance.CloseUI(this);
+                UIManager.Instance.OpenUI(customPlayer);
+            }
+            else
+                nicknameAlert.SetTrigger("Play");
         });
 
     }

@@ -61,7 +61,7 @@ public class UIManager : Singleton<UIManager>
             curOpenUI.UIManager_Close();
     }
 
-    void CloseAllUI()
+    public void CloseAllUI()
     {
         for (int i = 0; i < uis.Count; i++)
         {

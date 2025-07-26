@@ -16,6 +16,7 @@ public class SettingUI : UIBase
 
     public override void UIManager_Open()
     {
+        UIManager.Instance.CloseAllUI();
         base.UIManager_Open();
 
         if (GameManager.Instance.curScene.name == "MainMenuScene_Mobile")

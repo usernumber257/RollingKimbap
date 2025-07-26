@@ -152,9 +152,4 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.sceneLoaded -= DetectSceneChange;
     }
-
-    public void OnExitDetected()
-    {
-        PlayerStatManager.Instance.UpdateRank();
-    }
 }

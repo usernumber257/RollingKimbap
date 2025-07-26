@@ -69,13 +69,19 @@ public class PlayerMover : MonoBehaviour
             movement.x = 0;
 #endif
 
-        if (movement.x != 0 || movement.y != 0)
-            anim.SetBool("IsMove", true);
-        else
-            anim.SetBool("IsMove", false);
+        bool isMoving = movement.x != 0 || movement.y != 0;
+        anim.SetBool("IsMove", isMoving);
 
-        anim.SetFloat("xDir", movement.x);
-        anim.SetFloat("yDir", movement.y);
+        if (movement.y != 0)
+        {
+            anim.SetFloat("xDir", 0);
+            anim.SetFloat("yDir", movement.y > 0 ? 1 : -1);
+        }
+        else if (movement.x != 0)
+        {
+            anim.SetFloat("xDir", movement.x > 0 ? 1 : -1);
+            anim.SetFloat("yDir", 0);
+        }
 
         if (movement.x < 0)
             hat.transform.localScale = new Vector3(-1f, 1f, 1f);

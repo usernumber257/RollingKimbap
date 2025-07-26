@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class BackToMain : MonoBehaviour
 {
+    public GameObject sure;
+    public void Sure()
+    {
+        sure.SetActive(true);
+        UIManager.Instance.CloseAllUI();
+    }
+
     public void Back()
     {
 #if UNITY_STANDALONE_WIN

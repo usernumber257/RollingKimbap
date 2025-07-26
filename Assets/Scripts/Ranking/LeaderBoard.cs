@@ -1,4 +1,6 @@
 using UnityEngine;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
+
 #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
 using BackEnd;
 
@@ -24,7 +26,7 @@ public class Leaderboard : MonoBehaviour
         GetLeaderboard();
     }
 
-    public void UpdateLeaderboard(int score, string extraData)
+    public bool UpdateLeaderboard(int score, string extraData)
     {
         string tableName = "PlayerRanking";
         string rowIndate = string.Empty;
@@ -38,7 +40,7 @@ public class Leaderboard : MonoBehaviour
         if (bro.IsSuccess() == false)
         {
             Debug.LogError(bro);
-            return;
+            return false;
         }
 
         if (bro.FlattenRows().Count > 0)
@@ -56,14 +58,16 @@ public class Leaderboard : MonoBehaviour
             else
             {
                 Debug.LogError(bro2);
-                return;
+                return false;
             }
         }
 
         if (rowIndate == string.Empty)
         {
-            return;
+            return false;
         }
+
+        bool result = true;
 
         Backend.Leaderboard.User.UpdateMyDataAndRefreshLeaderboard("리더보드 uuid", "테이블 이름", "갱신할 row inDate", param, callback =>
         {
@@ -71,12 +75,20 @@ public class Leaderboard : MonoBehaviour
             if (rankBro.IsSuccess())
             {
                 Debug.Log("리더보드 등록 성공");
+                result = true;
             }
             else
             {
                 Debug.Log("리더보드 등록 실패 : " + rankBro);
+
+                if (!result)
+                    result = false;
             }
         });
+
+        Debug.Log(result);
+
+        return result;
     }
 
     /// <summary>

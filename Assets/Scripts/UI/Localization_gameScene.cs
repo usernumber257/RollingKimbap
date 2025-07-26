@@ -21,6 +21,11 @@ public class Localization_gameScene : MonoBehaviour
     public GameObject backToMainText_no_kor;
     public GameObject backToMainText_no_eng;
 
+    public GameObject rankingResult_success_kor;
+    public GameObject rankingResult_success_eng;
+    public GameObject rankingResult_fail_kor;
+    public GameObject rankingResult_fail_eng;
+
     private void Start()
     {
         Localization();
@@ -57,5 +62,10 @@ public class Localization_gameScene : MonoBehaviour
 
         backToMainText_no_kor.SetActive(isKor);
         backToMainText_no_eng.SetActive(!isKor);
+
+        rankingResult_success_kor.SetActive(isKor);
+        rankingResult_success_eng.SetActive(!isKor);
+        rankingResult_fail_kor.SetActive(isKor);
+        rankingResult_fail_eng.SetActive(!isKor);
     }
 }
