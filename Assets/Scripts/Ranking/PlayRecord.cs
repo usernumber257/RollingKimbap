@@ -1,18 +1,15 @@
 using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 
-//using BackEnd;
 
-public class UserData
+public class PlayRecord
 {
-    public int rank;
+    public string customId; //삭제할 때를 위한 고유 ID
     public string nickName;
     public int coin;
-
-    public float spentTime;
+    public float playTime;
     public int hair;
     public int hairColor;
     public int uniform;
     public int hat;
+    public string playDate;
 }

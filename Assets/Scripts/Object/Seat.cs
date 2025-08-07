@@ -22,6 +22,12 @@ public class Seat : MonoBehaviour
     private void Awake()
     {
         SetNavPivot();
+        place.OnHold += CompareOrder;
+    }
+
+    private void OnDisable()
+    {
+        place.OnHold -= CompareOrder;
     }
 
     void SetNavPivot()
@@ -40,7 +46,6 @@ public class Seat : MonoBehaviour
     public void Sit(GameObject go)
     {
         chair.Hold(go);
-        place.OnHold += CompareOrder;
 
         //레이어 작업
         chairModel.sortingOrder = -1;
@@ -60,7 +65,6 @@ public class Seat : MonoBehaviour
             return;
 
         myFoodType = readiedFood.foodType;
-        place.OnHold -= CompareOrder;
     }
 
     public void Clear()

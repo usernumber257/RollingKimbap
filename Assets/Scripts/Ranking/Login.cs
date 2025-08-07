@@ -17,7 +17,7 @@ public class Login
     public string tempUser = "tempUser257";
 
     /// <summary>
-    /// 게임에 들어가기 전 랭킹을 보기위해 이미 존재하는 아이디로 임시 로그인합니다. 또한 에디터에서 디버깅을 위해 쓰입니다.
+    /// 임시 로그인입니다. 디버깅용으로 쓰입니다
     /// </summary>
     public void TempLogin()
     {
@@ -35,6 +35,8 @@ public class Login
         if (login.IsSuccess())
         {
             Debug.Log("임시 로그인이 성공했습니다. : " + login);
+
+            Leaderboard.Instance.GetLeaderboard();
         }
         else
         {
@@ -45,13 +47,13 @@ public class Login
     }
 
     /// <summary>
-    /// 입력된 닉네임과 겹치지 않는 id 를 부여받아 로그인합니다.
+    /// 사용자는 구글 메일로 로그인을 시도하며, 구글 메일을 아이디로 등록합니다.
     /// </summary>
     public void CustomLogin()
     {
-        string customID = (System.Guid.NewGuid().ToString("N")).Substring(0, 14);
+        string myID = PlayerPrefs.GetString("UserId");
 
-        BackendReturnObject sign = Backend.BMember.CustomSignUp(customID, "0000");
+        BackendReturnObject sign = Backend.BMember.CustomSignUp(myID, "0000");
 
         if (sign.IsSuccess())
         {
@@ -60,11 +62,13 @@ public class Login
 
         Debug.Log("로그인을 요청합니다.");
 
-        var login = Backend.BMember.CustomLogin(customID, "0000");
+        var login = Backend.BMember.CustomLogin(myID, "0000");
 
         if (login.IsSuccess())
         {
             Debug.Log("로그인이 성공했습니다. : " + login);
+
+            Leaderboard.Instance.GetLeaderboard();
         }
         else
         {

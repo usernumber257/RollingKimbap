@@ -11,11 +11,12 @@ public class VersionManager : MonoBehaviour
 
     private void Start()
     {
+        updateUIbody.SetActive(false);
+
         //에디터, 윈도우, 웹은 버전 조회 안 해두 됨
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_WEBGL
         return;
 #endif 
-        updateUIbody.SetActive(false);
 
         CheckVersion();
 

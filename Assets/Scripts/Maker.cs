@@ -40,7 +40,7 @@ public abstract class Maker : MonoBehaviour
         foodStacker.makingFood = true;
     }
 
-    public void StopMake()
+    protected void StopMake()
     {
         Debug.Log("stopMake");
 
@@ -49,11 +49,13 @@ public abstract class Maker : MonoBehaviour
 
         if (minigameRoutine != null)
             StopCoroutine(minigameRoutine);
+    }
 
-        //만들기를 취소하면 인벤토리에 다시 재료들이 원상복구 되게
-        if (foodStacker.CurFood == null)
-            return;
-
+    /// <summary>
+    /// 만들기가 비정상적으로 종료되면 재료들을 원상복구함
+    /// </summary>
+    protected void ForceStopMake()
+    {
         foreach (Ingredient element in foodStacker.CurFood.Ingredients)
             fridgeInventory.Store(element, 1);
     }

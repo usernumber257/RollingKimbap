@@ -32,6 +32,24 @@ public class Localization_mainmenu: MonoBehaviour
     public GameObject nicknameAlert_kor;
     public GameObject nicknameAlert_eng;
 
+    public GameObject updateAlert_kor;
+    public GameObject updateAlert_eng;
+
+    public GameObject myRecord_kor;
+    public GameObject myRecord_eng;
+
+    public GameObject deleteAccount_kor;
+    public GameObject deleteAccount_eng;
+
+    public GameObject deleteAccountAlert_kor;
+    public GameObject deleteAccountAlert_eng;
+
+    public GameObject deleteAccount_yes_kor;
+    public GameObject deleteAccount_yes_eng;
+
+    public GameObject deleteAccountAlert_no_kor;
+    public GameObject deleteAccountAlert_no_eng;
+
     private void Start()
     {
         Localization();
@@ -74,9 +92,29 @@ public class Localization_mainmenu: MonoBehaviour
 
         nicknameAlert_kor.SetActive(isKor);
         nicknameAlert_eng.SetActive(!isKor);
+
+#endif
+#if UNITY_IOS || UNITY_ANDROID
+        updateAlert_kor.SetActive(isKor);
+        updateAlert_eng.SetActive(!isKor);
+
+        myRecord_kor.SetActive(isKor);
+        myRecord_eng.SetActive(!isKor);
+
+        deleteAccount_kor.SetActive(isKor);
+        deleteAccount_eng.SetActive(!isKor);
+
+        deleteAccountAlert_kor.SetActive(isKor);
+        deleteAccountAlert_eng.SetActive(!isKor);
+
+        deleteAccount_yes_kor.SetActive(isKor);
+        deleteAccount_yes_eng.SetActive(!isKor);
+
+        deleteAccountAlert_no_kor.SetActive(isKor);
+        deleteAccountAlert_no_eng.SetActive(!isKor);
 #endif
 
     }
 
-    
+
 }

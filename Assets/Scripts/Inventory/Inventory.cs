@@ -30,8 +30,6 @@ public class Inventory : MonoBehaviour
 
         slot[item] -= count;
         OnUse?.Invoke(item, count, false);
-
-        Debug.Log($"remove {item.name} {slot[item]}");
     }
 
     public void Store(Ingredient item, int count)
@@ -48,7 +46,6 @@ public class Inventory : MonoBehaviour
         slot[item] += count;
         OnUse?.Invoke(item, count, true);
 
-        Debug.Log($"add {item.name} {slot[item]}");
     }
 
 }

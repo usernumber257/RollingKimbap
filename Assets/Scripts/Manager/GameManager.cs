@@ -1,5 +1,6 @@
 //using BackEnd;
 using BackEnd;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -48,6 +49,8 @@ public class GameManager : Singleton<GameManager>
 
     static LevelManager level;
     public static LevelManager Level { get { return level; } }
+
+    public GameObject Bttn_deleteAccount;
 
 
     protected override void Awake()
@@ -107,6 +110,8 @@ public class GameManager : Singleton<GameManager>
     public UnityAction OnSceneChanged;
     public Scene curScene;
 
+    public string curStageId;
+
     private void DetectSceneChange(Scene scene, LoadSceneMode mode)
     {
         curScene = scene;
@@ -118,31 +123,31 @@ public class GameManager : Singleton<GameManager>
 
             PlayerStatManager.Instance.Timer(false);
 
-            #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN
             Login.Instance.TempLogin();
 #endif
 
             if (SettingManager.Instance.ControllerCanvas != null)
                 SettingManager.Instance.ControllerCanvas.gameObject.SetActive(false);
+
+#if UNITY_ANDROID || UNITY_IOS
+            Bttn_deleteAccount.SetActive(true);
+#endif
         }
         else if (scene.name == "GameScene_Window" || scene.name == "GameScene_Mobile" || scene.name == "GameScene_Web")
         {
             InitManagers();
-            #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
-#if UNITY_EDITOR
-            Login.Instance.TempLogin();
-#endif
-#endif
-#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
-            if (PlayerStatManager.Instance.nickname == "temp")
-                Login.Instance.TempLogin();
-            else
-                Login.Instance.CustomLogin();
-#endif
+
             PlayerStatManager.Instance.Timer(true);
 
             if (SettingManager.Instance.ControllerCanvas != null)
                 SettingManager.Instance.ControllerCanvas.gameObject.SetActive(true);
+
+#if UNITY_ANDROID || UNITY_IOS
+            Bttn_deleteAccount.SetActive(false);
+
+            curStageId = Guid.NewGuid().ToString();
+#endif
         }
 
         OnSceneChanged?.Invoke();

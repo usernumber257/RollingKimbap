@@ -17,6 +17,8 @@ public class RankingButton : MonoBehaviour
     {
         bool result = PlayerStatManager.Instance.UpdateRank();
 
+        Debug.Log(result);
+
         if (result)
             rankingAnim.SetTrigger("Success");
         else

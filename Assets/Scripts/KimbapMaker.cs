@@ -19,14 +19,7 @@ public class KimbapMaker : Maker
     public void Make(bool isInteracted)
     {
         if (!isInteracted || FoodStacker.CurFood == null)
-        {
-            StopMake();
-            FoodStacker.Stop();
-
-            Done();
-
             return;
-        }
 
         OnKeyDown += FoodStacker.StackIngredients;
 

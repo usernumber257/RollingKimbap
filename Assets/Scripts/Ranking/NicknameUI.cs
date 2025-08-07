@@ -32,6 +32,7 @@ public class NicknameUI : UIBase
                 return;
             }
 
+            /*
             BackendReturnObject bro = Backend.BMember.CheckNicknameDuplication(inputField.text);
 
             if (bro.IsSuccess())
@@ -43,6 +44,12 @@ public class NicknameUI : UIBase
             }
             else
                 nicknameAlert.SetTrigger("Play");
+            */
+
+            SoundPlayer.Instance.Play(MyEnum.Sound.Accept);
+            PlayerStatManager.Instance.nickname = inputField.text;
+            UIManager.Instance.CloseUI(this);
+            UIManager.Instance.OpenUI(customPlayer);
         });
 
     }

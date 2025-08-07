@@ -1,12 +1,6 @@
-//using BackEnd;
 using BackEnd;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 
 /// <summary>
 /// 캐릭터 커마, 음식, 수익, 플레이 시간 데이터를 담고 있습니다.
@@ -67,7 +61,9 @@ public class PlayerStatManager : Singleton<PlayerStatManager>
 #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
         Backend.BMember.UpdateNickname(Instance.nickname);
 
-        bool result = Leaderboard.Instance.UpdateLeaderboard(curCoin, $"{spentTime}|{(int)curHair}|{(int)curHairColor}|{(int)curUniform}|{(int)curHat}");
+        bool result = Leaderboard.Instance.SaveNewPlayRecord(nickname, curCoin, spentTime, (int)curHair, (int)curHairColor, (int)curUniform, (int)curHat);
+
+        Debug.Log(result);
         return result;
 #endif
     }

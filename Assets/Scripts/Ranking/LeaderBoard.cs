@@ -1,5 +1,7 @@
 using UnityEngine;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using System.Collections.Generic;
+using System;
+using LitJson;
 
 #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
 using BackEnd;
@@ -20,116 +22,148 @@ public class Leaderboard : MonoBehaviour
 
     RankingView rankingView;
 
-    private void Start()
+    public bool SaveNewPlayRecord(string nickname, int coin, float playTime, int hair, int hairColor, int uniform, int hat)
     {
-        rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
-        GetLeaderboard();
-    }
-
-    public bool UpdateLeaderboard(int score, string extraData)
-    {
-        string tableName = "PlayerRanking";
         string rowIndate = string.Empty;
 
         Param param = new Param();
-        param.Add("Coin", score);
-        param.Add("ExtraData", extraData);
 
-        var bro = Backend.GameData.Get("PlayerRanking", new Where());
+        param.Add("nickName", nickname);
+        param.Add("coin", coin);
+        param.Add("playTime", playTime);
+        param.Add("hair", hair);
+        param.Add("hairColor", hairColor);
+        param.Add("uniform", uniform);
+        param.Add("hat", hat);
+        param.Add("playDate", DateTime.UtcNow.ToString("o"));
 
-        if (bro.IsSuccess() == false)
+        //이전에 저장이 되었는지
+        Where where = new Where();
+        where.Equal("custom_id", GameManager.Instance.curStageId);
+
+        Backend.GameData.Get("PlayRecordLog", where, callback =>
         {
-            Debug.LogError(bro);
-            return false;
-        }
-
-        if (bro.FlattenRows().Count > 0)
-        {
-            rowIndate = bro.FlattenRows()[0]["inDate"].ToString();
-        }
-        else
-        {
-            var bro2 = Backend.GameData.Insert(tableName, param);
-
-            if (bro2.IsSuccess())
+            if (callback.IsSuccess())
             {
-                rowIndate = bro2.GetInDate();
+                var rows = callback.FlattenRows();
+
+                if (rows.Count > 0)
+                {
+                    //이미 데이터가 존재하면 갱신
+                    Where updateWhere = new Where();
+                    updateWhere.Equal("custom_id", GameManager.Instance.curStageId);
+
+                    Backend.GameData.Update("PlayRecordLog", updateWhere, param, updateCallback =>
+                    {
+                        if (updateCallback.IsSuccess())
+                            Debug.Log("플레이 기록 갱신 성공");
+                        else
+                            Debug.LogError("갱신 실패: " + updateCallback.ToString());
+                    });
+                }
+                else
+                {
+                    //데이터가 없으면 새로 추가
+                    param.Add("custom_id", GameManager.Instance.curStageId);
+                    Backend.GameData.Insert("PlayRecordLog", param, insertCallback =>
+                    {
+                        if (insertCallback.IsSuccess())
+                            Debug.Log("플레이 기록 저장 성공");
+                        else
+                            Debug.LogError("저장 실패: " + insertCallback.ToString());
+                    });
+                }
             }
             else
             {
-                Debug.LogError(bro2);
-                return false;
-            }
-        }
-
-        if (rowIndate == string.Empty)
-        {
-            return false;
-        }
-
-        bool result = true;
-
-        Backend.Leaderboard.User.UpdateMyDataAndRefreshLeaderboard("리더보드 uuid", "테이블 이름", "갱신할 row inDate", param, callback =>
-        {
-            var rankBro = Backend.Leaderboard.User.UpdateMyDataAndRefreshLeaderboard(leaderboardUuid, tableName, rowIndate, param);
-            if (rankBro.IsSuccess())
-            {
-                Debug.Log("리더보드 등록 성공");
-                result = true;
-            }
-            else
-            {
-                Debug.Log("리더보드 등록 실패 : " + rankBro);
-
-                if (!result)
-                    result = false;
+                Debug.LogError("데이터 조회 실패: " + callback.ToString());
             }
         });
 
-        Debug.Log(result);
-
-        return result;
+        return true;
     }
+
 
     /// <summary>
     /// 랭킹을 조회해 UI 를 세팅합니다.
     /// </summary>
     public void GetLeaderboard()
     {
-        BackEnd.Leaderboard.BackendUserLeaderboardReturnObject bro = null;
+        if (rankingView == null)
+            rankingView = GameObject.FindWithTag("RankingView")?.GetComponent<RankingView>();
 
-        bro = Backend.Leaderboard.User.GetLeaderboard(leaderboardUuid, 100);
-
-        // 랭킹 조회 후.
-        if (bro.IsSuccess() == false)
+        if (rankingView == null)
         {
-            Debug.Log("랭킹 조회 실패");
+            Debug.LogError("RankingView 컴포넌트를 찾을 수 없습니다.");
             return;
         }
 
-        Debug.Log("리더보드 총 유저 등록 수 : " + bro.GetTotalCount());
+        Where where = new Where();
 
-        //UI 에 디스플레이 하기
-        if (rankingView == null)
-            rankingView = GameObject.FindWithTag("RankingView").GetComponent<RankingView>();
-
-        foreach (BackEnd.Leaderboard.UserLeaderboardItem item in bro.GetUserLeaderboardList())
+        Backend.GameData.Get("PlayRecordLog", where, 1000, callback =>
         {
-            if (item.nickname == Login.Instance.tempUser) //메인메뉴, 디버깅을 위한 임시 유저 아이디는 보여주지 않습니다.
-                continue;
+            if (!callback.IsSuccess())
+            {
+                Debug.LogError("전체 플레이 기록 조회 실패: " + callback.ToString());
+                return;
+            }
 
-            string[] extraData = item.extraData.Split("|");
+            JsonData jsonData = callback.GetReturnValuetoJSON();
+            JsonData rows = jsonData["rows"];
 
-            UserData userData = new UserData();
+            if (rows.Count == 0)
+            {
+                Debug.Log("플레이 기록이 없습니다.");
+                return;
+            }
 
-            userData.spentTime = float.Parse(extraData[0].ToString());
-            userData.hair = int.Parse(extraData[1].ToString());
-            userData.hairColor = int.Parse(extraData[2].ToString());
-            userData.uniform = int.Parse(extraData[3].ToString());
-            userData.hat = int.Parse(extraData[4].ToString());
+            List<PlayRecord> playRecords = new List<PlayRecord>();
 
-            rankingView.AddContent(int.Parse(item.rank), int.Parse(item.score), item.nickname, userData.spentTime, userData.hair, userData.hairColor, userData.uniform, userData.hat);
-        }
+            for (int i = 0; i < rows.Count; i++)
+            {
+                JsonData record = rows[i];
+
+                try
+                {
+                    PlayRecord pr = new PlayRecord()
+                    {
+                        nickName = record["nickName"]["S"].ToString(),
+                        coin = int.Parse(record["coin"]["N"].ToString()),
+                        playTime = float.Parse(record["playTime"]["N"].ToString()),
+                        hair = int.Parse(record["hair"]["N"].ToString()),
+                        hairColor = int.Parse(record["hairColor"]["N"].ToString()),
+                        uniform = int.Parse(record["uniform"]["N"].ToString()),
+                        hat = int.Parse(record["hat"]["N"].ToString()),
+                        playDate = record["playDate"]["S"].ToString()
+                    };
+
+                    playRecords.Add(pr);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"플레이 기록 파싱 중 오류 발생: {e.Message}");
+                }
+            }
+
+            // coin 을 기준으로 내림차순 정렬을 하지만, 플레이 기록이 더 짧은 사람이 보다 윗순위를 갖게 됨
+            playRecords.Sort((a, b) =>
+            {
+                int coinCompare = b.coin.CompareTo(a.coin);
+                if (coinCompare == 0)
+                {
+                    return a.playTime.CompareTo(b.playTime);
+                }
+                return coinCompare;
+            });
+
+            // 랭킹뷰에 추가
+            for (int i = 0; i < playRecords.Count; i++)
+            {
+                PlayRecord p = playRecords[i];
+                rankingView.AddContent(i + 1, p.coin, p.nickName, p.playTime, p.hair, p.hairColor, p.uniform, p.hat);
+            }
+        });
     }
+
 }
 #endif

@@ -8,10 +8,12 @@ using UnityEngine.UI;
 /// </summary>
 public class RankingContent : MonoBehaviour
 {
-    [SerializeField] TMP_Text rank;
+    public TMP_Text rank;
     [SerializeField] TMP_Text nickname;
     [SerializeField] TMP_Text playTime;
     [SerializeField] TMP_Text coin;
+
+    public Button Bttn_remove;
 
     [Header("Model")]
     public List<GameObject> hairs = new List<GameObject>();
@@ -20,6 +22,8 @@ public class RankingContent : MonoBehaviour
 
     public void Init(int rank, int coin, string nickname, float playTime, int hair, int hairColor, int uniform, int hat)
     {
+        Bttn_remove.gameObject.SetActive(false); //유저 관리 화면에서만 활성화 시켜주기
+
         this.rank.text = rank.ToString("D2");
 
         if (rank == 1)
