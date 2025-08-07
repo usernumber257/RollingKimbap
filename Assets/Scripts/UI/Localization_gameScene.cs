@@ -63,9 +63,11 @@ public class Localization_gameScene : MonoBehaviour
         backToMainText_no_kor.SetActive(isKor);
         backToMainText_no_eng.SetActive(!isKor);
 
+        #if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
         rankingResult_success_kor.SetActive(isKor);
         rankingResult_success_eng.SetActive(!isKor);
         rankingResult_fail_kor.SetActive(isKor);
         rankingResult_fail_eng.SetActive(!isKor);
+#endif
     }
 }

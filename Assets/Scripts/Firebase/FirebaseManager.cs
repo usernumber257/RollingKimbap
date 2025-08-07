@@ -1,3 +1,5 @@
+#if UNITY_STANDALONE_WIN || UNITY_IOS || UNITY_ANDROID
+
 using System.Collections;
 using System.Threading.Tasks;
 using BackEnd;
@@ -5,9 +7,7 @@ using Firebase;
 using Firebase.Auth;
 using Firebase.Extensions;
 using Google;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -223,3 +223,5 @@ return;
         });
     }
 }
+
+#endif

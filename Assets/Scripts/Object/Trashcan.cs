@@ -12,9 +12,13 @@ public class Trashcan : MonoBehaviour
         holder.OnHold += DestroyObject;
     }
 
+    private void OnDisable()
+    {
+        holder.OnHold -= DestroyObject;
+    }
+
     void DestroyObject(GameObject go)
     {
         Destroy(go);
-        holder.OnHold -= DestroyObject;
     }
 }

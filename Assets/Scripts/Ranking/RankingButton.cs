@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RankingButton : MonoBehaviour
 {
+#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
+
     [SerializeField] GameObject kor;
     [SerializeField] GameObject eng;
 
@@ -24,4 +26,5 @@ public class RankingButton : MonoBehaviour
         else
             rankingAnim.SetTrigger("Fail");
     }
+#endif
 }

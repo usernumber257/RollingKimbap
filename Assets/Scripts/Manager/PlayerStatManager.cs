@@ -56,17 +56,19 @@ public class PlayerStatManager : Singleton<PlayerStatManager>
         } 
     }
 
+#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
+
     public bool UpdateRank()
     {
-#if UNITY_IOS || UNITY_ANDROID || UNITY_STANDALONE_WIN
         Backend.BMember.UpdateNickname(Instance.nickname);
 
         bool result = Leaderboard.Instance.SaveNewPlayRecord(nickname, curCoin, spentTime, (int)curHair, (int)curHairColor, (int)curUniform, (int)curHat);
 
         Debug.Log(result);
         return result;
-#endif
     }
+#endif
+
 
     public UnityAction OnCoinChanged;
 
