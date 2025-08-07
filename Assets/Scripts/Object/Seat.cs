@@ -25,7 +25,7 @@ public class Seat : MonoBehaviour
         place.OnHold += CompareOrder;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         place.OnHold -= CompareOrder;
     }

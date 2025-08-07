@@ -8238,6 +8238,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 884093614618353532, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884093614618353532, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884093614618353532, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1214382598299584193, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
@@ -8357,6 +8369,14 @@ PrefabInstance:
     - target: {fileID: 5621070685224094449, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SettingUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955375834907211462, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955375834907211462, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164499168880074848, guid: e1c3c29bfbd83454bb9fda8324e71116, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11347,6 +11367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08be5d6c80c327141824cd59f8859a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kor: {fileID: 482116685}
+  eng: {fileID: 1058706768}
+  rankingAnim: {fileID: 393801501523735707}
 --- !u!114 &1822907866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13098,6 +13121,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7acacaccc682c854c81f00d85f0edb2c, type: 3}
+--- !u!95 &393801501523735707 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5674894553761255012, guid: 7acacaccc682c854c81f00d85f0edb2c, type: 3}
+  m_PrefabInstance: {fileID: 393801501523735706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3504768433799826837
 PrefabInstance:
   m_ObjectHideFlags: 0
